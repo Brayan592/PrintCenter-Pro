@@ -318,7 +318,7 @@
                     <button onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="20"></i> Ajustes</button>
                 </div>
             </div>
-            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.06.005 Ultimate Premium</div>
+            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.06.006 Ultimate Premium</div>
         </div>
 
         <div class="main-content" id="main-scroll-area">
@@ -499,7 +499,7 @@
                     </div>
                     
                     <div style="text-align:center; color:var(--text-secondary); font-size:13px; font-weight:800; margin-top:40px; margin-bottom:10px; opacity:0.6; letter-spacing: 1px; animation: pulseGlow 2s infinite alternate;">
-                        PrintCenter Pro v20.26.06.005
+                        PrintCenter Pro v20.26.06.006
                     </div>
                 </div>
 
@@ -797,21 +797,82 @@
         function playSynthSound(type) {
             setTimeout(() => {
                 try {
-                    if (!window.audioCtx) { const AudioContext = window.AudioContext || window.webkitAudioContext; if (!AudioContext) return; window.audioCtx = new AudioContext(); }
-                    if (window.audioCtx.state === 'suspended') window.audioCtx.resume();
-                    const osc = window.audioCtx.createOscillator(); const gain = window.audioCtx.createGain(); osc.connect(gain); gain.connect(window.audioCtx.destination); const now = window.audioCtx.currentTime;
-                    switch(type) {
-                        case 'boot': osc.type = 'square'; osc.frequency.setValueAtTime(200, now); osc.frequency.exponentialRampToValueAtTime(800, now + 0.3); gain.gain.setValueAtTime(0.1, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3); osc.start(); osc.stop(now + 0.3); break;
-                        case 'click_tab': osc.type = 'triangle'; osc.frequency.setValueAtTime(600, now); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.05); osc.start(); osc.stop(now + 0.05); break;
-                        case 'add_cart': osc.type = 'sine'; osc.frequency.setValueAtTime(500, now); osc.frequency.exponentialRampToValueAtTime(1000, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0, now + 0.1); osc.start(); osc.stop(now + 0.1); break;
-                        case 'remove_cart': osc.type = 'sine'; osc.frequency.setValueAtTime(800, now); osc.frequency.exponentialRampToValueAtTime(300, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0, now + 0.1); osc.start(); osc.stop(now + 0.1); break;
-                        case 'modal': osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0, now); gain.gain.linearRampToValueAtTime(0.2, now + 0.1); gain.gain.linearRampToValueAtTime(0, now + 0.2); osc.start(); osc.stop(now + 0.2); break;
-                        case 'save': osc.type = 'triangle'; osc.frequency.setValueAtTime(500, now); osc.frequency.setValueAtTime(700, now + 0.05); gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0, now + 0.15); osc.start(); osc.stop(now + 0.15); break;
-                        case 'delete': osc.type = 'sawtooth'; osc.frequency.setValueAtTime(300, now); osc.frequency.linearRampToValueAtTime(100, now + 0.2); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.2); osc.start(); osc.stop(now + 0.2); break;
-                        case 'cash': osc.type = 'triangle'; osc.frequency.setValueAtTime(1200, now); gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0, now + 0.2); osc.start(); osc.stop(now + 0.2); break;
-                        case 'error': osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0, now + 0.3); osc.start(); osc.stop(now + 0.3); break;
+                    if (!window.audioCtx) {
+                        const AudioContext = window.AudioContext || window.webkitAudioContext;
+                        if (!AudioContext) return;
+                        window.audioCtx = new AudioContext();
                     }
-                } catch(e) {}
+                    if (window.audioCtx.state === 'suspended') window.audioCtx.resume();
+                    const ctx = window.audioCtx;
+                    const now = ctx.currentTime;
+                    const masterGain = ctx.createGain();
+                    masterGain.connect(ctx.destination);
+
+                    const playTone = (freq, type, startTime, duration, vol, endFreq = null) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = type;
+                        osc.frequency.setValueAtTime(freq, startTime);
+                        if (endFreq) osc.frequency.exponentialRampToValueAtTime(endFreq, startTime + duration);
+                        
+                        gain.gain.setValueAtTime(0, startTime);
+                        gain.gain.linearRampToValueAtTime(vol, startTime + duration * 0.1);
+                        gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+                        
+                        osc.connect(gain);
+                        gain.connect(masterGain);
+                        osc.start(startTime);
+                        osc.stop(startTime + duration);
+                    };
+
+                    switch(type) {
+                        case 'boot':
+                            masterGain.gain.value = 0.5;
+                            playTone(261.63, 'sine', now, 0.5, 0.2);
+                            playTone(329.63, 'sine', now + 0.1, 0.5, 0.2);
+                            playTone(392.00, 'sine', now + 0.2, 0.6, 0.2);
+                            playTone(523.25, 'triangle', now + 0.3, 0.8, 0.2);
+                            break;
+                        case 'click_tab':
+                            masterGain.gain.value = 0.6;
+                            playTone(600, 'sine', now, 0.08, 0.2, 300);
+                            break;
+                        case 'add_cart':
+                            masterGain.gain.value = 0.6;
+                            playTone(400, 'sine', now, 0.15, 0.3, 800);
+                            break;
+                        case 'remove_cart':
+                            masterGain.gain.value = 0.6;
+                            playTone(600, 'sine', now, 0.15, 0.3, 200);
+                            break;
+                        case 'modal':
+                            masterGain.gain.value = 0.4;
+                            playTone(450, 'triangle', now, 0.2, 0.1, 500);
+                            playTone(900, 'sine', now, 0.3, 0.05);
+                            break;
+                        case 'save':
+                            masterGain.gain.value = 0.5;
+                            playTone(600, 'sine', now, 0.1, 0.2);
+                            playTone(800, 'sine', now + 0.1, 0.2, 0.2);
+                            break;
+                        case 'delete':
+                            masterGain.gain.value = 0.8;
+                            playTone(150, 'square', now, 0.15, 0.1, 50);
+                            break;
+                        case 'cash':
+                            masterGain.gain.value = 0.7;
+                            playTone(1200, 'triangle', now, 0.2, 0.2);
+                            playTone(1600, 'sine', now + 0.05, 0.4, 0.2);
+                            break;
+                        case 'error':
+                            masterGain.gain.value = 0.6;
+                            playTone(200, 'sawtooth', now, 0.15, 0.1, 150);
+                            playTone(200, 'sawtooth', now + 0.15, 0.2, 0.1, 100);
+                            break;
+                    }
+                } catch(e) {
+                    console.error("Audio API no soportada", e);
+                }
             }, 0);
         }
 
@@ -1121,7 +1182,8 @@
                         <b style="font-size:16px; color:var(--text-primary); font-weight:800;">${item.nombre}</b>
                         <small style="color:var(--accent-color); font-weight:900; font-size:14px;">$${item.precioVenta.toFixed(2)} c/u</small>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; background:var(--input-bg); padding:6px 10px; border-radius:100px; border: 1px solid var(--border-color); box-shadow:inset 0 2px 5px rgba(0,0,0,0.02);">
+                    <div style="display:flex; align-items:center; gap:8px; background:var(--input-bg); padding:6px 10px; border-radius:100px; border: 1px solid var(--border-color); box-shadow:inset 0 2px 5px rgba(0,0,0,0.02);">
+                        <button class="qty-btn" style="background:var(--warning-color); color:white;" onclick="calcularPorMonto(${item.id})" title="Calcular por dinero"><i data-lucide="calculator" size="16"></i></button>
                         <button class="qty-btn" style="background:var(--card-bg);" onclick="modifyQty(${item.id}, -1)">-</button>
                         <span style="font-weight:900; font-size:18px; min-width:24px; text-align:center;">${item.qty}</span>
                         <button class="qty-btn" style="background:var(--card-bg);" onclick="modifyQty(${item.id}, 1)">+</button>
@@ -1129,10 +1191,35 @@
                 modalList.appendChild(div); 
             });
             document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`; calculateManualChange();
+            renderIcons();
         }
 
         function modifyQty(id, value) { const item = carrito.find(i => i.id === id); if (item) { item.qty += value; if(value > 0) playSynthSound('add_cart'); else playSynthSound('remove_cart'); if (item.qty <= 0) carrito = carrito.filter(i => i.id !== id); updateCartUI(); } }
         
+        function calcularPorMonto(id) {
+            const item = carrito.find(i => i.id === id);
+            if (!item) return;
+            const input = prompt(`¿Cuánto dinero pagará el cliente por "${item.nombre}"? (Precio: $${item.precioVenta.toFixed(2)} c/u)`);
+            if (input !== null && input.trim() !== "") {
+                const montoTotal = parseFloat(input);
+                if (!isNaN(montoTotal) && montoTotal > 0) {
+                    const cantidadCalculada = Math.floor(montoTotal / item.precioVenta);
+                    if (cantidadCalculada > 0) {
+                        item.qty = cantidadCalculada;
+                        updateCartUI();
+                        playSynthSound('add_cart');
+                        showToast(`Se agregaron ${cantidadCalculada} unidades.`);
+                    } else {
+                        triggerError('cart-modal');
+                        showToast("El monto no alcanza para una unidad.");
+                    }
+                } else {
+                    triggerError('cart-modal');
+                    showToast("Monto inválido.");
+                }
+            }
+        }
+
         function openCart() { 
             if(carrito.length === 0) { triggerError('ventas'); return; }
             playSynthSound('modal'); document.getElementById('cart-modal').classList.add('active'); 
