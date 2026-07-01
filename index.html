@@ -95,11 +95,15 @@
         .chip { background: var(--card-bg); padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 700; color: var(--text-secondary); cursor: pointer; white-space: nowrap; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
         .chip:hover { transform: translateY(-3px); color: var(--text-primary); box-shadow: var(--shadow-md); }
         .chip.active { background: var(--accent-color); color: white; border-color: var(--accent-color); box-shadow: 0 8px 20px var(--accent-glow); transform: translateY(-2px); }
+        
         .search-container { position: relative; margin-bottom: 20px; transition: all 0.3s; }
-        .search-container input { width: 100%; background-color: var(--input-bg); border: 2px solid transparent; border-radius: var(--radius-md); padding: 18px 20px 18px 54px; color: var(--text-primary); font-size: 16px; font-weight: 600; transition: all 0.3s; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
+        .search-container input { width: 100%; background-color: var(--input-bg); border: 2px solid transparent; border-radius: var(--radius-md); padding: 18px 45px 18px 54px; color: var(--text-primary); font-size: 16px; font-weight: 600; transition: all 0.3s; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
         .search-container input:focus { background: var(--card-bg); border-color: var(--accent-color); outline: none; box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md); transform: translateY(-2px); }
         .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); transition: all 0.3s; }
         .search-container input:focus + i { color: var(--accent-color); }
+        .clear-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 24px; font-weight: 800; color: var(--text-secondary); cursor: pointer; display: none; transition: color 0.2s; }
+        .clear-icon:hover { color: var(--danger-color); }
+
         .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; transform: translateZ(0); }
         .product-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 140px; cursor: pointer; box-shadow: var(--neon-glow, var(--shadow-sm)); transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); position: relative; overflow: hidden; user-select: none; -webkit-touch-callout: none; }
         .product-card::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(135deg, transparent, var(--accent-glow)); opacity: 0; transition: 0.3s; z-index: 0; }
@@ -165,6 +169,13 @@
         .form-group label { display: block; margin-bottom: 10px; font-size: 13px; color: var(--text-secondary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--input-bg); border: 2px solid transparent; border-radius: var(--radius-sm); padding: 16px; color: var(--text-primary); font-size: 16px; transition: all 0.3s; font-weight: 600; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { background: var(--card-bg); border-color: var(--accent-color); outline: none; box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md); transform: translateY(-2px); }
+        
+        .agent-box { background: rgba(0, 113, 227, 0.05); border: 1px solid rgba(0, 113, 227, 0.2); border-radius: var(--radius-sm); padding: 15px; margin-bottom: 20px; }
+        .agent-box h4 { margin-bottom: 10px; color: var(--accent-color); font-size: 14px; font-weight: 800; display:flex; align-items:center; gap:5px; }
+        .agent-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .agent-grid input { padding: 10px; font-size: 14px; text-align: center; }
+        .agent-result { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; margin-top: 10px; }
+
         #toast-container { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: center; pointer-events:none; width: 90%; max-width: 400px; }
         .toast { pointer-events: auto; background: linear-gradient(135deg, rgba(56, 189, 248, 0.85), rgba(2, 132, 199, 0.85)) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; padding: 16px 24px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0, 113, 227, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 700; animation: dynamicIslandIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; transform-origin: top; width: 100%; justify-content: center; }
         @keyframes dynamicIslandIn { 0% { transform: scale(0.4) translateY(-50px); opacity: 0; filter: blur(10px); } 100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); } }
@@ -236,7 +247,7 @@
                     <button onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="20"></i> Ajustes</button>
                 </div>
             </div>
-            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.07.001 Ultimate Premium</div>
+            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.07.002 Ultimate Premium</div>
         </div>
 
         <div class="main-content" id="main-scroll-area">
@@ -251,13 +262,23 @@
 
             <div class="container">
                 <div id="ventas" class="tab-content active fade-in">
-                    <div style="display: flex; gap: 15px; margin-bottom: 25px;" class="stagger-item"><div class="search-container" style="flex: 1; margin:0;"><i data-lucide="search" size="20"></i><input type="text" id="search-product" placeholder="Buscar producto..." oninput="filterProducts()"></div></div>
+                    <div style="display: flex; gap: 15px; margin-bottom: 25px;" class="stagger-item">
+                        <div class="search-container" style="flex: 1; margin:0;">
+                            <i data-lucide="search" size="20"></i>
+                            <input type="text" id="search-product" placeholder="Buscar producto..." oninput="filterProducts(); toggleClear(this, 'clear-ventas')">
+                            <span id="clear-ventas" class="clear-icon" onclick="clearSearch('search-product', 'clear-ventas', filterProducts)">&times;</span>
+                        </div>
+                    </div>
                     <div class="categories-chips stagger-item" style="animation-delay: 0.1s;"><div class="chip active" onclick="filterCategory('Todas', this)">Todas</div><div class="chip" onclick="filterCategory('Papelería', this)">Papelería</div><div class="chip" onclick="filterCategory('Impresiones', this)">Impresiones</div><div class="chip" onclick="filterCategory('Servicios', this)">Servicios</div></div>
                     <div class="products-grid stagger-item" style="animation-delay: 0.2s;" id="products-list"></div>
                 </div>
 
                 <div id="pedidos" class="tab-content fade-in">
-                    <div class="search-container"><i data-lucide="search" size="20"></i><input type="text" id="search-pedidos" placeholder="Buscar pedidos por cliente o producto..." oninput="renderPedidos()"></div>
+                    <div class="search-container">
+                        <i data-lucide="search" size="20"></i>
+                        <input type="text" id="search-pedidos" placeholder="Buscar pedidos por cliente o producto..." oninput="renderPedidos(); toggleClear(this, 'clear-pedidos')">
+                        <span id="clear-pedidos" class="clear-icon" onclick="clearSearch('search-pedidos', 'clear-pedidos', renderPedidos)">&times;</span>
+                    </div>
                     <div class="kanban-container" id="kanban-board">
                         <div class="kanban-col"><h3 style="color: var(--warning-color);"><i data-lucide="pin" size="18"></i> Pendientes (<span id="kb-count-pend">0</span>)</h3><div id="kb-col-pendiente"></div></div>
                         <div class="kanban-col"><h3 style="color: #8e8e93;"><i data-lucide="package-minus" size="18"></i> Falta Material (<span id="kb-count-mat">0</span>)</h3><div id="kb-col-material"></div></div>
@@ -269,7 +290,11 @@
                 </div>
 
                 <div id="historial" class="tab-content fade-in">
-                    <div class="search-container"><i data-lucide="search" size="20"></i><input type="text" id="search-history" placeholder="Buscar por producto..." oninput="renderHistory()"></div>
+                    <div class="search-container">
+                        <i data-lucide="search" size="20"></i>
+                        <input type="text" id="search-history" placeholder="Buscar por producto..." oninput="renderHistory(); toggleClear(this, 'clear-historial')">
+                        <span id="clear-historial" class="clear-icon" onclick="clearSearch('search-history', 'clear-historial', renderHistory)">&times;</span>
+                    </div>
                     <div class="categories-chips"><div class="chip active" onclick="filterHistory('todos', this)">Todos</div><div class="chip" onclick="filterHistory('hoy', this)">Hoy</div><div class="chip" onclick="filterHistory('Efectivo', this)">Efectivo</div><div class="chip" onclick="filterHistory('Tarjeta', this)">Tarjeta</div><div class="chip" onclick="filterHistory('top', this)">Mayor Utilidad</div></div>
                     <div id="history-list"></div>
                 </div>
@@ -303,7 +328,14 @@
                 </div>
 
                 <div id="clientes" class="tab-content fade-in">
-                    <div style="display:flex; gap:15px; margin-bottom:25px;" class="stagger-item"><button class="btn btn-primary" style="flex:1;" onclick="openClienteModal()"><i data-lucide="user-plus" size="20" style="vertical-align:middle; margin-right:8px;"></i> Nuevo Cliente</button><div class="search-container" style="flex:2; margin:0;"><i data-lucide="search" size="20"></i><input type="text" id="search-clientes" placeholder="Buscar cliente por nombre o número..." oninput="renderClientesTab()" style="background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.1);"></div></div>
+                    <div style="display:flex; gap:15px; margin-bottom:25px;" class="stagger-item">
+                        <button class="btn btn-primary" style="flex:1;" onclick="openClienteModal()"><i data-lucide="user-plus" size="20" style="vertical-align:middle; margin-right:8px;"></i> Nuevo Cliente</button>
+                        <div class="search-container" style="flex:2; margin:0;">
+                            <i data-lucide="search" size="20"></i>
+                            <input type="text" id="search-clientes" placeholder="Buscar cliente por nombre o número..." oninput="renderClientesTab(); toggleClear(this, 'clear-clientes')" style="background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.1);">
+                            <span id="clear-clientes" class="clear-icon" onclick="clearSearch('search-clientes', 'clear-clientes', renderClientesTab)">&times;</span>
+                        </div>
+                    </div>
                     <div class="products-grid stagger-item" style="animation-delay:0.1s;" id="clientes-list-grid"></div>
                 </div>
 
@@ -313,7 +345,7 @@
                     <div class="stagger-item" style="animation-delay:0.4s; background:var(--card-bg); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:24px; box-shadow:var(--shadow-sm);"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;"><h3 style="font-size:18px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="pie-chart" size="20" style="color:var(--warning-color);"></i> Distribución de Ganancias</h3><button class="btn btn-secondary" style="padding: 8px 12px; font-size: 13px;" onclick="agregarDistribucion()"><i data-lucide="plus" size="16" style="vertical-align:middle;"></i> Añadir División</button></div><div id="distribucion-inputs"></div><button class="btn btn-primary" style="width:100%; margin-top:15px;" onclick="saveConfigDistribucion()"><i data-lucide="save" size="18" style="vertical-align:middle; margin-right:8px;"></i> Guardar Divisiones Dinámicas</button></div>
                     <div class="stagger-item" style="animation-delay:0.45s; background:var(--card-bg); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:24px; box-shadow:var(--shadow-sm);"><h3 style="font-size:18px; margin-bottom:10px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="image" size="20" style="color:var(--accent-color);"></i> Exportar Finanzas (PNG)</h3><p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; font-weight:600;">Descarga tus reportes financieros como imágenes de alta calidad para compartirlos fácilmente.</p><div style="display:flex; flex-direction:column; gap:12px;"><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-registro-diario', 'Registro_Diario')"><i data-lucide="calendar-days" size="18" style="vertical-align:middle; margin-right:8px;"></i> PNG: Registro Diario de Ventas</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-conteo-fondos', 'Conteo_Definitivo')"><i data-lucide="wallet" size="18" style="vertical-align:middle; margin-right:8px;"></i> PNG: Conteo Definitivo</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-meses-anteriores', 'Meses_Anteriores')"><i data-lucide="archive" size="18" style="vertical-align:middle; margin-right:8px;"></i> PNG: Meses Anteriores</button></div></div>
                     <div class="stagger-item" style="animation-delay:0.5s;"><button class="btn btn-secondary" style="width:100%; margin-bottom:15px;" onclick="exportData()"><i data-lucide="download" size="18" style="vertical-align:middle; margin-right:8px;"></i> Exportar Copia de Seguridad JSON</button><div style="margin-bottom:25px;"><label class="btn btn-secondary" style="width:100%; display:inline-block; box-sizing:border-box; cursor:pointer; text-align:center;"><i data-lucide="upload" size="18" style="vertical-align:middle; margin-right:8px;"></i> Importar Copia de Seguridad JSON<input type="file" id="import-file" style="display:none;" onchange="importData(event)"></label></div><button class="btn btn-danger" style="width:100%; margin-bottom: 25px;" onclick="resetSystem()"><i data-lucide="alert-triangle" size="18" style="vertical-align:middle; margin-right:8px;"></i> Borrar Toda la Base de Datos</button></div>
-                    <div style="text-align:center; color:var(--text-secondary); font-size:13px; font-weight:800; margin-top:40px; margin-bottom:10px; opacity:0.6; letter-spacing: 1px; animation: pulseGlow 2s infinite alternate;">PrintCenter Pro v20.26.07.001</div>
+                    <div style="text-align:center; color:var(--text-secondary); font-size:13px; font-weight:800; margin-top:40px; margin-bottom:10px; opacity:0.6; letter-spacing: 1px; animation: pulseGlow 2s infinite alternate;">PrintCenter ro v20.26.07.002</div>
                 </div>
             </div>
         </div>
@@ -329,7 +361,38 @@
     <div class="modal-overlay" id="edit-sale-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:25px;">Modificar Venta</h2><input type="hidden" id="edit-sale-id"><div class="form-group"><label>Fecha de Venta</label><input type="datetime-local" id="edit-sale-date-hist"></div><div id="edit-sale-items" style="background:var(--input-bg); border-radius:var(--radius-md); padding:20px; border:1px solid var(--border-color);"></div><button class="btn btn-primary" style="width:100%; margin-top:25px; padding:18px; font-size:16px;" onclick="saveEditedSale()"><i data-lucide="save" size="20" style="vertical-align:middle; margin-right:8px;"></i> Guardar Cambios</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeEditSaleModal(null)">Cancelar</button></div></div>
     <div class="modal-overlay" id="edit-pedido-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:15px;">Añadir/Editar Productos</h2><p style="color:var(--text-secondary); font-size:14px; margin-bottom:20px; font-weight:600;">Agrega productos extra si el cliente se llevó más cosas.</p><div id="edit-pedido-items-container" style="background:var(--input-bg); border-radius:var(--radius-md); padding:10px 20px; margin-bottom:20px; max-height:220px; overflow-y:auto; border:1px solid var(--border-color);"></div><div class="form-group"><label>Buscar Producto Extra</label><div style="display:flex; gap:12px;"><input type="text" id="edit-pedido-search" list="edit-pedido-prod-list" placeholder="Nombre del producto..."><datalist id="edit-pedido-prod-list"></datalist><button class="btn btn-warning" onclick="addProdToEditPedido()" style="padding:14px 24px; border-radius:12px;"><i data-lucide="plus" size="20"></i></button></div></div><h3 id="edit-pedido-total" style="text-align:right; color:var(--accent-color); margin-bottom:25px; font-weight:900; font-size:24px; letter-spacing:-0.5px;">Total: $0.00</h3><button class="btn btn-primary" style="width:100%; margin-bottom:12px; padding:18px; font-size:16px;" onclick="saveEditPedido()"><i data-lucide="save" size="20" style="vertical-align:middle; margin-right:8px;"></i> Guardar Cambios en Pedido</button><button class="btn btn-outline" style="width:100%; padding:16px;" onclick="closeEditPedido()">Cancelar</button></div></div>
     <div class="modal-overlay" id="edit-gasto-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:25px;">Editar Gasto</h2><div class="form-group"><label>Fecha</label><input type="datetime-local" id="edit-gasto-fecha"></div><div class="form-group"><label>Tipo de Gasto</label><select id="edit-gasto-tipo" style="padding:16px; font-weight:700;"></select></div><div class="form-group"><label>Descripción</label><input type="text" id="edit-gasto-desc"></div><div class="form-group"><label>Monto ($)</label><input type="number" id="edit-gasto-monto"></div><button class="btn btn-primary" style="width:100%; margin-top:15px; padding:18px; font-size:16px;" onclick="saveEditGasto()"><i data-lucide="save" size="20" style="vertical-align:middle; margin-right:8px;"></i> Guardar Corrección</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeEditGasto()">Cancelar</button></div></div>
-    <div class="modal-overlay" id="product-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 id="prod-modal-title" style="font-weight:900; font-size:24px; margin-bottom:25px;">Nuevo Producto</h2><input type="hidden" id="prod-id"><div class="form-group"><label>Nombre del Producto</label><input type="text" id="prod-nombre" placeholder="Ej. Impresión Color Carta"></div><div class="form-group"><label>Categoría</label><select id="prod-categoria" style="padding:16px; font-weight:700;"><option value="Papelería">Papelería</option><option value="Impresiones">Impresiones</option><option value="Servicios">Servicios</option></select></div><div style="display:flex; gap:15px;"><div class="form-group" style="flex:1;"><label>Costo ($)</label><input type="number" id="prod-costo" placeholder="0.00" oninput="calculateMargin()"></div><div class="form-group" style="flex:1;"><label>Venta ($)</label><input type="number" id="prod-venta" placeholder="0.00" oninput="calculateMargin()"></div></div><div style="margin-bottom: 25px;"><label style="font-size: 13px; color: var(--text-secondary); font-weight:800; text-transform:uppercase;">Rentabilidad Real</label><div id="margin-result" class="margin-badge">Esperando datos...</div></div><div class="form-group"><label>Stock Disponible</label><input type="number" id="prod-stock" placeholder="Cantidad en almacén"></div><button class="btn btn-primary" style="width:100%; margin-top:10px; padding:18px; font-size:16px;" onclick="saveProduct()"><i data-lucide="save" size="20" style="vertical-align:middle; margin-right:8px;"></i> Guardar Producto</button><button class="btn btn-secondary" id="btn-delete-prod" style="width:100%; margin-top:12px; color:var(--danger-color); display:none;" onclick="deleteProduct()"><i data-lucide="trash" size="18" style="vertical-align:middle; margin-right:8px;"></i> Eliminar Producto</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeProductModal(null)">Cancelar</button></div></div>
+    
+    <div class="modal-overlay" id="product-modal">
+        <div class="ios-modal" onclick="event.stopPropagation()">
+            <div class="drag-handle"></div>
+            <h2 id="prod-modal-title" style="font-weight:900; font-size:24px; margin-bottom:25px;">Nuevo Producto</h2>
+            <input type="hidden" id="prod-id">
+            <div class="form-group"><label>Nombre del Producto</label><input type="text" id="prod-nombre" placeholder="Ej. Impresión Color Carta"></div>
+            <div class="form-group"><label>Categoría</label><select id="prod-categoria" style="padding:16px; font-weight:700;"><option value="Papelería">Papelería</option><option value="Impresiones">Impresiones</option><option value="Servicios">Servicios</option></select></div>
+            
+            <div class="agent-box">
+                <h4><i data-lucide="calculator" size="16"></i> Agente de Precios</h4>
+                <div class="agent-grid">
+                    <div><label style="font-size:11px; font-weight:800;">Paquete ($)</label><input type="number" id="agent-costo" placeholder="0.00" oninput="calcAgent()"></div>
+                    <div><label style="font-size:11px; font-weight:800;">Piezas</label><input type="number" id="agent-piezas" placeholder="0" oninput="calcAgent()"></div>
+                    <div><label style="font-size:11px; font-weight:800;">Margen (%)</label><input type="number" id="agent-margen" value="40" oninput="calcAgent()"></div>
+                </div>
+                <div class="agent-result">
+                    <span>Costo Uni: <b id="agent-res-costo">$0.00</b></span>
+                    <span style="color:var(--success-color);">Sugerido: <b id="agent-res-venta">$0.00</b></span>
+                </div>
+                <button class="btn btn-secondary" style="width:100%; padding:8px; font-size:12px; margin-top:10px; color:var(--accent-color);" onclick="applyAgent()">Aplicar Sugerencia al Producto</button>
+            </div>
+
+            <div style="display:flex; gap:15px;"><div class="form-group" style="flex:1;"><label>Costo ($)</label><input type="number" id="prod-costo" placeholder="0.00" oninput="calculateMargin()"></div><div class="form-group" style="flex:1;"><label>Venta ($)</label><input type="number" id="prod-venta" placeholder="0.00" oninput="calculateMargin()"></div></div>
+            <div style="margin-bottom: 25px;"><label style="font-size: 13px; color: var(--text-secondary); font-weight:800; text-transform:uppercase;">Rentabilidad Real</label><div id="margin-result" class="margin-badge">Esperando datos...</div></div>
+            <div class="form-group"><label>Stock Disponible</label><input type="number" id="prod-stock" placeholder="Cantidad en almacén"></div>
+            <button class="btn btn-primary" style="width:100%; margin-top:10px; padding:18px; font-size:16px;" onclick="saveProduct()"><i data-lucide="save" size="20" style="vertical-align:middle; margin-right:8px;"></i> Guardar Producto</button>
+            <button class="btn btn-secondary" id="btn-delete-prod" style="width:100%; margin-top:12px; color:var(--danger-color); display:none;" onclick="deleteProduct()"><i data-lucide="trash" size="18" style="vertical-align:middle; margin-right:8px;"></i> Eliminar Producto</button>
+            <button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeProductModal(null)">Cancelar</button>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="ticket-modal"><div class="ios-modal" style="text-align:center; padding:50px 30px; overflow:hidden;" onclick="event.stopPropagation()"><div class="drag-handle"></div><div style="animation: pulseGlow 2s infinite;"><i data-lucide="check-circle" size="70" style="color:var(--success-color); margin-bottom:20px; filter: drop-shadow(0 0 10px rgba(52,199,89,0.4));"></i></div><h2 style="color:var(--text-primary); font-weight:900; font-size:28px; margin-bottom:10px; letter-spacing:-0.5px;">¡Operación Exitosa!</h2><p style="color:var(--text-secondary); font-size:15px; font-weight:600; margin-bottom:30px;">El registro se guardó correctamente en el sistema.</p><div id="printer-slot"></div><div class="ticket-wrapper"><div id="ticket-detail" style="background:var(--card-bg); padding:25px; border-radius:0 0 var(--radius-md) var(--radius-md); text-align:left; font-family:monospace; margin-bottom:30px; font-size:14px; color:var(--text-primary); border: 1px solid var(--border-color); border-top:none; box-shadow: 0 10px 20px rgba(0,0,0,0.05);"></div></div><button class="btn btn-primary" style="width:100%; padding:18px; font-size:16px;" onclick="closeTicket()">Cerrar Recibo</button></div></div>
     <div class="modal-overlay" id="stock-alerts-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:10px; display:flex; align-items:center; gap:10px;"><i data-lucide="alert-triangle" size="24" style="color:var(--warning-color);"></i> Resurtir Inventario</h2><p style="font-size:14px; color:var(--text-secondary); font-weight:600; margin-bottom:20px;">Artículos con 5 unidades o menos en stock.</p><div id="low-stock-list" style="max-height: 50vh; overflow-y: auto; padding-right:5px;"></div><button class="btn btn-outline" style="width:100%; margin-top:20px; padding:16px;" onclick="closeStockAlerts(null)">Cerrar Alertas</button></div></div>
     <div class="modal-overlay" id="abono-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:10px;">Registrar Abono</h2><p id="abono-cliente-text" style="color:var(--text-secondary); font-size:15px; font-weight:700; margin-bottom:25px;"></p><input type="hidden" id="abono-pedido-id"><div style="background:var(--card-bg); border-radius:var(--radius-md); padding:20px; margin-bottom:25px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);"><div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span style="font-weight:700; color:var(--text-secondary);">Total de la deuda:</span><span id="abono-total" style="font-weight:900; font-size:16px;">$0.00</span></div><div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span style="font-weight:700; color:var(--text-secondary);">Abonado hasta ahora:</span><span id="abono-pagado" style="font-weight:900; font-size:16px; color:var(--success-color);">$0.00</span></div><div style="display:flex; justify-content:space-between; border-top:2px dashed var(--border-color); padding-top:15px;"><span style="font-weight:800;">Restante a pagar:</span><span id="abono-restante" style="font-weight:900; font-size:20px; color:var(--danger-color);">$0.00</span></div></div><div class="form-group"><label>Monto a Abonar ($)</label><input type="number" id="abono-monto" placeholder="0.00" style="font-size:20px; font-weight:800; padding:18px;"></div><button class="btn btn-primary" style="width:100%; padding:18px; font-size:16px;" onclick="procesarAbono()"><i data-lucide="check-circle" size="20" style="vertical-align:middle; margin-right:8px;"></i> Guardar Abono</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeAbonoModal(null)">Cancelar</button></div></div>
@@ -427,6 +490,21 @@
             if($('client-name')) { $('client-name').addEventListener('blur', () => { setTimeout(() => { if($('client-suggestions')) $('client-suggestions').style.display = 'none'; }, 250); }); }
             initDragToClose(); initKeyboardShortcuts(); initDragScroll();
         });
+
+        // Search clear functions
+        function toggleClear(input, clearId) { $(clearId).style.display = input.value.length > 0 ? 'block' : 'none'; }
+        function clearSearch(inputId, clearId, callback) { $(inputId).value = ''; $(clearId).style.display = 'none'; $(inputId).focus(); if(callback) callback(); }
+
+        // Pricing Agent functions
+        function calcAgent() {
+            const costo = parseFloat($('agent-costo').value) || 0, piezas = parseInt($('agent-piezas').value) || 0, margen = parseFloat($('agent-margen').value) || 0;
+            if(costo > 0 && piezas > 0) { const uni = costo / piezas, sug = uni * (1 + (margen / 100)); $('agent-res-costo').innerText = `$${uni.toFixed(2)}`; $('agent-res-venta').innerText = `$${sug.toFixed(2)}`; } 
+            else { $('agent-res-costo').innerText = '$0.00'; $('agent-res-venta').innerText = '$0.00'; }
+        }
+        function applyAgent() {
+            const costo = parseFloat($('agent-costo').value) || 0, piezas = parseInt($('agent-piezas').value) || 0, margen = parseFloat($('agent-margen').value) || 0;
+            if(costo > 0 && piezas > 0) { $('prod-costo').value = (costo / piezas).toFixed(2); $('prod-venta').value = ((costo / piezas) * (1 + (margen / 100))).toFixed(2); calculateMargin(); playSynthSound('click_tab'); }
+        }
 
         function updateGastosDropdown() { const ops = `<option value="Diario">Gasto del Día (Resta Venta Neta)</option><option value="Material">Gasto por Material</option>` + distribuciones.map(d => `<option value="dist_${d.id}">Gasto de ${d.label}</option>`).join(''); if($('gasto-tipo')) $('gasto-tipo').innerHTML = ops; if($('edit-gasto-tipo')) $('edit-gasto-tipo').innerHTML = ops; }
         function updateAjustesDropdown() { if($('ajuste-categoria')) $('ajuste-categoria').innerHTML = `<option value="costo">Costo de Materiales</option>` + distribuciones.map(d => `<option value="dist_${d.id}">${d.label}</option>`).join('') + `<option value="gastos">Gastos / Egresos (Deuda extra)</option>`; }
@@ -582,6 +660,7 @@
             $('kb-count-pend').innerText = columns['Pendiente'].count; if($('kb-count-mat')) $('kb-count-mat').innerText = columns['Material'].count; if($('kb-count-acep')) $('kb-count-acep').innerText = columns['Aceptacion'].count; $('kb-count-imp').innerText = columns['Impreso'].count; $('kb-count-deu').innerText = columns['Deuda'].count; $('kb-count-ent').innerText = columns['Entregado'].count; renderIcons();
         }
 
+        let tempPedidoItems = []; let tempPedidoId = null;
         function openEditPedido(event, id) { event.stopPropagation(); playSynthSound('modal'); const p = pedidos.find(x => x.id === id); if(!p) return; tempPedidoId = id; tempPedidoItems = JSON.parse(JSON.stringify(p.productos)); const dl = $('edit-pedido-prod-list'); dl.innerHTML = ''; productos.forEach(prod => { const opt = document.createElement('option'); opt.value = prod.nombre; dl.appendChild(opt); }); $('edit-pedido-modal').classList.add('active'); renderEditPedidoItems(); }
         function closeEditPedido() { $('edit-pedido-modal').classList.remove('active'); }
         function renderEditPedidoItems() { const container = $('edit-pedido-items-container'); container.innerHTML = ''; let total = 0; tempPedidoItems.forEach((item, index) => { total += item.precioVenta * item.qty; container.innerHTML += `<div style="display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border-color);"><div style="flex:1;"><b style="font-size:15px;">${item.nombre}</b><br><small style="font-weight:700; color:var(--accent-color);">$${item.precioVenta.toFixed(2)} c/u</small></div><div style="display:flex; align-items:center; gap:12px; background:var(--card-bg); padding:4px 8px; border-radius:100px; border:1px solid var(--border-color);"><button class="qty-btn" style="width:26px; height:26px; font-size:14px;" onclick="modifyEditPedidoQty(${index}, -1)">-</button><b style="font-size:16px;">${item.qty}</b><button class="qty-btn" style="width:26px; height:26px; font-size:14px;" onclick="modifyEditPedidoQty(${index}, 1)">+</button></div></div>`; }); $('edit-pedido-total').innerText = `Total: $${total.toFixed(2)}`; }
@@ -728,11 +807,10 @@
         function generateDailySummary() {
             playSynthSound('click_tab'); const targetDate = $('summary-date').value; if(!targetDate) return; const ventasDelDia = ventas.filter(v => v.fecha.startsWith(targetDate));
             let totalBruto = 0, totalCosto = 0, totalUtilidad = 0; const conteoProductos = {};
-            ventasDelDia.forEach(v => { totalBruto += v.total; totalCosto += (v.costoMaterial || 0); totalUtilidad += v.ganancia; v.productos.forEach(p => { if(!conteoProductos[p.nombre]) conteoProductos[p.nombre] = { qty: 0, totalVenta: 0 }; conteoProductos[p.nombre].qty += p.qty; conteoProductos[p.nombre].totalVenta += (p.qty * p.precioVenta); }); });
+            ventasDelDia.forEach(v => { totalBruto += v.total; totalCosto += (v.costoMaterial || 0); totalUtilidad += v.ganancia; v.productos.forEach(p => { if(!conteoProductos[p.nombre]) { conteoProductos[p.nombre] = { qty: 0, totalVenta: 0 }; } conteoProductos[p.nombre].qty += p.qty; conteoProductos[p.nombre].totalVenta += (p.qty * p.precioVenta); }); });
             $('ds-bruta').innerText = `$${totalBruto.toFixed(2)}`; $('ds-costo').innerText = `$${totalCosto.toFixed(2)}`; $('ds-utilidad').innerText = `$${totalUtilidad.toFixed(2)}`;
             const todosLosProductos = Object.entries(conteoProductos).sort((a, b) => b[1].qty - a[1].qty), tbody = $('ds-top-products'); tbody.innerHTML = '';
-            if(todosLosProductos.length === 0) tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:20px; color:var(--text-secondary); font-weight:700;">No hay ventas registradas este día.</td></tr>';
-            else todosLosProductos.forEach(([nombre, data]) => { tbody.innerHTML += `<tr><td style="text-align:left; font-weight:700;">${nombre}</td><td style="font-weight:900; color:var(--accent-color); font-size:15px;">${data.qty}</td><td style="font-weight:800;">$${data.totalVenta.toFixed(2)}</td></tr>`; });
+            if(todosLosProductos.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:20px; color:var(--text-secondary); font-weight:700;">No hay ventas registradas este día.</td></tr>'; } else { todosLosProductos.forEach(([nombre, data]) => { tbody.innerHTML += `<tr><td style="text-align:left; font-weight:700;">${nombre}</td><td style="font-weight:900; color:var(--accent-color); font-size:15px;">${data.qty}</td><td style="font-weight:800;">$${data.totalVenta.toFixed(2)}</td></tr>`; }); }
             $('daily-summary-content').style.display = 'block';
         }
 
@@ -757,6 +835,7 @@
             playSynthSound('modal'); $('product-modal').classList.add('active'); 
             if (id) { const p = productos.find(prod => prod.id === id); $('prod-modal-title').innerHTML = "<i data-lucide='package-search' size='24' style='vertical-align:middle; color:var(--accent-color);'></i> Ajuste de Inventario"; $('prod-id').value = p.id; $('prod-nombre').value = p.nombre; $('prod-categoria').value = p.categoria; $('prod-costo').value = p.precioCosto; $('prod-venta').value = p.precioVenta; $('prod-stock').value = p.stock; $('btn-delete-prod').style.display = "block"; } 
             else { $('prod-modal-title').innerHTML = "<i data-lucide='package-plus' size='24' style='vertical-align:middle; color:var(--accent-color);'></i> Nuevo Producto"; $('prod-id').value = ''; $('prod-nombre').value = ''; $('prod-costo').value = ''; $('prod-venta').value = ''; $('prod-stock').value = ''; $('btn-delete-prod').style.display = "none"; } 
+            $('agent-costo').value = ''; $('agent-piezas').value = ''; $('agent-margen').value = '40'; calcAgent();
             renderIcons(); calculateMargin(); 
         }
 
