@@ -47,15 +47,15 @@
         @keyframes disintegrate { to { opacity: 0; filter: blur(10px); transform: translateY(-30px) scale(0.8); } }
         .disintegrate-anim { animation: disintegrate 0.4s forwards; pointer-events: none; }
         
-        /* Splash Animado Rediseñado */
-        #intro-splash { position: fixed; inset: 0; z-index: 99999; background: var(--bg-color); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s; }
+        /* Splash Animado Rediseñado a 0.8s */
+        #intro-splash { position: fixed; inset: 0; z-index: 99999; background: var(--bg-color); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease, visibility 0.4s; }
         [data-theme="dark"] #intro-splash { background: #000000; }
-        .splash-ring { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 3px solid transparent; border-top-color: var(--accent-color); border-bottom-color: var(--accent-color); animation: spinGlow 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
+        .splash-ring { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 3px solid transparent; border-top-color: var(--accent-color); border-bottom-color: var(--accent-color); animation: spinGlow 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
         @keyframes spinGlow { 0% { transform: rotate(0deg) scale(0.8); box-shadow: 0 0 10px var(--accent-glow); } 50% { transform: rotate(180deg) scale(1.1); box-shadow: 0 0 30px var(--accent-glow), inset 0 0 15px var(--accent-glow); } 100% { transform: rotate(360deg) scale(0.8); box-shadow: 0 0 10px var(--accent-glow); } }
         .elegant-logo { display:flex; flex-direction:column; align-items:center; justify-content: center; position: relative; z-index: 2; height: 120px; width: 120px; }
-        .elegant-logo i { color: var(--accent-color); animation: pulseFloat 2s ease-in-out infinite; filter: drop-shadow(0 0 15px var(--accent-glow)); }
+        .elegant-logo i { color: var(--accent-color); animation: pulseFloat 0.8s ease-in-out infinite; filter: drop-shadow(0 0 15px var(--accent-glow)); }
         @keyframes pulseFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.05); } }
-        .elegant-title { font-size: 42px; font-weight: 900; letter-spacing: -1.5px; margin-top: 25px; display:flex; align-items:center; gap:8px; opacity: 0; animation: fadeUpIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; }
+        .elegant-title { font-size: 42px; font-weight: 900; letter-spacing: -1.5px; margin-top: 25px; display:flex; align-items:center; gap:8px; opacity: 0; animation: fadeUpIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; }
         .elegant-title span.p1 { color: var(--text-primary); }
         .elegant-title span.p2 { background: linear-gradient(135deg, var(--accent-color), #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
         @keyframes fadeUpIn { 0% { opacity: 0; transform: translateY(20px); filter: blur(5px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
@@ -93,10 +93,10 @@
         
         .glass-panel { background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04); margin-bottom: 24px; }
         
-        /* Layout Divisiones Ventas */
+        /* Layout Divisiones Ventas - Carrito Reducido */
         .split-layout { display: flex; gap: 24px; align-items: flex-start; }
         .split-main { flex: 1; }
-        .split-side { display: none; width: 380px; background: var(--card-bg); border-radius: var(--radius-md); padding: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: sticky; top: 24px; max-height: calc(100vh - 120px); overflow-y: auto; }
+        .split-side { display: none; width: 320px; background: var(--card-bg); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: sticky; top: 24px; max-height: calc(100vh - 120px); overflow-y: auto; }
 
         .categories-chips { display: flex; gap: 12px; overflow-x: auto; margin-bottom: 20px; padding: 10px 5px; scrollbar-width: none; cursor: grab; transform: translateZ(0); }
         .categories-chips:active { cursor: grabbing; }
@@ -130,11 +130,17 @@
         .cliente-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; box-shadow: var(--shadow-sm); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); border: 1px solid var(--border-color); position: relative; overflow: hidden; margin-bottom: 15px; }
         .cliente-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--accent-color); }
         .cliente-avatar { width: 54px; height: 54px; min-width: 54px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-color), #00c6ff); color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; box-shadow: 0 8px 20px var(--accent-glow); text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Kanban Mejorado 1000% */
         .kanban-container { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; transform: translateZ(0); }
         .kanban-container::-webkit-scrollbar { display: none; }
         .kanban-col { flex: 0 0 320px; background: var(--input-bg); border-radius: var(--radius-md); padding: 18px; min-height: 65vh; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
         .kanban-col h3 { font-size: 14px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 18px; font-weight: 900; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
-        .kanban-cards-area { flex: 1; min-height: 100px; } 
+        .kanban-cards-area { flex: 1; min-height: 100px; transition: background 0.3s; border-radius: var(--radius-sm); } 
+        /* Efectos de Arrastre Kanban */
+        .kanban-ghost { opacity: 0.3; background: var(--accent-glow) !important; border: 2px dashed var(--accent-color) !important; border-radius: var(--radius-md); }
+        .kanban-drag { transform: rotate(3deg) scale(1.03) !important; box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important; cursor: grabbing !important; z-index: 1000; border-color: var(--accent-color) !important; }
+        
         .status-badge { display: inline-block; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .status-pendiente { background: rgba(255, 149, 0, 0.1); color: var(--warning-color); }
         .status-impreso { background: rgba(10, 132, 255, 0.1); color: var(--accent-color); }
@@ -162,9 +168,9 @@
         .qty-btn:active { background: var(--border-color); transform: scale(0.85); }
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 200; display: none; justify-content: center; align-items: flex-end; opacity: 0; transition: opacity 0.3s ease; transform: translateZ(0); will-change: opacity; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .ios-modal { background: var(--card-bg); width: 100%; max-width: 550px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 35px 30px; max-height: 90vh; overflow-y: auto; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 -20px 50px rgba(0,0,0,0.2); touch-action: pan-y; will-change: transform; }
+        .ios-modal { background: var(--card-bg); width: 100%; max-width: 550px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 35px 30px; max-height: 85vh; overflow-y: auto; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 -20px 50px rgba(0,0,0,0.2); touch-action: pan-y; will-change: transform; }
         .modal-overlay.active .ios-modal { transform: translateY(0); }
-        .drag-handle { width: 50px; height: 6px; background: var(--border-color); border-radius: 10px; margin: 0 auto 25px; cursor: pointer; transition: background 0.3s; }
+        .drag-handle { width: 50px; height: 6px; background: var(--border-color); border-radius: 10px; margin: 0 auto 20px; cursor: pointer; transition: background 0.3s; }
         .drag-handle:active { background: var(--text-secondary); }
         
         /* Botones estéticos alineados */
@@ -183,12 +189,6 @@
         .form-group label { display: block; margin-bottom: 10px; font-size: 13px; color: var(--text-secondary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--input-bg); border: 2px solid transparent; border-radius: var(--radius-sm); padding: 16px; color: var(--text-primary); font-size: 16px; transition: all 0.3s; font-weight: 600; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { background: var(--card-bg); border-color: var(--accent-color); outline: none; box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md); transform: translateY(-2px); }
-        
-        .agent-box { background: rgba(0, 113, 227, 0.05); border: 1px solid rgba(0, 113, 227, 0.2); border-radius: var(--radius-sm); padding: 15px; margin-bottom: 20px; }
-        .agent-box h4 { margin-bottom: 10px; color: var(--accent-color); font-size: 14px; font-weight: 800; display:flex; align-items:center; gap:5px; }
-        .agent-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .agent-grid input { padding: 10px; font-size: 14px; text-align: center; }
-        .agent-result { display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; margin-top: 10px; }
 
         #toast-container { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: center; pointer-events:none; width: 90%; max-width: 400px; }
         .toast { pointer-events: auto; background: linear-gradient(135deg, rgba(56, 189, 248, 0.85), rgba(2, 132, 199, 0.85)) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #fff; padding: 16px 24px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0, 113, 227, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 700; animation: dynamicIslandIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; transform-origin: top; width: 100%; justify-content: center; }
@@ -238,8 +238,8 @@
             .modal-overlay.active .ios-modal { transform: scale(1); opacity: 1; }
             .drag-handle { display: none; }
             
-            /* Split View iPad/Desktop */
-            .split-side { display: block; }
+            /* Split View iPad/Desktop - Carrito Reducido */
+            .split-side { display: block; width: 320px; }
             .cart-bar { display: none !important; }
         }
     </style>
@@ -300,35 +300,34 @@
                             <div class="categories-chips stagger-item" style="animation-delay: 0.1s;"><div class="chip active" onclick="filterCategory('Todas', this)">Todas</div><div class="chip" onclick="filterCategory('Papelería', this)">Papelería</div><div class="chip" onclick="filterCategory('Impresiones', this)">Impresiones</div><div class="chip" onclick="filterCategory('Servicios', this)">Servicios</div></div>
                             <div class="products-grid stagger-item" style="animation-delay: 0.2s;" id="products-list"></div>
                         </div>
-                        <div class="split-side stagger-item glass-panel" style="animation-delay: 0.3s; padding:24px;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                                <h2 style="font-weight:900; font-size:24px;">Mi Carrito</h2>
-                                <button class="btn-outline" style="padding:8px 12px; border-radius:10px; font-size:13px; font-weight:800;" onclick="vaciarCarrito(event)">Vaciar</button>
+                        <div class="split-side stagger-item glass-panel" style="animation-delay: 0.3s; padding:20px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                                <h2 style="font-weight:900; font-size:20px;">Mi Carrito</h2>
+                                <button class="btn-outline" style="padding:6px 10px; border-radius:8px; font-size:12px; font-weight:800;" onclick="vaciarCarrito(event)">Vaciar</button>
                             </div>
-                            <div class="cart-items-list-container" style="background:transparent; border-radius:var(--radius-sm); padding:0; margin-bottom:20px; max-height: 280px; overflow-y: auto;"></div>
+                            <div class="cart-items-list-container" style="background:transparent; border-radius:var(--radius-sm); padding:0; margin-bottom:15px; max-height: 280px; overflow-y: auto;"></div>
                             <div class="form-group">
-                                <label>Forma de Pago</label>
-                                <select class="payment-method-sel" style="font-size:16px; font-weight:800; padding:16px;">
+                                <select class="payment-method-sel" style="font-size:14px; font-weight:800; padding:12px;">
                                     <option value="Efectivo">💵 Efectivo</option>
                                     <option value="Tarjeta">💳 Tarjeta</option>
                                     <option value="Transferencia">📲 Transferencia</option>
                                 </select>
                             </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center; background:linear-gradient(135deg, var(--input-bg), var(--card-bg)); padding:20px 24px; border-radius:var(--radius-md); margin-bottom:20px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
-                                <span style="font-weight:800; color:var(--text-secondary); font-size:14px; text-transform:uppercase; letter-spacing:0.5px;">Total a cobrar</span>
-                                <span class="cart-total-display" style="color:var(--text-primary); font-size:28px; font-weight:900;">$0.00</span>
+                            <div style="display:flex; justify-content:space-between; align-items:center; background:linear-gradient(135deg, var(--input-bg), var(--card-bg)); padding:15px 20px; border-radius:var(--radius-md); margin-bottom:15px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
+                                <span style="font-weight:800; color:var(--text-secondary); font-size:12px; text-transform:uppercase; letter-spacing:0.5px;">Total</span>
+                                <span class="cart-total-display" style="color:var(--text-primary); font-size:24px; font-weight:900;">$0.00</span>
                             </div>
-                            <button class="btn btn-primary" style="width:100%; margin-bottom: 15px;" onclick="processVenta()"><i data-lucide="check-circle" size="20"></i> Cobrar Venta</button>
-                            <button class="btn btn-warning" style="width:100%; margin-bottom: 15px; color:white;" onclick="processQuickQuote()"><i data-lucide="zap" size="20"></i> Cotización Rápida</button>
-                            <button class="btn btn-secondary" style="width:100%; margin-bottom: 15px; font-size:13px; color:var(--accent-color);" onclick="toggleExtendedCartForm(this)"><i data-lucide="chevron-down" size="16"></i> Opciones Avanzadas</button>
-                            <div class="cart-extended-fields" style="display: none; animation: slideUpFade 0.3s ease; background: var(--input-bg); padding: 15px; border-radius: var(--radius-md); margin-bottom:15px; border:1px solid var(--border-color);">
-                                <div class="form-group" style="border-bottom:1px solid var(--border-color); padding-bottom:15px; margin-bottom:15px;"><label style="color:var(--accent-color);">Modificador Fecha</label><input type="datetime-local" class="cart-sale-date" style="background:var(--card-bg); padding:10px;"></div>
-                                <div class="form-group" style="position: relative;"><label>Nombre (Para fiar)</label><input type="text" class="client-name" placeholder="Cliente..." style="background:var(--card-bg); padding:10px;" autocomplete="off" oninput="showClientSuggestions(this.value, this)" onfocus="showClientSuggestions(this.value, this)"><div class="client-suggestions" style="display:none; position:absolute; width:100%; background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid var(--border-color); border-radius:var(--radius-sm); max-height:180px; overflow-y:auto; z-index:100; box-shadow:var(--shadow-lg);"></div></div>
-                                <div class="form-group"><label>WhatsApp</label><input type="number" class="cart-wa" placeholder="10 dígitos" style="background:var(--card-bg); padding:10px;"></div>
-                                <div class="form-group"><label>Nota</label><input type="text" class="cart-nota" placeholder="Nota interna..." style="background:var(--card-bg); padding:10px;"></div>
-                                <div style="display:flex; gap:12px; margin-top:15px;"><button class="btn btn-warning" style="flex:1; font-size:13px; padding:12px;" onclick="processQuote()"><i data-lucide="file-text" size="16"></i> Cotizar</button><button class="btn btn-danger" style="flex:1; font-size:13px; padding:12px;" onclick="processDeuda()"><i data-lucide="calendar-clock" size="16"></i> Fiar</button></div>
+                            <button class="btn btn-primary" style="width:100%; margin-bottom: 12px; padding: 14px;" onclick="processVenta()"><i data-lucide="check-circle" size="18"></i> Cobrar</button>
+                            <button class="btn btn-warning" style="width:100%; margin-bottom: 12px; padding: 14px; color:white;" onclick="processQuickQuote()"><i data-lucide="zap" size="18"></i> Cotización Rápida</button>
+                            <button class="btn btn-secondary" style="width:100%; margin-bottom: 12px; padding: 12px; font-size:13px; color:var(--accent-color);" onclick="toggleExtendedCartForm(this)"><i data-lucide="chevron-down" size="16"></i> Opciones</button>
+                            <div class="cart-extended-fields" style="display: none; animation: slideUpFade 0.3s ease; background: var(--input-bg); padding: 12px; border-radius: var(--radius-md); margin-bottom:12px; border:1px solid var(--border-color);">
+                                <div class="form-group" style="margin-bottom:10px;"><input type="datetime-local" class="cart-sale-date" style="background:var(--card-bg); padding:10px; font-size:13px;"></div>
+                                <div class="form-group" style="position: relative; margin-bottom:10px;"><input type="text" class="client-name" placeholder="Cliente (Para fiar)" style="background:var(--card-bg); padding:10px; font-size:13px;" autocomplete="off" oninput="showClientSuggestions(this.value, this)" onfocus="showClientSuggestions(this.value, this)"><div class="client-suggestions" style="display:none; position:absolute; width:100%; background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid var(--border-color); border-radius:var(--radius-sm); max-height:180px; overflow-y:auto; z-index:100; box-shadow:var(--shadow-lg);"></div></div>
+                                <div class="form-group" style="margin-bottom:10px;"><input type="number" class="cart-wa" placeholder="WhatsApp (10 dígitos)" style="background:var(--card-bg); padding:10px; font-size:13px;"></div>
+                                <div class="form-group" style="margin-bottom:10px;"><input type="text" class="cart-nota" placeholder="Nota interna..." style="background:var(--card-bg); padding:10px; font-size:13px;"></div>
+                                <div style="display:flex; gap:8px; margin-top:10px;"><button class="btn btn-warning" style="flex:1; font-size:12px; padding:10px;" onclick="processQuote()"><i data-lucide="file-text" size="14"></i> Cotizar</button><button class="btn btn-danger" style="flex:1; font-size:12px; padding:10px;" onclick="processDeuda()"><i data-lucide="calendar-clock" size="14"></i> Fiar</button></div>
                             </div>
-                            <button class="btn btn-outline" style="width:100%; font-size:14px; padding:14px;" onclick="generateQRQuote()"><i data-lucide="qr-code" size="18"></i> QR Cotización</button>
+                            <button class="btn btn-outline" style="width:100%; font-size:13px; padding:12px;" onclick="generateQRQuote()"><i data-lucide="qr-code" size="16"></i> QR</button>
                         </div>
                     </div>
                 </div>
@@ -359,7 +358,7 @@
                     <div id="history-list"></div>
                 </div>
 
-                <div id="recursos" class="tab-content fade-in">
+                <div id="recursos" class="tab-content fade-in" id="export-finanzas-completo">
                     <div class="stagger-item glass-panel" style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px;"><div style="background:transparent; padding:0; border:none; box-shadow:none;"><span style="color:var(--text-secondary); font-weight:800; text-transform:uppercase; font-size: 13px;">Ventas Netas (Mes Actual) <i data-lucide="trending-up" size="16" style="color:var(--success-color); vertical-align:middle;"></i></span><h2 id="monto-ventas-netas-mes" style="color:var(--text-primary); font-size:32px; margin-top:8px; font-weight:900;">$0.00</h2></div></div>
                     <div class="drag-scroll-area stagger-item glass-panel" id="export-registro-diario"><h3 style="font-size:20px; margin-bottom:18px; font-weight:900;"><i data-lucide="calendar-days" size="20" style="vertical-align:middle; color:var(--accent-color);"></i> Registro Diario de Ventas (Mes Actual)</h3><div><table class="excel-table"><thead id="excel-daily-header"></thead><tbody id="excel-daily-body"></tbody></table></div></div>
                     <div class="drag-scroll-area stagger-item glass-panel" id="export-conteo-fondos" style="animation-delay:0.1s;"><h3 style="font-size:20px; margin-bottom:18px; font-weight:900;"><i data-lucide="wallet" size="20" style="vertical-align:middle; color:var(--success-color);"></i> Conteo Definitivo de Fondos</h3><div><table class="excel-table" style="border: 2px solid var(--accent-color);"><thead id="tabla-definitiva-head"></thead><tbody><tr id="conteo-final-row"></tr></tbody></table></div></div>
@@ -369,7 +368,6 @@
                         <div class="glass-panel" style="display:flex; flex-direction:column; justify-content:space-between; margin-bottom:0;"><div><h4 style="margin-bottom:15px; font-size:18px; font-weight:800;"><i data-lucide="sliders-horizontal" size="18" style="color:var(--accent-color);"></i> Ajustar Saldos Anteriores</h4><p style="font-size:13px; color:var(--text-secondary); margin-bottom:15px; font-weight:600;">Ingresa capital extra (o faltante con -) de meses pasados.</p><div class="form-group"><select id="ajuste-categoria"></select></div><div class="form-group"><input type="number" id="monto-ajuste-saldo" placeholder="Monto (Ej. 50 o -50)"></div></div><button class="btn btn-primary" style="width:100%;" onclick="aplicarAjusteSaldo()"><i data-lucide="refresh-cw" size="18"></i> Aplicar Ajuste</button></div>
                     </div>
                     <div class="drag-scroll-area stagger-item glass-panel" style="animation-delay:0.3s;" id="gastos-container-wrapper"></div>
-                    <div class="drag-scroll-area stagger-item glass-panel" id="export-meses-anteriores" style="animation-delay:0.4s;"><h3 style="font-size:20px; margin-bottom:18px; font-weight:900;"><i data-lucide="archive" size="20" style="vertical-align:middle; color:var(--text-secondary);"></i> Resumen de Meses Anteriores</h3><div><table class="excel-table"><thead id="excel-past-months-head"></thead><tbody id="excel-past-months-body"></tbody></table></div></div>
                 </div>
 
                 <div id="reportes" class="tab-content fade-in">
@@ -382,9 +380,9 @@
 
                 <div id="inventario" class="tab-content fade-in">
                     <div style="display:flex; gap:15px; margin-bottom:25px;" class="stagger-item"><button class="btn btn-primary" style="flex:1;" onclick="openProductModal()"><i data-lucide="plus-circle" size="20"></i> Nuevo Producto</button><select id="inv-sort-mode" onchange="renderInventory()" style="background:var(--input-bg); border:2px solid transparent; border-radius:var(--radius-sm); padding:0 20px; font-weight:800; color:var(--text-primary); outline:none; cursor:pointer; transition: all 0.3s;"><option value="manual">≡ Orden Personalizado</option><option value="az">A-Z Alfabético</option></select></div>
-                    <div id="inventory-list" class="stagger-item" style="animation-delay:0.1s;"></div>
+                    <div id="inventory-list" class="stagger-item" style="animation-delay:0.1s; display:flex; flex-direction:column; gap:10px;"></div>
                     <h3 id="archived-header" style="display:none; margin-top:30px; margin-bottom:15px; font-weight:900; color:var(--text-secondary);"><i data-lucide="archive" size="20" style="vertical-align:middle;"></i> Productos Archivados (Sin Stock)</h3>
-                    <div id="inventory-archived-list" class="stagger-item" style="animation-delay:0.2s;"></div>
+                    <div id="inventory-archived-list" class="stagger-item" style="animation-delay:0.2s; display:flex; flex-direction:column; gap:10px;"></div>
                 </div>
 
                 <div id="clientes" class="tab-content fade-in">
@@ -403,7 +401,7 @@
                     <div class="stagger-item glass-panel" style="animation-delay:0.1s; display:flex; justify-content:space-between; align-items:center;"><div style="display:flex; align-items:center; gap:15px;"><i data-lucide="moon" size="24" style="color:var(--accent-color);"></i> <div><h3 style="font-size:18px; font-weight:800;">Modo Oscuro Profundo</h3><p style="color:var(--text-secondary); font-size:14px; margin-top:4px; font-weight:600;">Contraste puro para pantallas OLED</p></div></div><label class="switch"><input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()"><span class="slider"></span></label></div>
                     <div class="stagger-item glass-panel" style="animation-delay:0.3s;"><h3 style="font-size:18px; margin-bottom:10px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="message-square" size="20" style="color:#25D366;"></i> Plantillas de WhatsApp</h3><p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; font-weight:600;">Personaliza los mensajes rápidos para cotizaciones y entregas.</p><div id="wa-templates-inputs"></div><button class="btn btn-primary" style="width:100%; margin-top:15px;" onclick="saveConfigWA()"><i data-lucide="save" size="18"></i> Guardar Plantillas</button></div>
                     <div class="stagger-item glass-panel" style="animation-delay:0.4s;"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;"><h3 style="font-size:18px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="pie-chart" size="20" style="color:var(--warning-color);"></i> Distribución de Ganancias</h3><button class="btn btn-secondary" style="padding: 8px 12px; font-size: 13px;" onclick="agregarDistribucion()"><i data-lucide="plus" size="16"></i> Añadir División</button></div><div id="distribucion-inputs"></div><button class="btn btn-primary" style="width:100%; margin-top:15px;" onclick="saveConfigDistribucion()"><i data-lucide="save" size="18"></i> Guardar Divisiones</button></div>
-                    <div class="stagger-item glass-panel" style="animation-delay:0.45s;"><h3 style="font-size:18px; margin-bottom:10px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="image" size="20" style="color:var(--accent-color);"></i> Exportar Finanzas (PNG)</h3><p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; font-weight:600;">Descarga tus reportes financieros como imágenes de alta calidad para compartirlos fácilmente.</p><div style="display:flex; flex-direction:column; gap:12px;"><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-registro-diario', 'Registro_Diario')"><i data-lucide="calendar-days" size="18"></i> PNG: Registro Diario de Ventas</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-conteo-fondos', 'Conteo_Definitivo')"><i data-lucide="wallet" size="18"></i> PNG: Conteo Definitivo</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-meses-anteriores', 'Meses_Anteriores')"><i data-lucide="archive" size="18"></i> PNG: Meses Anteriores</button></div></div>
+                    <div class="stagger-item glass-panel" style="animation-delay:0.45s;"><h3 style="font-size:18px; margin-bottom:10px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="image" size="20" style="color:var(--accent-color);"></i> Exportar Finanzas (PNG)</h3><p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; font-weight:600;">Descarga tus reportes financieros como imágenes de alta calidad para compartirlos fácilmente.</p><div style="display:flex; flex-direction:column; gap:12px;"><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-finanzas-completo', 'Ventas_Netas_Mes')"><i data-lucide="calendar-days" size="18"></i> PNG: Resumen Ventas Netas Mes Actual</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-conteo-fondos', 'Conteo_Definitivo')"><i data-lucide="wallet" size="18"></i> PNG: Conteo Definitivo</button></div></div>
                     <div class="stagger-item glass-panel" style="animation-delay:0.5s;"><button class="btn btn-secondary" style="width:100%; margin-bottom:15px;" onclick="exportData()"><i data-lucide="download" size="18"></i> Exportar Copia de Seguridad JSON</button><div style="margin-bottom:25px;"><label class="btn btn-secondary" style="width:100%; display:inline-flex; align-items:center; justify-content:center; gap:8px; box-sizing:border-box; cursor:pointer; text-align:center;"><i data-lucide="upload" size="18"></i> Importar Copia de Seguridad JSON<input type="file" id="import-file" style="display:none;" onchange="importData(event)"></label></div><button class="btn btn-danger" style="width:100%;" onclick="resetSystem()"><i data-lucide="alert-triangle" size="18"></i> Borrar Toda la Base de Datos</button></div>
                     <div style="text-align:center; color:var(--text-secondary); font-size:13px; font-weight:800; margin-top:40px; margin-bottom:10px; opacity:0.6; letter-spacing: 1px; animation: pulseGlow 2s infinite alternate;">PrintCenter Pro v20.26.07.006</div>
                 </div>
@@ -432,20 +430,6 @@
             <input type="hidden" id="prod-id">
             <div class="form-group"><label>Nombre del Producto</label><input type="text" id="prod-nombre" placeholder="Ej. Impresión Color Carta"></div>
             <div class="form-group"><label>Categoría</label><select id="prod-categoria" style="padding:16px; font-weight:700;"><option value="Papelería">Papelería</option><option value="Impresiones">Impresiones</option><option value="Servicios">Servicios</option></select></div>
-            
-            <div class="agent-box">
-                <h4><i data-lucide="calculator" size="16"></i> Agente de Precios</h4>
-                <div class="agent-grid">
-                    <div><label style="font-size:11px; font-weight:800;">Paquete ($)</label><input type="number" id="agent-costo" placeholder="0.00" oninput="calcAgent()"></div>
-                    <div><label style="font-size:11px; font-weight:800;">Piezas</label><input type="number" id="agent-piezas" placeholder="0" oninput="calcAgent()"></div>
-                    <div><label style="font-size:11px; font-weight:800;">Margen (%)</label><input type="number" id="agent-margen" value="40" oninput="calcAgent()"></div>
-                </div>
-                <div class="agent-result">
-                    <span>Costo Uni: <b id="agent-res-costo">$0.00</b></span>
-                    <span style="color:var(--success-color);">Sugerido: <b id="agent-res-venta">$0.00</b></span>
-                </div>
-                <button class="btn btn-secondary" style="width:100%; padding:8px; font-size:12px; margin-top:10px; color:var(--accent-color);" onclick="applyAgent()"><i data-lucide="arrow-down-circle" size="16"></i> Usar Sugerencia</button>
-            </div>
 
             <div style="display:flex; gap:15px;">
                 <div class="form-group" style="flex:1;"><label>Costo ($)</label><input type="number" id="prod-costo" placeholder="0.00"></div>
@@ -556,14 +540,14 @@
             
             updateGastosDropdown(); updateAjustesDropdown(); renderAll(); renderConfigInputs(); renderConfigWA(); renderIcons();
             
-            // Splash animado mucho mejor y seguro
+            // Splash animado mucho mejor y seguro ajustado a 0.8s
             const splash = $('intro-splash');
             if(splash) {
                 setTimeout(() => {
                     splash.style.opacity = '0';
                     splash.style.visibility = 'hidden';
-                    setTimeout(() => splash.remove(), 800);
-                }, 2200);
+                    setTimeout(() => splash.remove(), 400); // Dar tiempo al fadeOut
+                }, 800);
             }
             
             let bootSoundPlayed = false; document.addEventListener('pointerdown', () => { if (!bootSoundPlayed) { playSynthSound('boot'); bootSoundPlayed = true; } }, { once: true });
@@ -583,16 +567,6 @@
                 else { iMargin.value = '0.00%'; iMargin.style.color = 'var(--text-secondary)'; }
             };
             iCost.addEventListener('input', calc); iPrice.addEventListener('input', calc);
-        }
-
-        function calcAgent() {
-            const costo = parseFloat($('agent-costo').value) || 0, piezas = parseInt($('agent-piezas').value) || 0, margen = parseFloat($('agent-margen').value) || 0;
-            if(costo > 0 && piezas > 0) { const uni = costo / piezas, sug = uni * (1 + (margen / 100)); $('agent-res-costo').innerText = `$${uni.toFixed(2)}`; $('agent-res-venta').innerText = `$${sug.toFixed(2)}`; } 
-            else { $('agent-res-costo').innerText = '$0.00'; $('agent-res-venta').innerText = '$0.00'; }
-        }
-        function applyAgent() {
-            const costo = parseFloat($('agent-costo').value) || 0, piezas = parseInt($('agent-piezas').value) || 0, margen = parseFloat($('agent-margen').value) || 0;
-            if(costo > 0 && piezas > 0) { $('prod-costo').value = (costo / piezas).toFixed(2); $('prod-venta').value = ((costo / piezas) * (1 + (margen / 100))).toFixed(2); $('prod-costo').dispatchEvent(new Event('input')); playSynthSound('click_tab'); }
         }
 
         function updateGastosDropdown() { const ops = `<option value="Diario">Gasto del Día (Resta Venta Neta)</option><option value="Material">Gasto por Material</option>` + distribuciones.map(d => `<option value="dist_${d.id}">Gasto de ${d.label}</option>`).join(''); if($('gasto-tipo')) $('gasto-tipo').innerHTML = ops; if($('edit-gasto-tipo')) $('edit-gasto-tipo').innerHTML = ops; }
@@ -766,7 +740,14 @@
                 if(el) {
                     if(el.sortableInst) el.sortableInst.destroy();
                     el.sortableInst = new Sortable(el, {
-                        group: 'kanban', animation: 150, delay: 150, delayOnTouchOnly: true, handle: '.kanban-drag-handle',
+                        group: 'kanban', 
+                        animation: 250, 
+                        delay: 100, 
+                        delayOnTouchOnly: true, 
+                        handle: '.kanban-drag-handle',
+                        ghostClass: 'kanban-ghost',
+                        dragClass: 'kanban-drag',
+                        easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
                         onEnd: function (evt) {
                             const id = parseInt(evt.item.id.replace('card-ped-', '')), toStatus = evt.to.id.replace('kb-col-', '');
                             const statusMap = { 'pendiente':'Pendiente', 'material':'Material', 'aceptacion':'Aceptacion', 'impreso':'Impreso', 'deuda':'Deuda', 'entregado':'Entregado' };
@@ -853,11 +834,6 @@
 
             let theadHtmlDefinitivo = `<th style="color:var(--accent-color);">Costos Totales</th>`; distribuciones.forEach(d => { theadHtmlDefinitivo += `<th style="color:var(--accent-color);">${d.label}</th>`; }); theadHtmlDefinitivo += `<th style="color:var(--danger-color);">Gastos Total</th><th style="color:var(--success-color);">Saldo Definitivo</th>`;
             $('tabla-definitiva-head').innerHTML = `<tr style="background: rgba(0, 113, 227, 0.05);">${theadHtmlDefinitivo}</tr>`;
-            $('excel-past-months-head').innerHTML = `<tr><th>Mes</th>${theadHtmlDefinitivo.replace(/<th/g, '<th style="color:var(--text-secondary);"')}`;
-
-            const pastBody = $('excel-past-months-body'); pastBody.innerHTML = ''; const keysMonthly = Object.keys(monthlyData).filter(k => k !== currentYearMonth).sort().reverse();
-            if (keysMonthly.length === 0) pastBody.innerHTML = `<tr><td colspan="${distribuciones.length + 3}" style="color:var(--text-secondary); text-align:center; padding:20px; font-weight:700;">No hay registros de meses anteriores.</td></tr>`; 
-            else keysMonthly.forEach(m => { const md = monthlyData[m], gananciaRealMensual = md.ventaBruta - md.gastoDiario - md.costo; let trHtml = `<td style="font-weight:900;">${m}</td><td style="font-weight:800; font-size:15px;">$${md.costo.toFixed(2)}</td>`, saldoDef = md.costo; distribuciones.forEach((d, index) => { let tDist = gananciaRealMensual > 0 ? gananciaRealMensual * (d.pct / 100) : 0; if(index === distribuciones.length - 1) tDist += md.propinas; saldoDef += tDist; trHtml += `<td style="font-weight:800; font-size:15px;">$${tDist.toFixed(2)}</td>`; }); saldoDef -= md.otrosGastos; trHtml += `<td style="font-weight:800; font-size:15px; color:var(--danger-color)">-$${md.otrosGastos.toFixed(2)}</td><td style="font-weight:900; font-size:18px; color:${saldoDef > 0 ? 'var(--success-color)' : 'var(--text-secondary)'}">$${saldoDef.toFixed(2)}</td>`; const tr = document.createElement('tr'); tr.innerHTML = trHtml; pastBody.appendChild(tr); });
 
             let gMat = 0, gDist = {}; distribuciones.forEach(d => gDist[d.id] = 0);
             gastos.filter(g => g.fecha.startsWith(currentYearMonth)).forEach(g => { if(g.tipo === 'Material') gMat += g.monto; else if(g.tipo.startsWith('dist_')) { const dId = parseInt(g.tipo.split('_')[1]); if(gDist[dId] !== undefined) gDist[dId] += g.monto; } });
@@ -992,6 +968,20 @@
             if (sidebar) sidebar.classList.remove('mobile-open');
         }
 
+        function moveProd(id, dir) {
+            const idx = productos.findIndex(p => p.id === id);
+            if(idx < 0) return;
+            const newIdx = idx + dir;
+            if(newIdx >= 0 && newIdx < productos.length) {
+                const temp = productos[idx];
+                productos[idx] = productos[newIdx];
+                productos[newIdx] = temp;
+                saveToStorage(); 
+                renderAll();
+                playSynthSound('click_tab');
+            }
+        }
+
         function renderInventory() {
             const list = $('inventory-list');
             const archList = $('inventory-archived-list');
@@ -1002,7 +992,8 @@
             
             let sorted = [...productos];
             const sortMode = $('inv-sort-mode');
-            if(sortMode && sortMode.value === 'az') {
+            const isManual = !sortMode || sortMode.value === 'manual';
+            if(!isManual) {
                 sorted.sort((a,b) => a.nombre.localeCompare(b.nombre));
             }
             
@@ -1010,11 +1001,25 @@
             sorted.forEach(p => {
                 const div = document.createElement('div');
                 div.className = 'history-card fade-in';
+                div.style.marginBottom = '0';
+                
+                let orderButtons = '';
+                if(isManual) {
+                    orderButtons = `
+                    <div style="display:flex; flex-direction:column; gap:2px; margin-right:12px;">
+                        <button style="background:var(--input-bg); border:none; border-radius:4px; padding:2px 8px; cursor:pointer;" onclick="moveProd(${p.id}, -1)">↑</button>
+                        <button style="background:var(--input-bg); border:none; border-radius:4px; padding:2px 8px; cursor:pointer;" onclick="moveProd(${p.id}, 1)">↓</button>
+                    </div>`;
+                }
+
                 div.innerHTML = `
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <div>
-                            <b style="font-size:16px;">${p.nombre}</b><br>
-                            <small style="color:var(--text-secondary); font-weight:700;">Costo: $${parseFloat(p.precioCosto).toFixed(2)} | Venta: $${parseFloat(p.precioVenta).toFixed(2)}</small>
+                        <div style="display:flex; align-items:center;">
+                            ${orderButtons}
+                            <div>
+                                <b style="font-size:16px;">${p.nombre}</b><br>
+                                <small style="color:var(--text-secondary); font-weight:700;">Costo: $${parseFloat(p.precioCosto).toFixed(2)} | Venta: $${parseFloat(p.precioVenta).toFixed(2)}</small>
+                            </div>
                         </div>
                         <div style="display:flex; align-items:center; gap:15px;">
                             <span style="font-weight:900; color:${p.stock <= 5 ? 'var(--danger-color)' : 'var(--text-primary)'}">Stock: ${p.stock}</span>
@@ -1059,7 +1064,7 @@
                 $('prod-stock').value = '';
                 $('btn-delete-prod').style.display = 'none';
             }
-            $('prod-costo').dispatchEvent(new Event('input')); // Recalcular margen
+            $('prod-costo').dispatchEvent(new Event('input'));
             renderIcons();
         }
 
@@ -1130,9 +1135,14 @@
                 showToast('La herramienta de exportación no está cargada'); 
                 return; 
             }
+            const targetEl = document.getElementById(elId);
+            if(!targetEl) {
+                showToast('No se encontró el área para exportar');
+                return;
+            }
             showToast('Generando imagen de alta calidad...');
             try {
-                const canvas = await html2canvas($(elId), { backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg-color') });
+                const canvas = await html2canvas(targetEl, { backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg-color') });
                 const link = document.createElement('a'); 
                 link.download = `${name}_PrintCenter_${new Date().getTime()}.png`; 
                 link.href = canvas.toDataURL(); 
