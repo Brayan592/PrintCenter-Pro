@@ -47,16 +47,18 @@
         @keyframes disintegrate { to { opacity: 0; filter: blur(10px); transform: translateY(-30px) scale(0.8); } }
         .disintegrate-anim { animation: disintegrate 0.4s forwards; pointer-events: none; }
         
-        /* Splash Ultra Ligero Corregido */
-        #intro-splash { position: fixed; inset: 0; z-index: 99999; background: var(--bg-color); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease; }
+        /* Splash Animado Rediseñado */
+        #intro-splash { position: fixed; inset: 0; z-index: 99999; background: var(--bg-color); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s; }
         [data-theme="dark"] #intro-splash { background: #000000; }
-        .splash-ring { position: absolute; width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--accent-color); animation: rippleEffect 1.5s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
-        .elegant-logo { display:flex; flex-direction:column; align-items:center; position: relative; z-index: 2; }
-        .elegant-logo i { color: var(--accent-color); }
-        .elegant-title { font-size: 38px; font-weight: 900; letter-spacing: -1px; margin-top: 25px; display:flex; align-items:center; gap:8px; }
+        .splash-ring { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 3px solid transparent; border-top-color: var(--accent-color); border-bottom-color: var(--accent-color); animation: spinGlow 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
+        @keyframes spinGlow { 0% { transform: rotate(0deg) scale(0.8); box-shadow: 0 0 10px var(--accent-glow); } 50% { transform: rotate(180deg) scale(1.1); box-shadow: 0 0 30px var(--accent-glow), inset 0 0 15px var(--accent-glow); } 100% { transform: rotate(360deg) scale(0.8); box-shadow: 0 0 10px var(--accent-glow); } }
+        .elegant-logo { display:flex; flex-direction:column; align-items:center; justify-content: center; position: relative; z-index: 2; height: 120px; width: 120px; }
+        .elegant-logo i { color: var(--accent-color); animation: pulseFloat 2s ease-in-out infinite; filter: drop-shadow(0 0 15px var(--accent-glow)); }
+        @keyframes pulseFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.05); } }
+        .elegant-title { font-size: 42px; font-weight: 900; letter-spacing: -1.5px; margin-top: 25px; display:flex; align-items:center; gap:8px; opacity: 0; animation: fadeUpIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; }
         .elegant-title span.p1 { color: var(--text-primary); }
-        .elegant-title span.p2 { background: linear-gradient(135deg, var(--accent-color), #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @keyframes rippleEffect { 0% { transform: scale(0.8); opacity: 1; border-width: 4px; } 100% { transform: scale(2.5); opacity: 0; border-width: 0px; } }
+        .elegant-title span.p2 { background: linear-gradient(135deg, var(--accent-color), #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+        @keyframes fadeUpIn { 0% { opacity: 0; transform: translateY(20px); filter: blur(5px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
 
         .fade-in { animation: fadeInScale 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; transform: translateZ(0); }
         @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.97); } 100% { opacity: 1; transform: scale(1); } }
@@ -554,13 +556,14 @@
             
             updateGastosDropdown(); updateAjustesDropdown(); renderAll(); renderConfigInputs(); renderConfigWA(); renderIcons();
             
-            // Animación y destrucción total y segura del splash
+            // Splash animado mucho mejor y seguro
             const splash = $('intro-splash');
             if(splash) {
                 setTimeout(() => {
                     splash.style.opacity = '0';
-                    setTimeout(() => splash.remove(), 400);
-                }, 400); // Pequeño retraso estético
+                    splash.style.visibility = 'hidden';
+                    setTimeout(() => splash.remove(), 800);
+                }, 2200);
             }
             
             let bootSoundPlayed = false; document.addEventListener('pointerdown', () => { if (!bootSoundPlayed) { playSynthSound('boot'); bootSoundPlayed = true; } }, { once: true });
@@ -964,6 +967,228 @@
         function openAbonoModal(id) { playSynthSound('modal'); const p = pedidos.find(item => item.id === id); if (!p) return; const abonado = p.abonos || 0, restante = p.total - abonado; $('abono-pedido-id').value = id; $('abono-cliente-text').innerText = `Cliente: ${p.cliente}`; $('abono-total').innerText = `$${p.total.toFixed(2)}`; $('abono-pagado').innerText = `$${abonado.toFixed(2)}`; $('abono-restante').innerText = `$${restante.toFixed(2)}`; $('abono-monto').value = ''; $('abono-modal').classList.add('active'); }
         function closeAbonoModal(e) { $('abono-modal').classList.remove('active'); }
         function procesarAbono() { const id = parseInt($('abono-pedido-id').value), monto = parseFloat($('abono-monto').value); if (isNaN(monto) || monto <= 0) { triggerError('abono-modal'); showToast('Ingresa un monto válido'); return; } const p = pedidos.find(item => item.id === id); if (!p) return; p.abonos = (p.abonos || 0) + monto; const abonoVenta = { id: Date.now(), fecha: getLocalISO(), productos: [{ nombre: `Abono de Fiado - ${p.cliente}`, qty: 1, precioVenta: monto, precioCosto: 0 }], total: monto, costoMaterial: 0, ganancia: monto, pago: 'Efectivo' }; ventas.unshift(abonoVenta); ventas.sort((a, b) => new Date(b.fecha) - new Date(a.fecha)); if (p.abonos >= p.total) { p.estado = 'Entregado'; showToast('¡Deuda liquidada al 100%!'); } else { showToast(`Abono de $${monto.toFixed(2)} procesado`); } setTimeout(() => { saveToStorage(); closeAbonoModal(null); playSynthSound('cash'); renderAll(); }, 50); }
+
+        // --- NUEVAS FUNCIONES AGREGADAS PARA REPARAR EL CONGELAMIENTO Y BUGS ---
+        function switchTab(tabId, el) {
+            playSynthSound('click_tab');
+            $$('.tab-content').forEach(t => t.classList.remove('active'));
+            const targetTab = $(tabId);
+            if (targetTab) targetTab.classList.add('active');
+            
+            $$('.sidebar-menu button, .tab-item').forEach(b => b.classList.remove('active'));
+            if(el) {
+                el.classList.add('active');
+            } else {
+                const btn = document.querySelector(`.sidebar-menu button[onclick*="${tabId}"]`);
+                if(btn) btn.classList.add('active');
+                const tabBtn = document.querySelector(`.tab-item[onclick*="${tabId}"]`);
+                if(tabBtn) tabBtn.classList.add('active');
+            }
+            
+            const titles = { 'ventas':'Ventas', 'pedidos':'Kanban Pedidos', 'historial':'Historial', 'recursos':'Finanzas', 'reportes':'Métricas', 'inventario':'Inventario', 'clientes':'Clientes', 'configuracion':'Ajustes' };
+            $('header-title').innerText = titles[tabId] || 'PrintCenter';
+            
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+        }
+
+        function renderInventory() {
+            const list = $('inventory-list');
+            const archList = $('inventory-archived-list');
+            if(!list || !archList) return;
+            
+            list.innerHTML = ''; 
+            archList.innerHTML = '';
+            
+            let sorted = [...productos];
+            const sortMode = $('inv-sort-mode');
+            if(sortMode && sortMode.value === 'az') {
+                sorted.sort((a,b) => a.nombre.localeCompare(b.nombre));
+            }
+            
+            let hasArchived = false;
+            sorted.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'history-card fade-in';
+                div.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <b style="font-size:16px;">${p.nombre}</b><br>
+                            <small style="color:var(--text-secondary); font-weight:700;">Costo: $${parseFloat(p.precioCosto).toFixed(2)} | Venta: $${parseFloat(p.precioVenta).toFixed(2)}</small>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <span style="font-weight:900; color:${p.stock <= 5 ? 'var(--danger-color)' : 'var(--text-primary)'}">Stock: ${p.stock}</span>
+                            <button class="btn btn-secondary" style="padding:10px; color:var(--accent-color);" onclick="openProductModal(${p.id})"><i data-lucide="edit-3" size="18"></i></button>
+                        </div>
+                    </div>`;
+                if(p.stock <= 0) { 
+                    archList.appendChild(div); 
+                    hasArchived = true; 
+                } else { 
+                    list.appendChild(div); 
+                }
+            });
+            
+            const archHeader = $('archived-header');
+            if (archHeader) archHeader.style.display = hasArchived ? 'block' : 'none';
+            renderIcons();
+        }
+
+        function openProductModal(id = null) {
+            playSynthSound('modal');
+            $('product-modal').classList.add('active');
+            
+            if(id) {
+                const p = productos.find(x => x.id === id);
+                if(!p) return;
+                $('prod-modal-title').innerText = 'Editar Producto';
+                $('prod-id').value = p.id;
+                $('prod-nombre').value = p.nombre;
+                $('prod-categoria').value = p.categoria || 'Papelería';
+                $('prod-costo').value = p.precioCosto;
+                $('prod-venta').value = p.precioVenta;
+                $('prod-stock').value = p.stock;
+                $('btn-delete-prod').style.display = 'block';
+            } else {
+                $('prod-modal-title').innerText = 'Nuevo Producto';
+                $('prod-id').value = '';
+                $('prod-nombre').value = '';
+                $('prod-categoria').value = 'Papelería';
+                $('prod-costo').value = '';
+                $('prod-venta').value = '';
+                $('prod-stock').value = '';
+                $('btn-delete-prod').style.display = 'none';
+            }
+            $('prod-costo').dispatchEvent(new Event('input')); // Recalcular margen
+            renderIcons();
+        }
+
+        function closeProductModal() { 
+            $('product-modal').classList.remove('active'); 
+        }
+
+        function saveProduct() {
+            const id = $('prod-id').value;
+            const nombre = $('prod-nombre').value;
+            const cat = $('prod-categoria').value;
+            const costo = parseFloat($('prod-costo').value) || 0;
+            const venta = parseFloat($('prod-venta').value) || 0;
+            const stock = parseInt($('prod-stock').value) || 0;
+            
+            if(!nombre) { 
+                triggerError('product-modal'); 
+                showToast('El nombre es obligatorio'); 
+                return; 
+            }
+            
+            if(id) {
+                const idx = productos.findIndex(x => x.id === parseInt(id));
+                if(idx > -1) { 
+                    productos[idx] = { ...productos[idx], nombre, categoria: cat, precioCosto: costo, precioVenta: venta, stock }; 
+                }
+            } else {
+                productos.push({ id: Date.now(), nombre, categoria: cat, precioCosto: costo, precioVenta: venta, stock });
+            }
+            
+            saveToStorage(); 
+            renderAll(); 
+            closeProductModal(); 
+            playSynthSound('save'); 
+            showToast('Producto guardado exitosamente');
+        }
+
+        function deleteProduct() {
+            const id = parseInt($('prod-id').value);
+            if(confirm('¿Estás seguro de eliminar este producto?')) {
+                const idx = productos.findIndex(p => p.id === id);
+                if (idx > -1) { 
+                    lastDeletedProduct = productos[idx]; 
+                    lastDeletedIndex = idx; 
+                    productos.splice(idx, 1); 
+                    saveToStorage(); 
+                    renderAll(); 
+                    closeProductModal(); 
+                    playSynthSound('delete'); 
+                    showUndoToast('Producto eliminado', undoDelete); 
+                }
+            }
+        }
+
+        function toggleDarkMode() {
+            const isDark = $('dark-mode-toggle').checked;
+            if(isDark) { 
+                document.documentElement.setAttribute('data-theme', 'dark'); 
+                localStorage.setItem('dark_mode', 'true'); 
+            } else { 
+                document.documentElement.removeAttribute('data-theme'); 
+                localStorage.setItem('dark_mode', 'false'); 
+            }
+        }
+        
+        async function downloadTableAsPNG(elId, name) {
+            if(typeof html2canvas === 'undefined') { 
+                showToast('La herramienta de exportación no está cargada'); 
+                return; 
+            }
+            showToast('Generando imagen de alta calidad...');
+            try {
+                const canvas = await html2canvas($(elId), { backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg-color') });
+                const link = document.createElement('a'); 
+                link.download = `${name}_PrintCenter_${new Date().getTime()}.png`; 
+                link.href = canvas.toDataURL(); 
+                link.click();
+            } catch(e) { 
+                showToast('Error al exportar la imagen'); 
+            }
+        }
+        
+        function exportData() {
+            const data = { productos, ventas, pedidos, gastos, propinas, clientesDirectorio, ajustesSaldo, distribuciones, waTemplates };
+            const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+            const link = document.createElement('a'); 
+            link.href = URL.createObjectURL(blob); 
+            link.download = `PrintCenter_CopiaSeguridad_${new Date().getTime()}.json`; 
+            link.click();
+            showToast('Copia de seguridad descargada correctamente');
+        }
+        
+        function importData(e) {
+            const file = e.target.files[0]; 
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                try {
+                    const data = JSON.parse(evt.target.result);
+                    if(data.productos) productos = data.productos; 
+                    if(data.ventas) ventas = data.ventas; 
+                    if(data.pedidos) pedidos = data.pedidos;
+                    if(data.gastos) gastos = data.gastos; 
+                    if(data.propinas) propinas = data.propinas; 
+                    if(data.clientesDirectorio) clientesDirectorio = data.clientesDirectorio;
+                    if(data.ajustesSaldo) ajustesSaldo = data.ajustesSaldo; 
+                    if(data.distribuciones) distribuciones = data.distribuciones; 
+                    if(data.waTemplates) waTemplates = data.waTemplates;
+                    
+                    saveToStorage(); 
+                    renderAll(); 
+                    showToast('Datos importados con éxito. Recargando sistema...'); 
+                    setTimeout(() => location.reload(), 1500);
+                } catch(err) { 
+                    showToast('El archivo JSON es inválido o está corrupto'); 
+                }
+            };
+            reader.readAsText(file);
+        }
+        
+        function resetSystem() {
+            if(prompt('ADVERTENCIA: Escribe "BORRAR" en mayúsculas para formatear y perder toda la base de datos') === 'BORRAR') {
+                localStorage.clear(); 
+                showToast('Sistema borrado. Recargando de fábrica...'); 
+                setTimeout(() => location.reload(), 1500);
+            } else {
+                showToast('Operación cancelada');
+            }
+        }
     </script>
 </body>
 </html>
