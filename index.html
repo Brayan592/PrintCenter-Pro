@@ -47,18 +47,19 @@
         @keyframes disintegrate { to { opacity: 0; filter: blur(10px); transform: translateY(-30px) scale(0.8); } }
         .disintegrate-anim { animation: disintegrate 0.4s forwards; pointer-events: none; }
         
-        /* Nueva animación de Splash Ultra Ligera */
-        #intro-splash { position: fixed; inset: 0; z-index: 9999; background: var(--bg-color); display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, transform 0.5s ease; }
+        /* Splash Ultra Ligero Corregido */
+        #intro-splash { position: fixed; inset: 0; z-index: 99999; background: var(--bg-color); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.4s ease; }
         [data-theme="dark"] #intro-splash { background: #000000; }
-        .splash-content { text-align: center; animation: introPulse 1.2s ease-in-out infinite alternate; }
-        .splash-content i { color: var(--accent-color); margin-bottom: 15px; }
-        .splash-content h1 { font-size: 36px; font-weight: 900; letter-spacing: -1px; color: var(--text-primary); margin: 0; }
-        .splash-content h1 span { color: var(--accent-color); }
-        #intro-splash.hide-splash { opacity: 0; transform: scale(1.05); pointer-events: none; }
-        @keyframes introPulse { 0% { transform: scale(0.95); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
+        .splash-ring { position: absolute; width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--accent-color); animation: rippleEffect 1.5s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
+        .elegant-logo { display:flex; flex-direction:column; align-items:center; position: relative; z-index: 2; }
+        .elegant-logo i { color: var(--accent-color); }
+        .elegant-title { font-size: 38px; font-weight: 900; letter-spacing: -1px; margin-top: 25px; display:flex; align-items:center; gap:8px; }
+        .elegant-title span.p1 { color: var(--text-primary); }
+        .elegant-title span.p2 { background: linear-gradient(135deg, var(--accent-color), #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @keyframes rippleEffect { 0% { transform: scale(0.8); opacity: 1; border-width: 4px; } 100% { transform: scale(2.5); opacity: 0; border-width: 0px; } }
 
         .fade-in { animation: fadeInScale 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; transform: translateZ(0); }
-        @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.97); } 100% { opacity: 1; transform: scale(1); } }
         .stagger-item { animation: slideUpFade 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateZ(0); }
         @keyframes slideUpFade { 0% { opacity: 0; transform: translateY(20px) translateZ(0); } 100% { opacity: 1; transform: translateY(0) translateZ(0); } }
         
@@ -220,7 +221,6 @@
             .modal-overlay { align-items: center; }
             .ios-modal { border-radius: var(--radius-lg); width: 500px; transform: scale(0.95); opacity: 0; }
             .modal-overlay.active .ios-modal { transform: scale(1); opacity: 1; }
-            .cart-bar { width: auto; right: 30px; left: auto; bottom: 30px; max-width: none; border-radius: 100px; }
             .drag-handle { display: none; }
         }
         @media (min-width: 1024px) {
@@ -247,9 +247,12 @@
     <div id="toast-container"></div>
     
     <div id="intro-splash">
-        <div class="splash-content">
+        <div class="elegant-logo">
+            <div class="splash-ring"></div>
             <i data-lucide="printer" size="64"></i>
-            <h1>PrintCenter <span>Pro</span></h1>
+        </div>
+        <div class="elegant-title">
+            <span class="p1">PrintCenter</span> <span class="p2">Pro</span>
         </div>
     </div>
 
@@ -268,7 +271,7 @@
                     <button onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="20"></i> Ajustes</button>
                 </div>
             </div>
-            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.07.005 Ultimate Premium</div>
+            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.07.006 Ultimate Premium</div>
         </div>
 
         <div class="main-content" id="main-scroll-area">
@@ -400,7 +403,7 @@
                     <div class="stagger-item glass-panel" style="animation-delay:0.4s;"><div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;"><h3 style="font-size:18px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="pie-chart" size="20" style="color:var(--warning-color);"></i> Distribución de Ganancias</h3><button class="btn btn-secondary" style="padding: 8px 12px; font-size: 13px;" onclick="agregarDistribucion()"><i data-lucide="plus" size="16"></i> Añadir División</button></div><div id="distribucion-inputs"></div><button class="btn btn-primary" style="width:100%; margin-top:15px;" onclick="saveConfigDistribucion()"><i data-lucide="save" size="18"></i> Guardar Divisiones</button></div>
                     <div class="stagger-item glass-panel" style="animation-delay:0.45s;"><h3 style="font-size:18px; margin-bottom:10px; font-weight:800; display:flex; align-items:center; gap:10px;"><i data-lucide="image" size="20" style="color:var(--accent-color);"></i> Exportar Finanzas (PNG)</h3><p style="font-size:14px; color:var(--text-secondary); margin-bottom:20px; font-weight:600;">Descarga tus reportes financieros como imágenes de alta calidad para compartirlos fácilmente.</p><div style="display:flex; flex-direction:column; gap:12px;"><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-registro-diario', 'Registro_Diario')"><i data-lucide="calendar-days" size="18"></i> PNG: Registro Diario de Ventas</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-conteo-fondos', 'Conteo_Definitivo')"><i data-lucide="wallet" size="18"></i> PNG: Conteo Definitivo</button><button class="btn btn-secondary" onclick="downloadTableAsPNG('export-meses-anteriores', 'Meses_Anteriores')"><i data-lucide="archive" size="18"></i> PNG: Meses Anteriores</button></div></div>
                     <div class="stagger-item glass-panel" style="animation-delay:0.5s;"><button class="btn btn-secondary" style="width:100%; margin-bottom:15px;" onclick="exportData()"><i data-lucide="download" size="18"></i> Exportar Copia de Seguridad JSON</button><div style="margin-bottom:25px;"><label class="btn btn-secondary" style="width:100%; display:inline-flex; align-items:center; justify-content:center; gap:8px; box-sizing:border-box; cursor:pointer; text-align:center;"><i data-lucide="upload" size="18"></i> Importar Copia de Seguridad JSON<input type="file" id="import-file" style="display:none;" onchange="importData(event)"></label></div><button class="btn btn-danger" style="width:100%;" onclick="resetSystem()"><i data-lucide="alert-triangle" size="18"></i> Borrar Toda la Base de Datos</button></div>
-                    <div style="text-align:center; color:var(--text-secondary); font-size:13px; font-weight:800; margin-top:40px; margin-bottom:10px; opacity:0.6; letter-spacing: 1px; animation: pulseGlow 2s infinite alternate;">PrintCenter Pro v20.26.07.005</div>
+                    <div style="text-align:center; color:var(--text-secondary); font-size:13px; font-weight:800; margin-top:40px; margin-bottom:10px; opacity:0.6; letter-spacing: 1px; animation: pulseGlow 2s infinite alternate;">PrintCenter Pro v20.26.07.006</div>
                 </div>
             </div>
         </div>
@@ -449,7 +452,7 @@
             
             <div class="form-group" style="margin-bottom: 25px;">
                 <label>Margen de Ganancia (Automático)</label>
-                <input type="text" id="margen-ganancia-auto" readonly placeholder="0.00%" style="background: rgba(0,0,0,0.02); font-weight:900; color:var(--success-color);">
+                <input type="text" id="margen-ganancia-auto" readonly placeholder="0.00%" style="background: rgba(0,0,0,0.02); font-weight:900; color:var(--text-secondary); border:none;">
             </div>
             
             <div class="form-group"><label>Stock Disponible</label><input type="number" id="prod-stock" placeholder="Cantidad en almacén"></div>
@@ -536,7 +539,7 @@
 
         function triggerError(modalId) { playSynthSound('error'); const el = document.querySelector(`#${modalId} .ios-modal`); if(el) { el.classList.remove('shake-error'); void el.offsetWidth; el.classList.add('shake-error'); setTimeout(()=>el.classList.remove('shake-error'), 400); } }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('load', () => {
             requestWakeLock();
             if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(e => e);
             $('header-date').innerText = new Date().toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -551,14 +554,18 @@
             
             updateGastosDropdown(); updateAjustesDropdown(); renderAll(); renderConfigInputs(); renderConfigWA(); renderIcons();
             
-            // Destrucción limpia de la pantalla de inicio
-            setTimeout(() => { const splash = $('intro-splash'); if(splash) { splash.classList.add('hide-splash'); setTimeout(() => splash.remove(), 500); } }, 500);
+            // Animación y destrucción total y segura del splash
+            const splash = $('intro-splash');
+            if(splash) {
+                setTimeout(() => {
+                    splash.style.opacity = '0';
+                    setTimeout(() => splash.remove(), 400);
+                }, 400); // Pequeño retraso estético
+            }
             
             let bootSoundPlayed = false; document.addEventListener('pointerdown', () => { if (!bootSoundPlayed) { playSynthSound('boot'); bootSoundPlayed = true; } }, { once: true });
-            
             $$('.client-name').forEach(el => el.addEventListener('blur', () => { setTimeout(() => { $$('.client-suggestions').forEach(s => s.style.display = 'none'); }, 250); }));
-            initDragToClose(); initKeyboardShortcuts(); initDragScroll();
-            initMarginCalculator();
+            initDragToClose(); initKeyboardShortcuts(); initDragScroll(); initMarginCalculator();
         });
 
         function toggleClear(input, clearId) { $(clearId).style.display = input.value.length > 0 ? 'block' : 'none'; }
