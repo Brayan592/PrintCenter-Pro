@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>PrintCenterPro POS</title>
+    <!-- Bibliotecas externas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -144,7 +145,7 @@
         .bento-title { color: var(--text-secondary); font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px;}
         .bento-value { font-size: 38px; font-weight: 900; color: var(--text-primary); letter-spacing: -1px;}
 
-        /* INVENTARIO REDISEÑADO (1 Columna) */
+        /* INVENTARIO */
         .inv-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
         .inv-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 12px; transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position:relative;}
         .inv-card:hover { border-color: var(--accent-color); box-shadow: var(--shadow-md); transform: translateY(-3px);}
@@ -184,7 +185,7 @@
         .cart-pill-floating:active { transform: scale(0.92); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         @media (min-width: 768px) { .cart-pill-floating { bottom: 30px; right: 30px; padding: 16px 28px; } }
 
-        /* Estilos base del modal para otras ventanas */
+        /* Estilos base del modal */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 200; display: none; justify-content: center; align-items: flex-end; opacity: 0; transition: opacity 0.3s ease; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .ios-modal { background: var(--card-bg); width: 100%; max-width: 550px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 35px 30px; max-height: 90vh; overflow-y: auto; transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 -20px 50px rgba(0,0,0,0.2); touch-action: pan-y; display:flex; flex-direction:column; }
@@ -208,6 +209,15 @@
         .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--input-bg); border: 2px solid transparent; border-radius: var(--radius-sm); padding: 16px; color: var(--text-primary); font-size: 16px; transition: all 0.3s; font-weight: 600; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { background: var(--card-bg); border-color: var(--accent-color); outline: none; box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md); transform: translateY(-2px); }
 
+        /* CALCULADORA DE PAQUETE (NUEVO) */
+        .package-calc-box { background: rgba(0, 113, 227, 0.05); border: 1px dashed var(--accent-color); padding: 15px 15px 5px 15px; border-radius: var(--radius-sm); margin-bottom: 20px; }
+        .package-calc-box label { color: var(--accent-color) !important; font-size: 12px !important; }
+        .package-calc-box input { background: var(--card-bg); border-color: rgba(0,113,227,0.2); }
+
+        /* KPI UTILIDAD (NUEVO) */
+        .kpi-util-card { padding: 15px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--input-bg); display: flex; flex-direction: column; gap: 5px; }
+        .kpi-util-card.best { border-color: var(--success-color); background: rgba(52, 199, 89, 0.05); }
+
         #toast-container { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 10px; align-items: center; pointer-events:none; width: 90%; max-width: 400px; }
         .toast { pointer-events: auto; background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(2, 132, 199, 0.9)) !important; backdrop-filter: blur(12px); color: #fff; padding: 16px 24px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0, 113, 227, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 700; animation: dynamicIslandIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; transform-origin: top; width: 100%; justify-content: center; }
         @keyframes dynamicIslandIn { 0% { transform: scale(0.4) translateY(-50px); opacity: 0; filter: blur(10px); } 100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); } }
@@ -230,7 +240,7 @@
         .cart-sidebar {
             position: fixed; 
             top: 0; right: 0; bottom: 0; 
-            width: 100%; max-width: 70vw; /* Abarca el 70% de la pantalla */
+            width: 100%; max-width: 70vw;
             min-width: 400px;
             background: var(--bg-color); 
             z-index: 201; 
@@ -267,7 +277,7 @@
             background: var(--card-bg); 
             border-radius: 32px 32px 0 0;
             box-shadow: 0 -10px 30px rgba(0,0,0,0.03);
-            max-height: 65vh; /* Se vuelve deslizable si la pantalla es chaparrita */
+            max-height: 65vh;
             overflow-y: auto;
             flex-shrink: 0;
             overscroll-behavior: contain;
@@ -298,12 +308,6 @@
         .qty-stepper button:hover { background: var(--card-bg); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .qty-stepper span { font-weight: 900; font-size: 15px; width: 30px; text-align: center; }
         .item-total { font-weight: 900; font-size: 16px; color: var(--accent-color); }
-
-        /* NUMPAD */
-        .numpad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px; }
-        .numpad-btn { background: var(--input-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 15px; font-size: 20px; font-weight: 900; color: var(--text-primary); cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; }
-        .numpad-btn:active { background: var(--border-color); transform: scale(0.95); }
-        .numpad-btn.action { color: var(--danger-color); font-size: 16px; }
 
         /* Botones de Pago Rápido */
         .quick-pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
@@ -386,7 +390,7 @@
                     <button onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="20"></i> Ajustes</button>
                 </div>
             </div>
-            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.08.001 Ultimate Update</div>
+            <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.08.100 Update</div>
         </div>
 
         <div class="main-content" id="main-scroll-area">
@@ -398,8 +402,7 @@
                     <div class="balance-pill stagger-item" style="animation-delay: 0.4s; background: linear-gradient(135deg, var(--warning-color), #ffcc00); color: white;" id="pill-caja-cotizacion">Cotizado: $0.00</div>
                 </div>
             </header>
-
-            <div class="container">
+<div class="container">
                 <div id="ventas" class="tab-content active fade-in">
                     <div style="display: flex; gap: 15px; margin-bottom: 25px;" class="stagger-item">
                         <div class="search-container" style="flex: 1; margin:0;">
@@ -482,12 +485,12 @@
                 </div>
 
                 <div id="reportes" class="tab-content fade-in">
-                    <button class="btn btn-primary stagger-item" style="width:100%; margin-bottom:24px; font-size:18px;" onclick="openDailySummaryModal()"><i data-lucide="file-bar-chart" size="22"></i> Generar Reporte Diario</button>
+                    <button class="btn btn-primary stagger-item" style="width:100%; margin-bottom:24px; font-size:18px;" onclick="openDailySummaryModal()"><i data-lucide="file-bar-chart" size="22"></i> Generar Reporte Diario Analítico</button>
                     <div class="categories-chips stagger-item" style="animation-delay:0.1s;"><div class="chip active" onclick="changeMetricsPeriod('hoy', this)">Hoy</div><div class="chip" onclick="changeMetricsPeriod('ayer', this)">Ayer</div><div class="chip" onclick="changeMetricsPeriod('semana', this)">Semana</div><div class="chip" onclick="changeMetricsPeriod('mes', this)">Mes</div><div class="chip" onclick="changeMetricsPeriod('ano', this)">Año</div></div>
                     
                     <div class="bento-grid stagger-item" style="animation-delay:0.2s; margin-bottom:24px;">
                         <div class="bento-box bento-large" style="background: linear-gradient(135deg, var(--accent-color), #00c6ff); color: white; border:none;">
-                            <span class="bento-title" style="color:rgba(255,255,255,0.8);"><i data-lucide="trending-up"></i> Ventas Netas</span>
+                            <span class="bento-title" style="color:rgba(255,255,255,0.8);"><i data-lucide="trending-up"></i> Ventas Netas Totales</span>
                             <div class="bento-value" style="color:white;" id="rep-total">$0.00</div>
                         </div>
                         <div class="bento-box">
@@ -506,7 +509,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="stagger-item glass-panel" style="animation-delay:0.4s; height: 350px;"><canvas id="salesChart"></canvas></div>
+
+                    <!-- NUEVAS GRÁFICAS DE RENDIMIENTO -->
+                    <div class="stagger-item" style="animation-delay:0.3s; display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; margin-bottom:24px;">
+                        <div class="glass-panel" style="margin-bottom:0; height:320px; display:flex; flex-direction:column;">
+                            <h3 style="font-size:16px; font-weight:800; margin-bottom:15px; color:var(--text-secondary); text-transform:uppercase;"><i data-lucide="pie-chart" size="18" style="vertical-align:middle;"></i> Ingresos por Categoría</h3>
+                            <div style="flex:1; position:relative;"><canvas id="categoryChart"></canvas></div>
+                        </div>
+                        <div class="glass-panel" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                            <h3 style="font-size:14px; font-weight:800; margin-bottom:15px; color:var(--text-secondary); text-transform:uppercase;">Categoría más rentable</h3>
+                            <i data-lucide="award" size="56" style="color:var(--warning-color); margin-bottom:15px; filter:drop-shadow(0 4px 10px rgba(255,149,0,0.3));"></i>
+                            <h2 id="top-category-name" style="font-size:32px; font-weight:900; margin-bottom:5px; line-height:1;">--</h2>
+                            <p id="top-category-margin" style="font-size:16px; font-weight:800; color:var(--success-color);">Margen Neta: 0%</p>
+                        </div>
+                    </div>
+
+                    <div class="stagger-item glass-panel" style="animation-delay:0.4s; height: 350px;">
+                        <h3 style="font-size:16px; font-weight:800; margin-bottom:15px; color:var(--text-secondary); text-transform:uppercase;"><i data-lucide="bar-chart-2" size="18" style="vertical-align:middle;"></i> Tendencia de Ventas</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
                 </div>
 
                 <div id="inventario" class="tab-content fade-in">
@@ -604,7 +625,7 @@
     <!-- Modal de Cantidad -->
     <div class="modal-overlay" id="qty-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:10px;">¿Cuántos deseas agregar?</h2><h3 id="qty-prod-name" style="color:var(--accent-color); margin-bottom:20px; font-size: 16px;"></h3><input type="hidden" id="qty-prod-id"><div style="display:flex; align-items:center; gap:15px; margin-bottom: 25px;"><input type="range" id="qty-slider" min="1" max="100" value="1" oninput="updateQtyInput(this.value)" style="flex:1;"><input type="number" id="qty-input" value="1" oninput="updateQtySlider(this.value)" style="width:80px; font-size:20px; font-weight:900; text-align:center; padding:10px; border-radius:12px; border:1px solid var(--border-color); background:var(--input-bg);"></div><div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-bottom: 25px;"><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(5)">5</button><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(10)">10</button><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(20)">20</button><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(50)">50</button></div><button class="btn btn-primary" style="width:100%; padding:18px; font-size:18px;" onclick="confirmAddQty()"><i data-lucide="check-circle" size="20"></i> Agregar al Carrito</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeQtyModal()">Cancelar</button></div></div>
     
-    <!-- NUEVO CARRITO REDISEÑADO -->
+    <!-- NUEVO CARRITO REDISEÑADO SIN TECLADO NÚMERICO -->
     <div class="modal-overlay" id="cart-modal" onclick="closeCart(event)">
         <div class="cart-sidebar" onclick="event.stopPropagation()">
             
@@ -624,36 +645,13 @@
                     <!-- Aquí se inyectan los productos automáticamente con diseño Swipe -->
                 </div>
                 
-                <!-- Calculadora de cambio y Teclado Numérico Integrado -->
+                <!-- Calculadora de cambio simplificada para usar teclado nativo -->
                 <div id="calculadora-cambio" style="display:none; margin-top:20px; background:var(--card-bg); padding:20px; border-radius:var(--radius-md); border:1px solid var(--border-color); animation: slideUpFade 0.3s ease;">
-                    <label style="font-size:12px; font-weight:800; color:var(--text-secondary); text-transform:uppercase; margin-bottom:12px; display:block;">¿Con cuánto pagan?</label>
-                    <div style="display:flex; gap:8px; margin-bottom:15px; overflow-x:auto; padding-bottom:5px;">
-                        <button class="btn btn-secondary" style="flex: 0 0 auto; padding:10px 16px; font-size:14px;" onclick="setEfectivo(0)">Exacto</button>
-                        <button class="btn btn-secondary" style="flex: 0 0 auto; padding:10px 16px; font-size:14px;" onclick="setEfectivo(50)">$50</button>
-                        <button class="btn btn-secondary" style="flex: 0 0 auto; padding:10px 16px; font-size:14px;" onclick="setEfectivo(100)">$100</button>
-                        <button class="btn btn-secondary" style="flex: 0 0 auto; padding:10px 16px; font-size:14px;" onclick="setEfectivo(200)">$200</button>
-                        <button class="btn btn-secondary" style="flex: 0 0 auto; padding:10px 16px; font-size:14px;" onclick="setEfectivo(500)">$500</button>
-                    </div>
+                    <label style="font-size:12px; font-weight:800; color:var(--text-secondary); text-transform:uppercase; margin-bottom:12px; display:block;">¿Con cuánto pagan en Efectivo?</label>
                     
-                    <!-- Input de solo lectura para que no salga el teclado de la tablet -->
-                    <input type="text" id="efectivo-recibido" placeholder="Monto..." readonly style="width:100%; padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); font-size:24px; font-weight:900; margin-bottom:15px; background:var(--input-bg); text-align:right;" value="">
+                    <!-- Input editable para sacar el teclado de la tablet -->
+                    <input type="number" inputmode="decimal" id="efectivo-recibido" placeholder="Toca para ingresar monto..." style="width:100%; padding:16px; border-radius:var(--radius-sm); border:1px solid var(--accent-color); font-size:24px; font-weight:900; margin-bottom:15px; background:var(--input-bg); text-align:right; box-shadow:0 0 0 4px var(--accent-glow);" oninput="calcularCambio()">
                     
-                    <!-- Teclado Numérico (Numpad) -->
-                    <div class="numpad-grid">
-                        <button class="numpad-btn" onclick="numpadPress('1')">1</button>
-                        <button class="numpad-btn" onclick="numpadPress('2')">2</button>
-                        <button class="numpad-btn" onclick="numpadPress('3')">3</button>
-                        <button class="numpad-btn" onclick="numpadPress('4')">4</button>
-                        <button class="numpad-btn" onclick="numpadPress('5')">5</button>
-                        <button class="numpad-btn" onclick="numpadPress('6')">6</button>
-                        <button class="numpad-btn" onclick="numpadPress('7')">7</button>
-                        <button class="numpad-btn" onclick="numpadPress('8')">8</button>
-                        <button class="numpad-btn" onclick="numpadPress('9')">9</button>
-                        <button class="numpad-btn action" onclick="numpadClear()">C</button>
-                        <button class="numpad-btn" onclick="numpadPress('0')">0</button>
-                        <button class="numpad-btn action" onclick="numpadBackspace()"><i data-lucide="delete"></i></button>
-                    </div>
-
                     <div style="display:flex; justify-content:space-between; align-items:center; border-top:2px dashed var(--border-color); padding-top:15px;">
                         <span style="font-weight:800; color:var(--text-secondary); font-size:15px;">Dar de cambio:</span>
                         <span id="cambio-mostrar" style="font-weight:900; font-size:24px; color:var(--success-color);">$0.00</span>
@@ -664,7 +662,6 @@
             <div class="cart-footer">
                 <label style="font-size:11px; font-weight:800; color:var(--text-secondary); text-transform:uppercase; margin-bottom:10px; display:block;">Método de Venta</label>
                 
-                <!-- Botonera de selección oculta que guarda el valor real -->
                 <select id="cart-payment-method" class="payment-method-sel" style="display:none;">
                     <option value="Efectivo" selected>Efectivo</option>
                     <option value="Tarjeta">Tarjeta</option>
@@ -673,7 +670,7 @@
 
                 <div class="quick-pay-grid">
                     <button class="quick-pay-btn active" id="btn-pay-efectivo" onclick="setMetodoPagoModerno('Efectivo', this)" style="border-color:var(--success-color); color:var(--success-color); background:rgba(52, 199, 89, 0.05);"><i data-lucide="banknote" size="24"></i> Efectivo</button>
-                    <button class="quick-pay-btn" id="btn-pay-tarjeta" onclick="setMetodoPagoModerno('Tarjeta', this)"><i data-lucide="credit-card" size="24"></i> Tarjeta</button>
+                    <button class="quick-pay-btn" id="btn-pay-tarjeta" onclick="setMetodoPagoModerno('Tarjeta', this)"><i data-lucide="credit-card" size="24"></i> Tarjeta / Transf</button>
                     <button class="quick-pay-btn" id="btn-pay-fiar" onclick="setMetodoPagoModerno('Fiar', this)"><i data-lucide="calendar-clock" size="24"></i> Fiar</button>
                 </div>
                 
@@ -686,7 +683,6 @@
                     <i data-lucide="check-circle" size="24"></i> Confirmar Operación
                 </button>
                 
-                <!-- Selector para abrir opciones avanzadas (Cotizar) -->
                 <button class="btn btn-secondary" style="width:100%; margin-top:15px; font-size:14px; background:transparent; box-shadow:none; color:var(--accent-color);" onclick="toggleExtendedCartForm(this)">
                     <i data-lucide="chevron-down" size="18"></i> Crear Cotización / Opciones extra
                 </button>
@@ -723,11 +719,22 @@
         <div class="ios-modal" onclick="event.stopPropagation()">
             <div class="drag-handle"></div>
             <h2 id="prod-modal-title" style="font-weight:900; font-size:24px; margin-bottom:25px;">Nuevo Producto</h2>
+            
+            <!-- NUEVA CALCULADORA DE PAQUETES -->
+            <div class="package-calc-box">
+                <h4 style="font-size:14px; font-weight:800; margin-bottom:10px; color:var(--accent-color);"><i data-lucide="calculator" size="16" style="vertical-align:middle;"></i> Calculadora Rápida (Mayoreo)</h4>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <div class="form-group" style="flex:1; margin-bottom:0;"><label>Costo total del Paquete ($)</label><input type="number" id="calc-costo-paquete" placeholder="0.00" oninput="calcularPrecioSugeridoPaquete()"></div>
+                    <div class="form-group" style="flex:1; margin-bottom:0;"><label>Cant. de Piezas</label><input type="number" id="calc-piezas" placeholder="0" oninput="calcularPrecioSugeridoPaquete()"></div>
+                </div>
+                <div style="font-size:12px; font-weight:700; color:var(--text-secondary); text-align:right;">Rellena precio sugerido con <span style="color:var(--success-color);">+35% de ganancia</span></div>
+            </div>
+
             <input type="hidden" id="prod-id">
             <div class="form-group"><label>Nombre del Producto</label><input type="text" id="prod-nombre" placeholder="Ej. Impresión Color Carta"></div>
             <div class="form-group"><label>Categoría</label><select id="prod-categoria" style="padding:16px; font-weight:700;"><option value="Papelería">Papelería</option><option value="Impresiones">Impresiones</option><option value="Servicios">Servicios</option><option value="Juguetes">Juguetes</option></select></div>
             <div style="display:flex; gap:15px;">
-                <div class="form-group" style="flex:1;"><label>Costo Real ($)</label><input type="number" id="prod-costo" placeholder="0.00"></div>
+                <div class="form-group" style="flex:1;"><label>Costo Real Unitario ($)</label><input type="number" id="prod-costo" placeholder="0.00"></div>
                 <div class="form-group" style="flex:1;"><label>Precio de Venta ($)</label><input type="number" id="prod-venta" placeholder="0.00"></div>
             </div>
             <div class="form-group" style="margin-bottom: 25px;">
@@ -760,9 +767,61 @@
     </div>
 
     <div class="modal-overlay" id="stock-alerts-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:10px; display:flex; align-items:center; gap:10px;"><i data-lucide="alert-triangle" size="24" style="color:var(--warning-color);"></i> Resurtir Inventario</h2><p style="font-size:14px; color:var(--text-secondary); font-weight:600; margin-bottom:20px;">Análisis predictivo y artículos con bajo stock.</p><div id="low-stock-list" style="max-height: 50vh; overflow-y: auto; padding-right:5px;"></div><button class="btn btn-outline" style="width:100%; margin-top:20px; padding:16px;" onclick="closeStockAlerts(null)">Cerrar Alertas</button></div></div>
+    
     <div class="modal-overlay" id="abono-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:10px;">Registrar Abono</h2><p id="abono-cliente-text" style="color:var(--text-secondary); font-size:15px; font-weight:700; margin-bottom:25px;"></p><input type="hidden" id="abono-pedido-id"><div style="background:var(--card-bg); border-radius:var(--radius-md); padding:20px; margin-bottom:25px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);"><div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span style="font-weight:700; color:var(--text-secondary);">Total de la deuda:</span><span id="abono-total" style="font-weight:900; font-size:16px;">$0.00</span></div><div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span style="font-weight:700; color:var(--text-secondary);">Abonado hasta ahora:</span><span id="abono-pagado" style="font-weight:900; font-size:16px; color:var(--success-color);">$0.00</span></div><div style="display:flex; justify-content:space-between; border-top:2px dashed var(--border-color); padding-top:15px;"><span style="font-weight:800;">Restante a pagar:</span><span id="abono-restante" style="font-weight:900; font-size:20px; color:var(--danger-color);">$0.00</span></div></div><div class="form-group"><label>Monto a Abonar ($)</label><input type="number" id="abono-monto" placeholder="0.00" style="font-size:20px; font-weight:800; padding:18px;"></div><button class="btn btn-primary" style="width:100%; padding:18px; font-size:16px;" onclick="procesarAbono()"><i data-lucide="check-circle" size="20"></i> Guardar Abono</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeAbonoModal(null)">Cancelar</button></div></div>
+    
     <div class="modal-overlay" id="detalle-fondos-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 id="detalle-fondos-titulo" style="font-weight:900; font-size:24px; margin-bottom:10px;">Detalle de Fondos</h2><p style="color:var(--text-secondary); font-size:14px; font-weight:600; margin-bottom:20px;">Historial de movimientos.</p><div id="detalle-fondos-contenido" style="background:var(--card-bg); border-radius:var(--radius-md); border:1px solid var(--border-color); padding:20px; max-height: 55vh; overflow-y: auto; box-shadow:var(--shadow-sm);"></div><button class="btn btn-outline" style="width:100%; margin-top:20px; padding:16px;" onclick="closeDetalleFondos(null)">Cerrar Detalles</button></div></div>
-    <div class="modal-overlay" id="daily-summary-modal"><div class="ios-modal" onclick="event.stopPropagation()" style="max-width: 650px;"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:26px; margin-bottom:20px;"><i data-lucide="file-bar-chart" size="26" style="vertical-align:middle; color:var(--accent-color); margin-right:8px;"></i> Resumen Diario</h2><div style="display:flex; gap:12px; margin-bottom:25px;"><input type="date" id="summary-date" style="flex:1; background:var(--input-bg); border:1px solid var(--border-color); padding:16px; border-radius:var(--radius-md); font-weight:800; font-size:16px; cursor:pointer;"><button class="btn btn-primary" style="padding:16px 24px; border-radius:var(--radius-md);" onclick="generateDailySummary()"><i data-lucide="search" size="18"></i> Generar</button></div><div id="daily-summary-content" style="display:none; animation: slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;"><div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-bottom:25px;"><div style="background:var(--input-bg); padding:18px; border-radius:var(--radius-md); text-align:center; border:1px solid var(--border-color);"><small style="color:var(--text-secondary); font-weight:800; letter-spacing:0.5px;">VENTA BRUTA</small><h3 id="ds-bruta" style="color:var(--text-primary); font-size:22px; font-weight:900; margin-top:8px;">$0.00</h3></div><div style="background:rgba(255, 59, 48, 0.05); padding:18px; border-radius:var(--radius-md); text-align:center; border:1px solid rgba(255,59,48,0.2);"><small style="color:var(--danger-color); font-weight:800; letter-spacing:0.5px;">COSTO MAT.</small><h3 id="ds-costo" style="color:var(--danger-color); font-size:22px; font-weight:900; margin-top:8px;">$0.00</h3></div><div style="background:rgba(52, 199, 89, 0.05); padding:18px; border-radius:var(--radius-md); text-align:center; border:1px solid rgba(52,199,89,0.2);"><small style="color:var(--success-color); font-weight:800; letter-spacing:0.5px;">UTILIDAD</small><h3 id="ds-utilidad" style="color:var(--success-color); font-size:22px; font-weight:900; margin-top:8px;">$0.00</h3></div></div><h4 style="font-size:18px; font-weight:900; margin-bottom:15px; color:var(--accent-color);"><i data-lucide="package" size="20" style="vertical-align:middle;"></i> Detalle de Productos</h4><div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); max-height:250px; overflow-y:auto; transform:translateZ(0);"><table class="excel-table" style="margin-bottom:0; box-shadow:none; border:none; border-radius:0;"><thead style="position:sticky; top:0; z-index:5;"><tr><th style="text-align:left;">Producto</th><th>Vendidos</th><th>Total ($)</th></tr></thead><tbody id="ds-top-products"></tbody></table></div></div><button class="btn btn-outline" style="width:100%; margin-top:25px; padding:18px; font-size:16px;" onclick="closeDailySummaryModal()">Cerrar Resumen</button></div></div>
+    
+    <!-- NUEVO REPORTE DIARIO CON GRÁFICOS Y DESGLOSE -->
+    <div class="modal-overlay" id="daily-summary-modal"><div class="ios-modal" onclick="event.stopPropagation()" style="max-width: 750px;"><div class="drag-handle"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h2 style="font-weight:900; font-size:26px;"><i data-lucide="file-bar-chart" size="26" style="vertical-align:middle; color:var(--accent-color); margin-right:8px;"></i> Analítica del Día</h2>
+            <button class="btn btn-secondary" style="padding: 8px 12px; font-size:12px;" onclick="downloadTableAsPNG('resumen-diario-captura', 'Reporte_Diario')"><i data-lucide="download" size="14"></i> Exportar</button>
+        </div>
+        
+        <div style="display:flex; gap:12px; margin-bottom:25px;"><input type="date" id="summary-date" style="flex:1; background:var(--input-bg); border:1px solid var(--border-color); padding:16px; border-radius:var(--radius-md); font-weight:800; font-size:16px; cursor:pointer;"><button class="btn btn-primary" style="padding:16px 24px; border-radius:var(--radius-md);" onclick="generateDailySummary()"><i data-lucide="search" size="18"></i> Generar</button></div>
+        
+        <div id="resumen-diario-captura" style="background:var(--card-bg); padding:10px;">
+            <div id="daily-summary-content" style="display:none; animation: slideUpFade 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;">
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-bottom:25px;">
+                    <div style="background:var(--input-bg); padding:18px; border-radius:var(--radius-md); text-align:center; border:1px solid var(--border-color);"><small style="color:var(--text-secondary); font-weight:800; letter-spacing:0.5px;">VENTA BRUTA</small><h3 id="ds-bruta" style="color:var(--text-primary); font-size:24px; font-weight:900; margin-top:8px;">$0.00</h3></div>
+                    <div style="background:rgba(255, 59, 48, 0.05); padding:18px; border-radius:var(--radius-md); text-align:center; border:1px solid rgba(255,59,48,0.2);"><small style="color:var(--danger-color); font-weight:800; letter-spacing:0.5px;">COSTO MAT.</small><h3 id="ds-costo" style="color:var(--danger-color); font-size:24px; font-weight:900; margin-top:8px;">$0.00</h3></div>
+                    <div style="background:rgba(52, 199, 89, 0.05); padding:18px; border-radius:var(--radius-md); text-align:center; border:1px solid rgba(52,199,89,0.2);"><small style="color:var(--success-color); font-weight:800; letter-spacing:0.5px;">UTILIDAD NETA</small><h3 id="ds-utilidad" style="color:var(--success-color); font-size:24px; font-weight:900; margin-top:8px;">$0.00</h3></div>
+                </div>
+
+                <div style="display:flex; gap:20px; margin-bottom:20px;">
+                    <!-- Gráfica de Métodos de Pago -->
+                    <div style="flex:1; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:15px;">
+                        <h4 style="font-size:14px; font-weight:800; margin-bottom:10px; color:var(--text-secondary); text-align:center;">Métodos de Pago</h4>
+                        <div style="display:flex; justify-content:space-around; text-align:center; margin-top:15px;">
+                            <div>
+                                <i data-lucide="banknote" size="24" style="color:var(--success-color); margin-bottom:5px;"></i>
+                                <div id="ds-efectivo" style="font-weight:900; font-size:16px;">$0.00</div>
+                            </div>
+                            <div>
+                                <i data-lucide="credit-card" size="24" style="color:var(--accent-color); margin-bottom:5px;"></i>
+                                <div id="ds-tarjeta" style="font-weight:900; font-size:16px;">$0.00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Indicadores de Categoría -->
+                    <div style="flex:1; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:15px;">
+                        <h4 style="font-size:14px; font-weight:800; margin-bottom:10px; color:var(--text-secondary); text-align:center;">Utilidad por Categoría</h4>
+                        <div id="ds-kpi-categories" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                            <!-- Insertadas por JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="font-size:16px; font-weight:900; margin-bottom:15px; color:var(--accent-color);"><i data-lucide="package" size="18" style="vertical-align:middle;"></i> Top Productos Vendidos Hoy</h4>
+                <div style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); max-height:220px; overflow-y:auto; transform:translateZ(0);">
+                    <table class="excel-table" style="margin-bottom:0; box-shadow:none; border:none; border-radius:0;"><thead style="position:sticky; top:0; z-index:5;"><tr><th style="text-align:left;">Producto</th><th>Vendidos</th><th>Total ($)</th></tr></thead><tbody id="ds-top-products"></tbody></table>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-outline" style="width:100%; margin-top:25px; padding:18px; font-size:16px;" onclick="closeDailySummaryModal()">Cerrar Resumen</button>
+    </div></div>
 
     <div class="tab-bar">
         <div class="tab-item active" onclick="switchTab('ventas', this)"><i data-lucide="shopping-cart" size="24"></i><span>Ventas</span></div>
@@ -779,7 +838,7 @@
         const $$ = sel => document.querySelectorAll(sel);
         
         let desgloseFondosActual = { costo: [], gastos: [], costoJug: [], gastosJug: [] }, lastDeletedProduct = null, lastDeletedIndex = -1, quoteToConvertId = null, pressTimer, isLongPress = false, wakeLock = null;
-        let carrito = [], currentCategoryFilter = 'Todas', currentHistoryFilter = 'todos', currentPedidosFilter = 'todos', currentPeriodMetrics = 'hoy', currentChart = null;
+        let carrito = [], currentCategoryFilter = 'Todas', currentHistoryFilter = 'todos', currentPedidosFilter = 'todos', currentPeriodMetrics = 'hoy', currentChart = null, currentPieChart = null;
 
         async function requestWakeLock() { try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch (err) {} }
         document.addEventListener('visibilitychange', async () => { if (wakeLock !== null && document.visibilityState === 'visible') requestWakeLock(); });
@@ -858,6 +917,19 @@
             initMarginCalculator();
         });
 
+        // NUEVA FUNCIÓN: Calculadora de Paquete (+35% margen)
+        function calcularPrecioSugeridoPaquete() {
+            const costoPaquete = parseFloat($('calc-costo-paquete').value) || 0;
+            const piezas = parseInt($('calc-piezas').value) || 0;
+            if (costoPaquete > 0 && piezas > 0) {
+                const costoUnitario = costoPaquete / piezas;
+                const precioSugerido = costoUnitario * 1.35; 
+                $('prod-costo').value = costoUnitario.toFixed(2);
+                $('prod-venta').value = Math.ceil(precioSugerido); // Redondeo hacia arriba para mejor precio
+                $('prod-costo').dispatchEvent(new Event('input')); 
+            }
+        }
+
         function initMarginCalculator() {
             const iCost = $('prod-costo'), iPrice = $('prod-venta'), iMargin = $('margen-ganancia-auto');
             const calc = () => {
@@ -887,41 +959,12 @@
             }
         }
 
-        /* NUMPAD Y CALCULADORA NUEVA */
-        function numpadPress(num) {
-            const input = $('efectivo-recibido');
-            if(input.value.length < 8) {
-                input.value += num;
-                calcularCambio();
-                playSynthSound('click_tab');
-            }
-        }
-        function numpadClear() {
-            $('efectivo-recibido').value = '';
-            calcularCambio();
-            playSynthSound('delete');
-        }
-        function numpadBackspace() {
-            const input = $('efectivo-recibido');
-            input.value = input.value.slice(0, -1);
-            calcularCambio();
-            playSynthSound('click_tab');
-        }
-
         function toggleCalculadoraCambio() { 
             const method = $('cart-payment-method').value; 
             const calc = $('calculadora-cambio'); 
             if(calc) calc.style.display = method === 'Efectivo' ? 'block' : 'none'; 
             if(method !== 'Efectivo' && $('efectivo-recibido')) $('efectivo-recibido').value = ''; 
             calcularCambio(); 
-        }
-
-        function setEfectivo(monto) { 
-            const total = carrito.reduce((sum, i) => sum + (i.precioVenta * i.qty), 0); 
-            if(monto === 0) $('efectivo-recibido').value = total; 
-            else $('efectivo-recibido').value = monto; 
-            calcularCambio(); 
-            playSynthSound('click_tab');
         }
 
         function calcularCambio() { 
@@ -1037,7 +1080,6 @@
         }
         function vaciarCarrito(e) { if(e) e.stopPropagation(); if(carrito.length === 0) return; carrito = []; playSynthSound('delete'); updateCartUI(); showToast('Carrito vacío'); }
 
-        // FUNCIONES MODERNAS DEL CARRITO (SWIPE)
         function setMetodoPagoModerno(metodo, btnEl) {
             document.querySelectorAll('.quick-pay-btn').forEach(btn => btn.classList.remove('active'));
             btnEl.classList.add('active');
@@ -1106,18 +1148,12 @@
                 }, {passive: true});
                 el.addEventListener('touchmove', e => {
                     currentX = e.touches[0].clientX - startX;
-                    // Solo permitir deslizar hacia la izquierda
-                    if(currentX < 0 && currentX > -90) {
-                        el.style.transform = `translateX(${currentX}px)`;
-                    }
+                    if(currentX < 0 && currentX > -90) { el.style.transform = `translateX(${currentX}px)`; }
                 }, {passive: true});
                 el.addEventListener('touchend', e => {
                     el.classList.remove('swiping');
-                    if(currentX < -40) {
-                        el.style.transform = `translateX(-80px)`;
-                    } else {
-                        el.style.transform = `translateX(0)`;
-                    }
+                    if(currentX < -40) { el.style.transform = `translateX(-80px)`; } 
+                    else { el.style.transform = `translateX(0)`; }
                     currentX = 0;
                 });
             });
@@ -1460,6 +1496,7 @@
         function closeDetalleFondos(e) { $('detalle-fondos-modal').classList.remove('active'); }
 
         function changeMetricsPeriod(period, el) { playSynthSound('click_tab'); $$('#reportes .categories-chips .chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); currentPeriodMetrics = period; renderReports(); }
+        
         function renderReports() {
             let filteredSales = []; const now = new Date(), todayStr = getLocalISO(now).slice(0, 10);
             let weekAgo = new Date(); weekAgo.setDate(now.getDate() - 7); let monthAgo = new Date(); monthAgo.setDate(now.getDate() - 30); let yearAgo = new Date(); yearAgo.setDate(now.getDate() - 365);
@@ -1468,8 +1505,60 @@
             if (currentPeriodMetrics === 'hoy') filteredSales = ventas.filter(v => v.fecha.startsWith(todayStr)); else if (currentPeriodMetrics === 'ayer') { let y = new Date(); y.setDate(now.getDate() - 1); filteredSales = ventas.filter(v => v.fecha.startsWith(getLocalISO(y).slice(0, 10))); } else if (currentPeriodMetrics === 'semana') filteredSales = ventas.filter(v => new Date(v.fecha) >= weekAgo); else if (currentPeriodMetrics === 'mes') filteredSales = ventas.filter(v => new Date(v.fecha) >= monthAgo); else if (currentPeriodMetrics === 'ano') filteredSales = ventas.filter(v => new Date(v.fecha) >= yearAgo);
             
             $('rep-total').innerText = `$${filteredSales.reduce((sum, v) => sum + v.total, 0).toFixed(2)}`; $('rep-utilidad').innerText = `$${filteredSales.reduce((sum, v) => sum + v.ganancia, 0).toFixed(2)}`;
-            $('pay-efectivo').innerText = `$${filteredSales.filter(v => v.pago === 'Efectivo').reduce((sum, v) => sum + v.total, 0).toFixed(2)}`; $('pay-tarjeta').innerText = `$${filteredSales.filter(v => v.pago === 'Tarjeta').reduce((sum, v) => sum + v.total, 0).toFixed(2)}`; $('pay-transf').innerText = `$${filteredSales.filter(v => v.pago === 'Transferencia').reduce((sum, v) => sum + v.total, 0).toFixed(2)}`;
+            $('pay-efectivo').innerText = `$${filteredSales.filter(v => v.pago === 'Efectivo').reduce((sum, v) => sum + v.total, 0).toFixed(2)}`; $('pay-tarjeta').innerText = `$${filteredSales.filter(v => ['Tarjeta','Transferencia'].includes(v.pago)).reduce((sum, v) => sum + v.total, 0).toFixed(2)}`;
+            $('pay-transf').innerText = `$0.00`; // Combinado arriba en la nueva UI
             
+            // ---------------------------------------------------------
+            // NUEVO: GRÁFICA DE PASTEL (Ingresos por Categoría)
+            // ---------------------------------------------------------
+            const ctxPie = $('categoryChart');
+            if(ctxPie) {
+                const catTotals = { 'Papelería': 0, 'Impresiones': 0, 'Servicios': 0, 'Juguetes': 0 };
+                const catMargins = { 'Papelería': 0, 'Impresiones': 0, 'Servicios': 0, 'Juguetes': 0 };
+                
+                filteredSales.forEach(v => {
+                    v.productos.forEach(p => {
+                        const cat = p.categoria || 'Otros';
+                        if(catTotals[cat] !== undefined) {
+                            catTotals[cat] += (p.precioVenta * p.qty);
+                            catMargins[cat] += ((p.precioVenta - p.precioCosto) * p.qty);
+                        }
+                    });
+                });
+
+                let bestCat = '--';
+                let bestMarginPct = 0;
+                let maxMarginVal = 0;
+                
+                for(let c in catMargins) {
+                    if(catMargins[c] > maxMarginVal) {
+                        maxMarginVal = catMargins[c];
+                        bestCat = c;
+                        bestMarginPct = catTotals[c] > 0 ? (catMargins[c] / catTotals[c]) * 100 : 0;
+                    }
+                }
+                
+                $('top-category-name').innerText = bestCat;
+                $('top-category-margin').innerText = `Margen Neta: ${bestMarginPct.toFixed(1)}%`;
+
+                if(window.currentPieChart) window.currentPieChart.destroy();
+                window.currentPieChart = new Chart(ctxPie.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(catTotals),
+                        datasets: [{
+                            data: Object.values(catTotals),
+                            backgroundColor: ['#0071e3', '#34c759', '#ff9500', '#ff3b30'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels:{font:{size:11, weight:'bold', family:'system-ui'}} } }, cutout: '70%' }
+                });
+            }
+
+            // ---------------------------------------------------------
+            // GRÁFICA DE BARRAS (Tendencia)
+            // ---------------------------------------------------------
             const ctx = $('salesChart').getContext('2d'), labels = [], salesData = [];
             if (['hoy', 'ayer'].includes(currentPeriodMetrics)) { for (let i = 4; i >= 0; i--) { const d = new Date(); d.setDate(now.getDate() - i); labels.push(d.toLocaleDateString('es-MX', { weekday: 'short', day: 'numeric' })); salesData.push(ventas.filter(v => v.fecha.startsWith(getLocalISO(d).slice(0, 10))).reduce((sum, v) => sum + v.total, 0)); } } 
             else if (currentPeriodMetrics === 'semana') { for (let i = 3; i >= 0; i--) { const currentMonday = getMonday(new Date()); currentMonday.setDate(currentMonday.getDate() - (i * 7)); const endOfWeek = new Date(currentMonday); endOfWeek.setDate(currentMonday.getDate() + 7); labels.push(`Sem ${currentMonday.getDate()}/${currentMonday.getMonth()+1}`); salesData.push(ventas.filter(v => { const vf = new Date(v.fecha); return vf >= currentMonday && vf < endOfWeek; }).reduce((sum, v) => sum + v.total, 0)); } } 
@@ -1482,13 +1571,60 @@
 
         function openDailySummaryModal() { playSynthSound('modal'); $('summary-date').value = getLocalISO().slice(0, 10); $('daily-summary-content').style.display = 'none'; $('daily-summary-modal').classList.add('active'); }
         function closeDailySummaryModal() { $('daily-summary-modal').classList.remove('active'); }
+        
+        // NUEVA FUNCIÓN: Reporte Diario Mejorado
         function generateDailySummary() {
-            playSynthSound('click_tab'); const targetDate = $('summary-date').value; if(!targetDate) return; const ventasDelDia = ventas.filter(v => v.fecha.startsWith(targetDate));
-            let totalBruto = 0, totalCosto = 0, totalUtilidad = 0; const conteoProductos = {};
-            ventasDelDia.forEach(v => { totalBruto += v.total; totalCosto += (v.costoMaterial || 0); totalUtilidad += v.ganancia; v.productos.forEach(p => { if(!conteoProductos[p.nombre]) { conteoProductos[p.nombre] = { qty: 0, totalVenta: 0 }; } conteoProductos[p.nombre].qty += p.qty; conteoProductos[p.nombre].totalVenta += (p.qty * p.precioVenta); }); });
-            $('ds-bruta').innerText = `$${totalBruto.toFixed(2)}`; $('ds-costo').innerText = `$${totalCosto.toFixed(2)}`; $('ds-utilidad').innerText = `$${totalUtilidad.toFixed(2)}`;
+            playSynthSound('click_tab'); const targetDate = $('summary-date').value; if(!targetDate) return; 
+            const ventasDelDia = ventas.filter(v => v.fecha.startsWith(targetDate));
+            
+            let totalBruto = 0, totalCosto = 0, totalUtilidad = 0; 
+            let pagoEfectivo = 0, pagoTarjeta = 0;
+            const conteoProductos = {};
+            const catData = { 'Papelería': 0, 'Impresiones': 0, 'Servicios': 0, 'Juguetes': 0 };
+
+            ventasDelDia.forEach(v => { 
+                totalBruto += v.total; 
+                totalCosto += (v.costoMaterial || 0); 
+                totalUtilidad += v.ganancia; 
+                
+                if(v.pago === 'Efectivo') pagoEfectivo += v.total;
+                else pagoTarjeta += v.total;
+
+                v.productos.forEach(p => { 
+                    if(!conteoProductos[p.nombre]) { conteoProductos[p.nombre] = { qty: 0, totalVenta: 0 }; } 
+                    conteoProductos[p.nombre].qty += p.qty; 
+                    conteoProductos[p.nombre].totalVenta += (p.qty * p.precioVenta); 
+
+                    const cat = p.categoria || 'Otros';
+                    if(catData[cat] !== undefined) catData[cat] += ((p.precioVenta - p.precioCosto) * p.qty);
+                }); 
+            });
+
+            $('ds-bruta').innerText = `$${totalBruto.toFixed(2)}`; 
+            $('ds-costo').innerText = `$${totalCosto.toFixed(2)}`; 
+            $('ds-utilidad').innerText = `$${totalUtilidad.toFixed(2)}`;
+            
+            $('ds-efectivo').innerText = `$${pagoEfectivo.toFixed(2)}`;
+            $('ds-tarjeta').innerText = `$${pagoTarjeta.toFixed(2)}`;
+
+            // Llenar KPI Categorías
+            let maxCatProfit = -1; let bestCatName = '';
+            for(let c in catData) { if(catData[c] > maxCatProfit) { maxCatProfit = catData[c]; bestCatName = c; } }
+            
+            const kpiContainer = $('ds-kpi-categories');
+            kpiContainer.innerHTML = '';
+            for(let c in catData) {
+                const isBest = c === bestCatName && maxCatProfit > 0;
+                kpiContainer.innerHTML += `
+                    <div class="kpi-util-card ${isBest ? 'best' : ''}">
+                        <span style="font-size:12px; font-weight:800; color:var(--text-secondary);">${c}</span>
+                        <span style="font-size:16px; font-weight:900; color:${isBest ? 'var(--success-color)' : 'var(--text-primary)'};">$${catData[c].toFixed(2)}</span>
+                    </div>`;
+            }
+
             const todosLosProductos = Object.entries(conteoProductos).sort((a, b) => b[1].qty - a[1].qty), tbody = $('ds-top-products'); tbody.innerHTML = '';
-            if(todosLosProductos.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:20px; color:var(--text-secondary); font-weight:700;">No hay ventas.</td></tr>'; } else { todosLosProductos.forEach(([nombre, data]) => { tbody.innerHTML += `<tr><td style="text-align:left; font-weight:700;">${nombre}</td><td style="font-weight:900; color:var(--accent-color); font-size:15px;">${data.qty}</td><td style="font-weight:800;">$${data.totalVenta.toFixed(2)}</td></tr>`; }); }
+            if(todosLosProductos.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:20px; color:var(--text-secondary); font-weight:700;">No hay ventas registradas.</td></tr>'; } else { todosLosProductos.forEach(([nombre, data]) => { tbody.innerHTML += `<tr><td style="text-align:left; font-weight:700;">${nombre}</td><td style="font-weight:900; color:var(--accent-color); font-size:15px;">${data.qty}</td><td style="font-weight:800;">$${data.totalVenta.toFixed(2)}</td></tr>`; }); }
+            
             $('daily-summary-content').style.display = 'block';
         }
 
@@ -1589,8 +1725,10 @@
             if(id) {
                 const p = productos.find(x => x.id === id); if(!p) return;
                 $('prod-modal-title').innerText = 'Editar Producto'; $('prod-id').value = p.id; $('prod-nombre').value = p.nombre; $('prod-categoria').value = p.categoria || 'Papelería'; $('prod-costo').value = p.precioCosto; $('prod-venta').value = p.precioVenta; $('prod-stock').value = p.stock; $('btn-delete-prod').style.display = 'block';
+                $('calc-costo-paquete').value = ''; $('calc-piezas').value = '';
             } else {
                 $('prod-modal-title').innerText = 'Nuevo Producto'; $('prod-id').value = ''; $('prod-nombre').value = ''; $('prod-categoria').value = 'Papelería'; $('prod-costo').value = ''; $('prod-venta').value = ''; $('prod-stock').value = ''; $('btn-delete-prod').style.display = 'none';
+                $('calc-costo-paquete').value = ''; $('calc-piezas').value = '';
             }
             $('prod-costo').dispatchEvent(new Event('input')); renderIcons();
         }
@@ -1614,14 +1752,14 @@
             if(typeof html2canvas === 'undefined') { showToast('Herramienta de exportación no cargada'); return; }
             const targetEl = document.getElementById(elId); if(!targetEl) { showToast('No se encontró el área'); return; }
             showToast('Generando imagen...');
-            try { const canvas = await html2canvas(targetEl, { backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg-color') }); const link = document.createElement('a'); link.download = `${name}_PrintCenter_${new Date().getTime()}.png`; link.href = canvas.toDataURL(); link.click(); } 
+            try { const canvas = await html2canvas(targetEl, { backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg-color') }); const link = document.createElement('a'); link.download = `${name}_PrintCenterPro_${new Date().getTime()}.png`; link.href = canvas.toDataURL(); link.click(); } 
             catch(e) { showToast('Error al exportar'); }
         }
         
         function exportData() { 
             const data = { productos, ventas, pedidos, gastos, clientesDirectorio, ajustesSaldo, distribuciones, distribucionesJuguetes, waTemplates }; 
             const blob = new Blob([JSON.stringify(data)], { type: 'application/json' }); 
-            const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `PrintCenter_Backup_${new Date().getTime()}.json`; link.click(); showToast('Respaldo descargado'); 
+            const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `PrintCenterPro_Backup_${new Date().getTime()}.json`; link.click(); showToast('Respaldo descargado'); 
         }
         function importData(e) { 
             const file = e.target.files[0]; if(!file) return; const reader = new FileReader(); 
