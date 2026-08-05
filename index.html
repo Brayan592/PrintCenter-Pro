@@ -134,9 +134,9 @@
         .sidebar-logo span { font-weight:900; font-size:22px; letter-spacing:-0.5px; }
         .sidebar-logo span span { color:var(--text-secondary); font-weight:700; }
         .sidebar > div:first-child { display: flex; flex-direction: column; height: calc(100vh - 120px); overflow: hidden; }
-.sidebar-menu { flex: 1; overflow-y: auto; overflow-x: hidden; padding-right: 10px; padding-bottom: 20px; scrollbar-width: none; }
-.sidebar-menu::-webkit-scrollbar { display: none; }
-.sidebar-menu button { width: 100%; padding: 14px 18px; border: none; background: transparent; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 14px; cursor: pointer; margin-bottom: 8px; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); flex-shrink: 0; }
+        .sidebar-menu { flex: 1; overflow-y: auto; overflow-x: hidden; padding-right: 10px; padding-bottom: 20px; scrollbar-width: none; }
+        .sidebar-menu::-webkit-scrollbar { display: none; }
+        .sidebar-menu button { width: 100%; padding: 14px 18px; border: none; background: transparent; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 14px; cursor: pointer; margin-bottom: 8px; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); flex-shrink: 0; }
         .sidebar-menu button:hover { background: rgba(0,0,0,0.05); color: var(--text-primary); transform: translateX(6px); }
         .sidebar-menu button.active { background: var(--accent-color); color: #fff; box-shadow: 0 8px 20px var(--accent-glow); transform: translateX(6px); }
         
@@ -154,13 +154,13 @@
         .bell-dot-header { position: absolute; top: 0; right: 0; background: var(--danger-color); width: 14px; height: 14px; border-radius: 50%; display: none; border: 2px solid var(--glass-bg); animation: pulseAlert 2s infinite; }
         
         /* =========================================
-           NUEVAS TRANSICIONES DE PESTAÑAS (PREMIUM)
+           TRANSICIONES DE PESTAÑAS (LIGERAS Y RÁPIDAS)
         ========================================= */
         .tab-content { display: none; opacity: 0; }
-        .tab-content.active { display: block; animation: tabEnterPremium 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-        .tab-content.leaving { display: block !important; position: absolute; top: 0; left: 0; width: 100%; z-index: -1; animation: tabLeavePremium 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; pointer-events: none; }
-        @keyframes tabEnterPremium { 0% { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-        @keyframes tabLeavePremium { 0% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } 100% { opacity: 0; transform: translateY(-20px) scale(0.98); filter: blur(8px); } }
+        .tab-content.active { display: block; animation: tabEnterLight 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .tab-content.leaving { display: block !important; position: absolute; top: 0; left: 0; width: 100%; z-index: -1; animation: tabLeaveLight 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; pointer-events: none; }
+        @keyframes tabEnterLight { 0% { opacity: 0; transform: translateY(8px) scale(0.99); filter: blur(2px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+        @keyframes tabLeaveLight { 0% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } 100% { opacity: 0; transform: translateY(-8px) scale(0.99); filter: blur(2px); } }
 
         ::view-transition-old(product-zoom),
         ::view-transition-new(product-zoom) {
@@ -331,10 +331,10 @@
         @keyframes islandOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.5) translateY(-20px); opacity: 0; filter: blur(5px); width: 40px; border-radius: 50%; } }
         
         .tab-bar { position: fixed; bottom: 20px; left: 15px; right: 15px; background: var(--glass-bg); backdrop-filter: blur(25px); display: flex; justify-content: flex-start; align-items:center; padding: 16px; border-radius: 100px; border: 1px solid var(--glass-border); z-index: 30; box-shadow: var(--shadow-lg); overflow-x: auto; overflow-y: hidden; gap: 28px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; }
-.tab-bar:active { cursor: grabbing; }
-.tab-bar::-webkit-scrollbar { display: none; }
-.tab-item { display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); font-size: 11px; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); gap: 6px; flex: 0 0 auto; min-width: 65px; scroll-snap-align: center; }
-.tab-item.active { color: var(--accent-color); transform: translateY(-6px) scale(1.1); filter: drop-shadow(0 4px 8px var(--accent-glow)); }
+        .tab-bar:active { cursor: grabbing; }
+        .tab-bar::-webkit-scrollbar { display: none; }
+        .tab-item { display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); font-size: 11px; font-weight: 800; cursor: pointer; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); gap: 6px; flex: 0 0 auto; min-width: 65px; scroll-snap-align: center; }
+        .tab-item.active { color: var(--accent-color); transform: translateY(-6px) scale(1.1); filter: drop-shadow(0 4px 8px var(--accent-glow)); }
         
         .excel-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; background: transparent; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 24px; border: 1px solid var(--border-color); }
         .excel-table th, .excel-table td { padding: 18px 14px; text-align: center; border-bottom: 1px solid var(--border-color); }
@@ -593,12 +593,36 @@
         .ai-chart-mini { width: 100%; height: 180px; margin-top: 15px; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border-color); padding: 10px; }
         .ai-action-btn { background: var(--purple-color); color: white; border: none; padding: 10px 18px; border-radius: 100px; font-weight: 800; font-size: 13px; cursor: pointer; margin-top: 12px; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .ai-action-btn:hover { box-shadow: 0 4px 15px var(--purple-glow); transform: translateY(-2px); }
+
+        /* =========================================
+           NUEVO: CSS PARA LA PESTAÑA DE IA (SMARTCONTROL IA EXPANDIDO)
+        ========================================= */
+        .ai-tab-layout { display: flex; flex-direction: column; height: calc(100vh - 150px); max-width: 1200px; margin: 0 auto; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid rgba(175, 82, 222, 0.3); overflow: hidden; box-shadow: 0 20px 50px rgba(175, 82, 222, 0.15); }
+        @media (max-width: 768px) { .ai-tab-layout { height: calc(100vh - 240px); border-radius: var(--radius-md); } }
+
+        /* =========================================
+           NUEVO: POST-ITS Y NOTAS INTERNAS
+        ========================================= */
+        .notes-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin-top: 15px; }
+        .post-it { padding: 20px; border-radius: 4px 4px 20px 4px; position: relative; box-shadow: 2px 4px 12px rgba(0,0,0,0.06); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); display: flex; flex-direction: column; min-height: 150px; border-top: 12px solid rgba(0,0,0,0.1); }
+        .post-it:hover { transform: translateY(-6px) rotate(-2deg); box-shadow: 6px 12px 20px rgba(0,0,0,0.15); z-index: 2; }
+        .post-it-yellow { background: linear-gradient(135deg, #fef08a, #fde047); color: #854d0e; }
+        .post-it-blue { background: linear-gradient(135deg, #bae6fd, #7dd3fc); color: #1e3a8a; }
+        .post-it-pink { background: linear-gradient(135deg, #fbcfe8, #f472b6); color: #831843; }
+        .post-it-green { background: linear-gradient(135deg, #bbf7d0, #86efac); color: #14532d; }
+        .post-it-text { flex: 1; font-weight: 700; font-size: 15px; margin-bottom: 15px; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
+        .post-it-footer { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; font-weight: 800; opacity: 0.8; }
+        .post-it-del { background: rgba(0,0,0,0.05); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: 0.2s; color: inherit; }
+        .post-it-del:hover { background: rgba(0,0,0,0.15); transform: scale(1.1); color: var(--danger-color); }
+        .add-note-card { border: 2px dashed var(--border-color); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-secondary); cursor: pointer; transition: 0.3s; min-height: 150px; border-radius: 4px 4px 20px 4px; }
+        .add-note-card:hover { border-color: var(--warning-color); color: var(--warning-color); background: rgba(255, 149, 0, 0.05); transform: translateY(-4px); }
+
     </style>
 </head>
 <body>
-    <div id="toast-container"></div>
+<div id="toast-container"></div>
 
-<!-- OVERLAY DE CANDADO ANIMADO (LOGIN/LOGOUT) -->
+    <!-- OVERLAY DE CANDADO ANIMADO (LOGIN/LOGOUT) -->
     <div id="lock-overlay" style="display:none; position:fixed; inset:0; z-index:9999999; background:rgba(245, 245, 247, 0.85); backdrop-filter:blur(30px); align-items:center; justify-content:center; flex-direction:column; opacity:0; transition: opacity 0.4s;">
         <div id="lock-icon-container" style="transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);">
             <i id="lock-icon" data-lucide="lock" size="90" style="color:var(--accent-color); filter: drop-shadow(0 15px 25px var(--accent-glow));"></i>
@@ -669,6 +693,9 @@
                     <button onclick="switchTab('inventario', this)"><i data-lucide="package" size="20"></i> Inventario</button>
                     <button onclick="switchTab('clientes', this)"><i data-lucide="users" size="20"></i> Clientes</button>
                     
+                    <!-- NUEVA PESTAÑA: IA PRO -->
+                    <button class="admin-only" onclick="switchTab('ai-tab', this)"><i data-lucide="brain" size="20" style="color:var(--purple-color);"></i> IA Pro</button>
+
                     <button class="admin-only" onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="20"></i> Ajustes</button>
                 </div>
             </div>
@@ -696,7 +723,7 @@
                 </div>
                 <div style="display: flex; align-items: center; gap: 14px;">
                     <!-- BOTÓN ASISTENTE IA EN EL HEADER -->
-                    <div class="btn-rush stagger-item admin-only" style="animation-delay: 0.1s; background: linear-gradient(135deg, var(--purple-color), #d082f0); color: white;" onclick="openAIModal()" title="SmartControl IA"><i data-lucide="sparkles" size="20"></i></div>
+                    <div class="btn-rush stagger-item admin-only" style="animation-delay: 0.1s; background: linear-gradient(135deg, var(--purple-color), #d082f0); color: white;" onclick="switchTab('ai-tab')" title="SmartControl IA Pro"><i data-lucide="sparkles" size="20"></i></div>
                     
                     <div class="btn-rush stagger-item admin-only" style="background:var(--warning-color); position:relative; animation-delay: 0.1s;" onclick="openStockAlerts()" title="Alertas de Stock"><i data-lucide="bell" size="20"></i><div class="bell-dot-header" id="bell-dot"></div></div>
                     <div class="balance-pill stagger-item admin-only" style="animation-delay: 0.3s; background: linear-gradient(135deg, var(--success-color), #32d74b); color: white;" id="pill-caja-efectivo">Caja: $0.00</div>
@@ -705,6 +732,62 @@
             </header>
 
             <div class="container">
+                
+                <!-- ==========================================
+                     NUEVA PESTAÑA: SMARTCONTROL IA PRO
+                =========================================== -->
+                <div id="ai-tab" class="tab-content fade-in admin-only">
+                    <div class="ai-tab-layout stagger-item">
+                        <div class="ai-header" style="border-radius: var(--radius-lg) var(--radius-lg) 0 0;">
+                            <div class="ai-header-left">
+                                <div class="ai-icon-pulse"><i data-lucide="brain" size="24"></i></div>
+                                <div>
+                                    <h2 style="font-weight: 900; font-size: 24px; margin: 0; letter-spacing: -0.5px;">SmartControl IA Pro</h2>
+                                    <span style="font-size: 13px; font-weight: 700; opacity: 0.85; display:flex; align-items:center; gap:4px;">
+                                        <span style="width:8px; height:8px; background:#34c759; border-radius:50%; display:inline-block;"></span> Motor Avanzado (Cerebro 5x) en línea
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-chat-area" id="ai-tab-chat-history">
+                            <div class="ai-bubble">
+                                ¡Hola! Soy la nueva versión expandida de tu asistente en tiempo real. Ahora opero desde esta pestaña a pantalla completa y mi cerebro ha sido mejorado significativamente.<br><br>
+                                Ahora soy capaz de tener memoria conversacional, analizar el inventario, realizar operaciones directas sobre el carrito (aplicar descuentos), registrar ajustes de caja, buscar clientes y mucho más. ¿En qué te ayudo hoy?
+                            </div>
+                        </div>
+                        
+                        <!-- 15 MENSAJES PREDETERMINADOS -->
+                        <div class="ai-suggestions" id="ai-tab-suggestions-bar" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; justify-content: flex-start; border-top: 1px solid var(--border-color);">
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('¿Cuánto vendí hoy?')">📊 Ventas hoy</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Genera el corte de caja')">🖨️ Corte Diario</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Aplica 10% de descuento al carrito')">📉 Descuento 10%</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Busca un cliente')">🔍 Buscar Cliente</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('¿Quién es mi mejor cliente histórico?')">👑 Mejor Cliente</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Genera link de cobro')">🔗 Link de Cobro</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Registrar un gasto')">💸 Registrar Gasto</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Cotizar producto')">💰 Cotizar Producto</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Surtir inventario')">📦 Surtir Inventario</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Predicción de ventas mañana')">✨ Predicción Mañana</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Categoría más rentable')">📈 Top Categoría</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Hora pico de ventas')">⏰ Hora Pico</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Alertas de inventario')">⚠️ Alertas Stock</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Ventas con tarjeta')">💳 Pagos Tarjeta</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Ventas del mes')">🗓️ Ventas del Mes</button>
+                        </div>
+
+                        <div class="ai-input-wrap" style="border-radius: 0 0 var(--radius-lg) var(--radius-lg);">
+                            <input type="text" id="ai-tab-user-input" placeholder="Comandos avanzados, análisis de datos, caja, inventario..." autocomplete="off" onkeydown="if(event.key==='Enter') submitAITabInput()">
+                            <button class="ai-send-btn" style="background:var(--input-bg); color:var(--text-primary); box-shadow:none;" id="ai-tab-voice-btn" onclick="toggleTabVoiceInput()" title="Dictar por Voz">
+                                <i data-lucide="mic" size="20"></i>
+                            </button>
+                            <button class="ai-send-btn" onclick="submitAITabInput()" title="Enviar mensaje">
+                                <i data-lucide="send" size="20"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- ==========================================
                      PESTAÑA: DASHBOARD INTELIGENTE
                 =========================================== -->
@@ -716,7 +799,7 @@
                             <div class="greeting-date" id="dash-date">Cargando fecha...</div>
                         </div>
                         <div class="dashboard-header-actions">
-                            <button class="dash-action-btn admin-only" onclick="openAIModal()" title="Asistente IA SmartControl">
+                            <button class="dash-action-btn admin-only" onclick="switchTab('ai-tab')" title="Asistente IA SmartControl">
                                 <i data-lucide="sparkles" size="22" style="color:var(--purple-color);"></i>
                             </button>
                             <button class="dash-action-btn admin-only" onclick="openStockAlerts()" title="Notificaciones">
@@ -783,6 +866,12 @@
                         <button class="dash-qa-btn" onclick="switchTab('pedidos')"><i data-lucide="package-plus" size="26"></i> Nuevo Pedido</button>
                         <button class="dash-qa-btn" onclick="switchTab('clientes'); setTimeout(()=>openClienteModal(), 100);"><i data-lucide="user-plus" size="26"></i> Alta de Cliente</button>
                         <button class="dash-qa-btn" onclick="switchTab('ventas')"><i data-lucide="file-text" size="26"></i> Nueva Cotización</button>
+                    </div>
+
+                    <!-- NUEVO TABLERO DE NOTAS INTERNAS (POST-ITS) -->
+                    <div class="glass-panel stagger-item" style="animation-delay: 0.4s; margin-bottom: 30px;">
+                        <div class="dash-section-title"><i data-lucide="sticky-note" size="20" style="color: var(--warning-color);"></i> Tablero de Tareas y Recados</div>
+                        <div class="notes-board" id="notas-board"></div>
                     </div>
                 </div>
 
@@ -1088,6 +1177,10 @@
     <!-- ==========================================
          MODALES DE LA APLICACIÓN
     =========================================== -->
+    
+    <!-- NUEVO MODAL PARA POST-ITS / NOTAS -->
+    <div class="modal-overlay" id="nota-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:15px;"><i data-lucide="sticky-note" size="24" style="color:var(--warning-color); vertical-align:middle;"></i> Nueva Tarea / Nota</h2><div class="form-group"><label>Escribe tu recado</label><textarea id="nota-texto" rows="3" placeholder="Ej. Imprimir lonas urgentes, comprar papel bond..."></textarea></div><div class="form-group"><label>Color del Post-it</label><div style="display:flex; gap:10px;"><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #fef08a, #fde047); color:#854d0e; padding:12px; opacity:1; transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);" onclick="selectNotaColor('post-it-yellow', this)">Amarillo</button><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #bae6fd, #7dd3fc); color:#1e3a8a; padding:12px; opacity:0.5;" onclick="selectNotaColor('post-it-blue', this)">Azul</button><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #fbcfe8, #f472b6); color:#831843; padding:12px; opacity:0.5;" onclick="selectNotaColor('post-it-pink', this)">Rosa</button><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #bbf7d0, #86efac); color:#14532d; padding:12px; opacity:0.5;" onclick="selectNotaColor('post-it-green', this)">Verde</button></div></div><input type="hidden" id="nota-color-sel" value="post-it-yellow"><button class="btn btn-warning" style="width:100%; margin-bottom:12px; padding:18px; font-size:16px;" onclick="guardarNota()"><i data-lucide="pin" size="20"></i> Fijar Nota</button><button class="btn btn-outline" style="width:100%; padding:16px;" onclick="closeNotaModal()">Cancelar</button></div></div>
+    
     <div class="modal-overlay" id="qty-modal"><div class="ios-modal" id="qty-modal-content" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:10px;">¿Cuántos deseas agregar?</h2><h3 id="qty-prod-name" style="color:var(--accent-color); margin-bottom:20px; font-size: 16px;"></h3><input type="hidden" id="qty-prod-id"><div style="display:flex; align-items:center; gap:15px; margin-bottom: 25px;"><input type="range" id="qty-slider" min="1" max="100" value="1" oninput="updateQtyInput(this.value)" style="flex:1;"><input type="number" id="qty-input" value="1" oninput="updateQtySlider(this.value)" style="width:80px; font-size:20px; font-weight:900; text-align:center; padding:10px; border-radius:12px; border:1px solid var(--border-color); background:var(--input-bg);"></div><div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-bottom: 25px;"><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(5)">5</button><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(10)">10</button><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(20)">20</button><button class="btn btn-secondary" style="padding:12px; font-size:16px; box-shadow:none;" onclick="setQtyVal(50)">50</button></div><button class="btn btn-primary" style="width:100%; padding:18px; font-size:18px;" onclick="confirmAddQty()"><i data-lucide="check-circle" size="20"></i> Agregar al Carrito</button><button class="btn btn-outline" style="width:100%; margin-top:12px; padding:16px;" onclick="closeQtyModal()">Cancelar</button></div></div>
     
     <!-- CARRITO REMASTERIZADO PRO -->
@@ -1204,7 +1297,7 @@
         </div>
     </div>
 
-    <!-- MODAL ASISTENTE IA PROACTIVO CON CONVERSACIÓN NATURAL (NIVEL 6) -->
+    <!-- MODAL ASISTENTE IA PROACTIVO (VERSIÓN LIGERA PARA ATAJOS RÁPIDOS) -->
     <div class="modal-overlay admin-only" id="ai-modal" onclick="closeAIModal()">
         <div class="ai-modal-box" onclick="event.stopPropagation()">
             <div class="ai-header">
@@ -1222,8 +1315,8 @@
             
             <div class="ai-chat-area" id="ai-chat-history">
                 <div class="ai-bubble">
-                    ¡Hola, Brayan! 👋 Soy tu asistente en tiempo real. Conozco todo el estado de tus ventas, inventario, finanzas y clientes.<br><br>
-                    Puedes hablarme o escribirme de forma natural como: <i>"¿Cuánto vendí hoy?"</i>, <i>"Agrega 20 hojas al inventario"</i> o <i>"Genera el corte de caja"</i>.
+                    ¡Hola! 👋 Soy tu asistente rápido en tiempo real. 
+                    <br><br>Para operaciones más complejas, ve a mi pestaña principal <b>"IA Pro"</b> en el menú.
                 </div>
             </div>
             
@@ -1233,11 +1326,9 @@
                 <button class="ai-chip" style="flex-shrink: 0;" onclick="processAIQuery('Registra un gasto de 50')">💸 Nuevo gasto</button>
                 <button class="ai-chip" style="flex-shrink: 0;" onclick="processAIQuery('¿Qué precio tiene?')">💰 Cotizar producto</button>
                 <button class="ai-chip" style="flex-shrink: 0;" onclick="processAIQuery('Busca al cliente Juan')">🔍 Buscar cliente</button>
-                <button class="ai-chip" style="flex-shrink: 0;" onclick="processAIQuery('¿Qué debo comprar esta semana?')">📦 Surtir Stock</button>
                 <button class="ai-chip" style="background:var(--purple-color); color:white; flex-shrink: 0;" onclick="processAIQuery('Predicción de ventas mañana')">✨ Predicción</button>
             </div>
 
-            <!-- ENTRADA DE TEXTO Y VOZ PRO DE NIVEL 6 -->
             <div class="ai-input-wrap">
                 <input type="text" id="ai-user-input" placeholder="Escribe o pregunta algo al sistema..." autocomplete="off" onkeydown="if(event.key==='Enter') submitAIInput()">
                 <button class="ai-send-btn" style="background:var(--input-bg); color:var(--text-primary); box-shadow:none;" id="ai-voice-btn" onclick="toggleVoiceInput()" title="Dictar por Voz">
@@ -1272,11 +1363,11 @@
         <div class="tab-item admin-only" onclick="switchTab('reportes', this)"><i data-lucide="bar-chart-3" size="24"></i><span>Métricas</span></div>
         <div class="tab-item" onclick="switchTab('inventario', this)"><i data-lucide="package" size="24"></i><span>Stock</span></div>
         <div class="tab-item" onclick="switchTab('clientes', this)"><i data-lucide="users" size="24"></i><span>Clientes</span></div>
+        <div class="tab-item admin-only" onclick="switchTab('ai-tab', this)"><i data-lucide="brain" size="24"></i><span>IA Pro</span></div>
         <div class="tab-item admin-only" onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="24"></i><span>Ajustes</span></div>
     </div>
-
-    <script>
-const $ = id => document.getElementById(id);
+<script>
+        const $ = id => document.getElementById(id);
         const $$ = sel => document.querySelectorAll(sel);
         
         let desgloseFondosActual = { costo: [], gastos: [], costoJug: [], gastosJug: [] }, lastDeletedProduct = null, lastDeletedIndex = -1, quoteToConvertId = null, pressTimer, isLongPress = false, wakeLock = null;
@@ -1289,6 +1380,7 @@ const $ = id => document.getElementById(id);
         let currentRole = localStorage.getItem('pos_user_role') || null;
         let adminPin = localStorage.getItem('pos_admin_pin') || '1234';
         let metaMensual = getSafeStorage('pos_meta_mensual', 15000);
+        let notasInternas = getSafeStorage('pos_notas_pro', []);
 
         async function requestWakeLock() { try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch (err) {} }
         document.addEventListener('visibilitychange', async () => { if (wakeLock !== null && document.visibilityState === 'visible') requestWakeLock(); });
@@ -1348,7 +1440,7 @@ const $ = id => document.getElementById(id);
                 if(currentRole === 'empleado') {
                     document.body.classList.add('role-empleado');
                     const activeTab = document.querySelector('.tab-content.active');
-                    if(activeTab && ['recursos', 'reportes', 'configuracion'].includes(activeTab.id)) {
+                    if(activeTab && ['recursos', 'reportes', 'configuracion', 'ai-tab'].includes(activeTab.id)) {
                         switchTab('dashboard');
                     }
                 } else {
@@ -1544,7 +1636,84 @@ const $ = id => document.getElementById(id);
         });
 
         /* =========================================
-           NIVEL 6: MÓDULO INTELIGENTE IA (RAG & NLP)
+           LÓGICA DEL TABLERO DE NOTAS (POST-ITS)
+        ========================================= */
+        function renderNotas() {
+            const board = $('notas-board');
+            if(!board) return;
+            board.innerHTML = '';
+            
+            notasInternas.forEach(n => {
+                board.innerHTML += `
+                <div class="post-it ${n.color} fade-in">
+                    <div class="post-it-text">${n.texto}</div>
+                    <div class="post-it-footer">
+                        <span><i data-lucide="user" size="10"></i> ${n.autor}<br><i data-lucide="clock" size="10"></i> ${n.fecha}</span>
+                        <button class="post-it-del" onclick="borrarNota(${n.id})" title="Marcar como lista / Borrar"><i data-lucide="check" size="16"></i></button>
+                    </div>
+                </div>`;
+            });
+            
+            board.innerHTML += `
+            <div class="add-note-card fade-in" onclick="openNotaModal()">
+                <i data-lucide="plus-circle" size="32" style="margin-bottom: 10px;"></i>
+                <span style="font-weight: 800;">Nueva Tarea</span>
+            </div>`;
+            renderIcons();
+        }
+
+        function openNotaModal() {
+            playSynthSound('modal');
+            $('nota-texto').value = '';
+            $('nota-modal').classList.add('active');
+        }
+
+        function closeNotaModal() { $('nota-modal').classList.remove('active'); }
+
+        function selectNotaColor(color, btn) {
+            playSynthSound('click_tab');
+            $('nota-color-sel').value = color;
+            $$('.btn-nota-color').forEach(b => {
+                b.style.boxShadow = 'none'; b.style.transform = 'scale(1)'; b.style.opacity = '0.5';
+            });
+            btn.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+            btn.style.transform = 'scale(1.05)';
+            btn.style.opacity = '1';
+        }
+
+        function guardarNota() {
+            const texto = $('nota-texto').value.trim();
+            if(!texto) { triggerError('nota-modal'); showToast('Escribe algo en la nota'); return; }
+            
+            const color = $('nota-color-sel').value;
+            const authName = currentRole === 'admin' ? userName : 'Mostrador';
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('es-MX', { day: '2-digit', month: 'short' }) + ' ' + now.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+            
+            notasInternas.push({ id: Date.now(), texto: texto, color: color, autor: authName, fecha: dateStr });
+            localStorage.setItem('pos_notas_pro', JSON.stringify(notasInternas));
+            
+            closeNotaModal(); renderNotas(); playSynthSound('save'); showToast('Nota fijada al tablero');
+        }
+
+        function borrarNota(id) {
+            playSynthSound('delete');
+            const btn = event.currentTarget;
+            const el = btn.closest('.post-it');
+            if(el) {
+                el.style.transform = 'scale(0.8)';
+                el.style.opacity = '0';
+            }
+            
+            setTimeout(() => {
+                notasInternas = notasInternas.filter(n => n.id !== id);
+                localStorage.setItem('pos_notas_pro', JSON.stringify(notasInternas));
+                renderNotas();
+            }, 300);
+        }
+
+        /* =========================================
+           NIVEL 6: MÓDULO INTELIGENTE IA
         ========================================= */
         function checkMorningSummary() {
             const todayStr = getLocalISO().slice(0, 10); 
@@ -1656,10 +1825,10 @@ const $ = id => document.getElementById(id);
                 chat.scrollTop = chat.scrollHeight;
                 playSynthSound('modal');
                 renderIcons();
-            }, 800 + Math.random() * 800); // Simulador de "pensamiento"
+            }, 800 + Math.random() * 800);
         }
 
-        // MOTOR DE NLP Y RAG LOCAL AVANZADO (NIVEL 6.5)
+        // MOTOR DE NLP Y RAG LOCAL LIGERO
         function processAIQuery(query) {
             playSynthSound('click_tab');
             const chat = $('ai-chat-history');
@@ -1669,20 +1838,18 @@ const $ = id => document.getElementById(id);
             const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
             const todayStr = getLocalISO().slice(0, 10);
 
-            // === 1. ACCIÓN: REGISTRAR GASTO AUTOMÁTICO ===
             if (q.includes('gasto') || q.includes('gaste')) {
                 const montoMatch = q.match(/\d+/);
                 if (montoMatch) {
                     const monto = parseFloat(montoMatch[0]);
                     gastos.push({ id: Date.now(), fecha: getLocalISO(), tipo: 'Diario', descripcion: query, monto: monto });
                     saveToStorage();
-                    renderFinanzas(); // Actualizar UI de fondo
+                    renderFinanzas();
                     typeAIResponse(`¡Hecho! He registrado un egreso por <b style="color:var(--danger-color);">-$${monto.toFixed(2)}</b> en tus gastos diarios de hoy.`);
                     return;
                 }
             }
 
-            // === 2. ACCIÓN: BUSCAR PRECIO O COTIZAR ===
             if (q.includes('precio') || q.includes('cuesta') || q.includes('cotiza')) {
                 const prodEncontrado = productos.find(p => q.includes(p.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
                 if (prodEncontrado) {
@@ -1697,7 +1864,6 @@ const $ = id => document.getElementById(id);
                 }
             }
 
-            // === 3. ACCIÓN: BUSCAR CLIENTE ===
             if (q.includes('busca al cliente') || q.includes('datos de')) {
                 let clienteEncontrado = null;
                 clientesDirectorio.forEach(c => {
@@ -1714,7 +1880,6 @@ const $ = id => document.getElementById(id);
                 }
             }
 
-            // === 4. EJECUCIÓN DE INTERFACES ===
             if(q.includes('corte de caja') || q.includes('resumen diario')) {
                 typeAIResponse(`¡Claro! Generando el corte de caja analítico al instante... 
                 <button class="ai-action-btn" onclick="closeAIModal(); switchTab('reportes'); setTimeout(()=> {openDailySummaryModal(); generateDailySummary();}, 300);"><i data-lucide="file-text"></i> Abrir Corte de Caja</button>`);
@@ -1730,8 +1895,6 @@ const $ = id => document.getElementById(id);
                 return;
             }
 
-            // === 5. CONSULTAS ANALÍTICAS (RAG) ===
-            // Ventas
             if(q.includes('cuanto vendi') || q.includes('ventas de hoy') || q.includes('como vamos')) {
                 const vHoy = ventas.filter(v => v.fecha.startsWith(todayStr));
                 const total = vHoy.reduce((s, v) => s + v.total, 0);
@@ -1749,7 +1912,6 @@ const $ = id => document.getElementById(id);
                 return;
             }
 
-            // Inventario
             if(q.includes('comprar') || q.includes('falta') || q.includes('surtir') || q.includes('poco stock')) {
                 const alertas = getPredictiveAlerts();
                 if (alertas.length > 0) {
@@ -1771,7 +1933,6 @@ const $ = id => document.getElementById(id);
                 return;
             }
 
-            // Clientes
             if(q.includes('cliente') && (q.includes('mejor') || q.includes('mas') || q.includes('top'))) {
                 const clientTotals = {};
                 ventas.forEach(v => { if(v.cliente && v.cliente.toLowerCase() !== 'sin nombre') clientTotals[v.cliente] = (clientTotals[v.cliente]||0) + v.total; });
@@ -1786,7 +1947,6 @@ const $ = id => document.getElementById(id);
                 return;
             }
 
-            // Predicciones
             if(q.includes('prediccion') || q.includes('mañana') || q.includes('estimacion')) {
                 const last7Days = ventas.filter(v => new Date(v.fecha) >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
                 const total7 = last7Days.reduce((sum, v) => sum + v.total, 0);
@@ -1804,11 +1964,258 @@ const $ = id => document.getElementById(id);
                 return;
             }
 
-            // Default
             typeAIResponse(`No estoy seguro de entender la solicitud. Intenta decir algo como: <br>• <i>"Registra un gasto de 50"</i><br>• <i>"Busca al cliente Juan"</i><br>• <i>"¿Cuánto cuesta [Producto]?"</i><br>• <i>"Genera el corte de caja"</i>`);
         }
 
         /* =========================================
+           NIVEL 6.5: CEREBRO 5X PARA LA PESTAÑA IA PRO
+        ========================================= */
+        let isTabRecording = false;
+        function toggleTabVoiceInput() {
+            if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { showToast('Tu navegador no soporta dictado por voz.'); return; }
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const rec = new SpeechRec();
+            rec.lang = 'es-MX';
+            
+            const btn = $('ai-tab-voice-btn');
+            if(isTabRecording) { rec.stop(); isTabRecording = false; btn.style.color = 'var(--text-primary)'; return; }
+            
+            isTabRecording = true;
+            btn.style.color = 'var(--danger-color)';
+            btn.classList.add('pulse-anim');
+            
+            rec.start();
+            rec.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                $('ai-tab-user-input').value = transcript;
+                submitAITabInput();
+            };
+            rec.onend = () => { isTabRecording = false; btn.style.color = 'var(--text-primary)'; btn.classList.remove('pulse-anim'); };
+        }
+
+        function submitAITabInput() {
+            const inputEl = $('ai-tab-user-input');
+            const val = inputEl.value.trim();
+            if(!val) return;
+            inputEl.value = '';
+            processAITabQuery(val);
+        }
+
+        let aiTabState = null;
+
+        function typeAITabResponse(html, appendChart = null) {
+            const chat = $('ai-tab-chat-history');
+            const typingId = 'typing-tab-' + Date.now();
+            chat.insertAdjacentHTML('beforeend', `<div class="ai-bubble" id="${typingId}"><div class="ai-typing-indicator"><span></span><span></span><span></span></div></div>`);
+            chat.scrollTop = chat.scrollHeight;
+
+            setTimeout(() => {
+                const target = $(typingId);
+                if(target) {
+                    target.innerHTML = html;
+                    if(appendChart) appendChart(target);
+                }
+                chat.scrollTop = chat.scrollHeight;
+                playSynthSound('modal');
+                renderIcons();
+            }, 800 + Math.random() * 800); 
+        }
+
+        function processAITabQuery(query) {
+            playSynthSound('click_tab');
+            const chat = $('ai-tab-chat-history');
+            chat.insertAdjacentHTML('beforeend', `<div class="user-bubble">${query}</div>`);
+            chat.scrollTop = chat.scrollHeight;
+
+            const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+            const todayStr = getLocalISO().slice(0, 10);
+
+            // FASE 1: PROCESAR ESTADOS EN ESPERA
+            if (aiTabState === 'esperando_cliente') {
+                aiTabState = null; 
+                let clienteEncontrado = null;
+                clientesDirectorio.forEach(c => {
+                    if (q.includes(c.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                        clienteEncontrado = c;
+                    }
+                });
+                
+                if (clienteEncontrado) {
+                    const misVentas = ventas.filter(v => v.cliente && v.cliente.toLowerCase() === clienteEncontrado.nombre.toLowerCase());
+                    const ltv = misVentas.reduce((sum, v) => sum + v.total, 0);
+                    typeAITabResponse(`¡Lo encontré! Aquí están los datos de <b>${clienteEncontrado.nombre}</b>.<br>📞 Teléfono: ${clienteEncontrado.telefono || 'No registrado'}<br>💰 Valor de compras: $${ltv.toFixed(2)}<br><br><button class="ai-action-btn" onclick="switchTab('clientes'); setTimeout(()=>showClientDetails(${clienteEncontrado.id}), 300);"><i data-lucide="user"></i> Ver Perfil Completo</button>`);
+                } else {
+                    typeAITabResponse(`No encontré a nadie con ese nombre en tu base de datos. Intenta buscarlo directamente en la pestaña de Clientes.`);
+                }
+                return;
+            }
+
+            if (aiTabState === 'esperando_cotizacion') {
+                aiTabState = null;
+                const prodEncontrado = productos.find(p => q.includes(p.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
+                if (prodEncontrado) {
+                    typeAITabResponse(`El producto <b>${prodEncontrado.nombre}</b> cuesta <b style="color:var(--success-color); font-size:18px;">$${prodEncontrado.precioVenta.toFixed(2)}</b>. Stock actual: ${prodEncontrado.stock}.`);
+                } else {
+                    typeAITabResponse(`No logré identificar ese producto en el catálogo. Intenta ser más específico.`);
+                }
+                return;
+            }
+
+            if (aiTabState === 'esperando_gasto') {
+                aiTabState = null;
+                const montoMatch = q.match(/\d+(\.\d+)?/);
+                if (montoMatch) {
+                    const monto = parseFloat(montoMatch[0]);
+                    gastos.push({ id: Date.now(), fecha: getLocalISO(), tipo: 'Diario', descripcion: 'Gasto por IA', monto: monto });
+                    saveToStorage();
+                    renderFinanzas();
+                    typeAITabResponse(`¡Guardado! Egreso registrado por <b style="color:var(--danger-color);">-$${monto.toFixed(2)}</b>.`);
+                } else {
+                    typeAITabResponse('No detecté un número válido. Operación cancelada.');
+                }
+                return;
+            }
+
+            if (aiTabState === 'esperando_surtir') {
+                aiTabState = null;
+                const qtyMatch = q.match(/\d+/);
+                if (qtyMatch) {
+                    const qty = parseInt(qtyMatch[0]);
+                    const prodName = q.replace(/\d+/g, '').trim();
+                    const prod = productos.find(p => p.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(prodName));
+                    if (prod) {
+                        prod.stock += qty;
+                        saveToStorage();
+                        renderInventory();
+                        typeAITabResponse(`Inventario actualizado. Agregué <b>${qty} unidades</b> a <span style="color:var(--accent-color); font-weight:800;">${prod.nombre}</span>.`);
+                    } else {
+                        typeAITabResponse(`No encontré el producto. Recuerda darme la cantidad y una palabra clave del nombre.`);
+                    }
+                } else {
+                    typeAITabResponse(`No detecté una cantidad. Cancelo la operación.`);
+                }
+                return;
+            }
+
+            // FASE 2: DETECTAR COMANDOS E INICIAR ESTADOS
+            if (q === 'busca un cliente' || q === 'buscar cliente' || q.includes('busca al cliente')) {
+                const namePart = q.replace(/busca un cliente|busca al cliente|buscar cliente/g, '').trim();
+                if (namePart.length > 2) {
+                    aiTabState = 'esperando_cliente';
+                    processAITabQuery(namePart); 
+                } else {
+                    aiTabState = 'esperando_cliente';
+                    typeAITabResponse('Claro, dime únicamente el <b>nombre del cliente</b> que deseas buscar y te muestro su información.');
+                    return;
+                }
+            }
+
+            if (q === 'cotizar producto') {
+                aiTabState = 'esperando_cotizacion';
+                typeAITabResponse('Por supuesto. ¿Cuál es el nombre del producto que te gustaría consultar?');
+                return;
+            }
+
+            if (q === 'registrar un gasto' || q === 'registrar gasto') {
+                aiTabState = 'esperando_gasto';
+                typeAITabResponse('¿De cuánto es el monto del egreso? Escribe solo el número.');
+                return;
+            }
+
+            if (q === 'surtir inventario') {
+                aiTabState = 'esperando_surtir';
+                typeAITabResponse('Entendido. Escribe la cantidad seguida de una palabra clave del producto. Por ejemplo: "100 engargolado".');
+                return;
+            }
+
+            // FASE 3: CONSULTAS DE UN SOLO PASO (INDEPENDIENTES)
+            if (q.includes('descuento') && (q.includes('carrito') || q.includes('compra'))) {
+                const match = q.match(/(\d+)%/);
+                if (match) {
+                    if (carrito.length === 0) { typeAITabResponse('El carrito está vacío. Agrega productos en Ventas primero.'); return; }
+                    const pct = parseInt(match[1]);
+                    carrito.forEach(item => { item.precioVenta = item.precioVenta * (1 - (pct/100)); });
+                    updateCartUI();
+                    typeAITabResponse(`Hecho. Apliqué un descuento del <b>${pct}%</b> a tu carrito actual. <button class="ai-action-btn" onclick="openCart()"><i data-lucide="shopping-cart"></i> Abrir Carrito</button>`);
+                    return;
+                }
+            }
+
+            if (q.includes('link') && (q.includes('cobro') || q.includes('whatsapp'))) {
+                const total = carrito.reduce((sum, i) => sum + (i.precioVenta * i.qty), 0);
+                if (total === 0) { typeAITabResponse('El carrito está vacío para generar un cobro.'); return; }
+                const msg = encodeURIComponent(`Hola! Tu total a pagar es de $${total.toFixed(2)}. Puedes pagar aquí: [Pega tu link]`);
+                typeAITabResponse(`Aquí tienes tu enlace de cobro por <b style="color:var(--success-color);">$${total.toFixed(2)}</b>.<br><br><a href="https://wa.me/?text=${msg}" target="_blank" class="ai-action-btn" style="text-decoration:none;"><i data-lucide="external-link"></i> Abrir en WhatsApp</a>`);
+                return;
+            }
+
+            if (q.includes('mejor cliente') || q.includes('top clientes')) {
+                const clientTotals = {};
+                ventas.forEach(v => { if(v.cliente && v.cliente.toLowerCase() !== 'sin nombre') clientTotals[v.cliente] = (clientTotals[v.cliente]||0) + v.total; });
+                const sorted = Object.entries(clientTotals).sort((a,b) => b[1] - a[1]);
+                if (sorted.length > 0) {
+                    let html = 'Tus clientes más valiosos (LTV) son:<br><br>';
+                    sorted.slice(0, 3).forEach((c, idx) => { html += `<b>${idx+1}. ${c[0]}</b> - <span style="color:var(--success-color); font-weight:900;">$${c[1].toFixed(2)}</span><br>`; });
+                    typeAITabResponse(html);
+                    return;
+                } else { typeAITabResponse('Aún no hay clientes con nombre registrado en tus ventas.'); return; }
+            }
+
+            if(q.includes('cuanto vendi') || q.includes('ventas de hoy') || q.includes('ventas hoy')) {
+                const vHoy = ventas.filter(v => v.fecha.startsWith(todayStr));
+                const total = vHoy.reduce((s, v) => s + v.total, 0);
+                const ganancia = vHoy.reduce((s, v) => s + v.ganancia, 0);
+                typeAITabResponse(`Hoy has cerrado <b>${vHoy.length} ventas</b> con un ingreso de <b style="color:var(--success-color); font-size:18px;">$${total.toFixed(2)}</b>. Utilidad neta: $${ganancia.toFixed(2)}.`);
+                return;
+            }
+
+            if(q.includes('corte de caja') || q.includes('corte diario')) {
+                typeAITabResponse(`Generando resumen analítico... <button class="ai-action-btn" onclick="switchTab('reportes'); setTimeout(()=>{openDailySummaryModal(); generateDailySummary();}, 300);"><i data-lucide="file-text"></i> Abrir Corte</button>`);
+                return;
+            }
+
+            if(q.includes('ventas del mes')) {
+                const currentMonthStr = todayStr.slice(0, 7);
+                const vMes = ventas.filter(v => v.fecha.startsWith(currentMonthStr));
+                const totalMes = vMes.reduce((s, v) => s + v.total, 0);
+                typeAITabResponse(`Este mes llevas ingresos por <b style="color:var(--accent-color); font-size:18px;">$${totalMes.toFixed(2)}</b>.`);
+                return;
+            }
+
+            if(q.includes('tarjeta') || q.includes('transferencia')) {
+                const vHoy = ventas.filter(v => v.fecha.startsWith(todayStr) && ['Tarjeta', 'Transferencia'].includes(v.pago));
+                const total = vHoy.reduce((s, v) => s + v.total, 0);
+                typeAITabResponse(`Hoy has recibido <b style="color:var(--accent-color);">$${total.toFixed(2)}</b> mediante pagos electrónicos.`);
+                return;
+            }
+
+            if(q.includes('categoria') || q.includes('rentable')) {
+                typeAITabResponse(`Te abro las métricas para que veas el gráfico exacto de rentabilidad. <button class="ai-action-btn" onclick="switchTab('reportes');"><i data-lucide="pie-chart"></i> Ver Gráficas</button>`);
+                return;
+            }
+            
+            if(q.includes('hora pico')) {
+                typeAITabResponse(`Puedes ver tu dinámica de tráfico por horas en la pantalla de inicio o en los reportes detallados. <button class="ai-action-btn" onclick="switchTab('dashboard');"><i data-lucide="activity"></i> Ir al Inicio</button>`);
+                return;
+            }
+
+            if(q.includes('prediccion') || q.includes('mañana')) {
+                const last7Days = ventas.filter(v => new Date(v.fecha) >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
+                const total7 = last7Days.reduce((sum, v) => sum + v.total, 0);
+                const dailyAvg = total7 / 7 || 0;
+                const prediccion = (dailyAvg > 0 ? (dailyAvg * 1.05) + (Math.random() * (dailyAvg * 0.1)) : 0);
+                typeAITabResponse(`Basado en tu ritmo de la última semana, el pronóstico para mañana es de <b>$${prediccion.toLocaleString('es-MX', {minimumFractionDigits: 0, maximumFractionDigits: 0})}</b>.`);
+                return;
+            }
+
+            if(q.includes('alertas') || q.includes('stock')) {
+                typeAITabResponse(`Revisando alertas predictivas... <button class="ai-action-btn" onclick="openStockAlerts();"><i data-lucide="bell"></i> Ver Alertas de Stock</button>`);
+                return;
+            }
+
+            typeAITabResponse(`No reconozco ese comando exacto. Intenta usar uno de los botones rápidos de arriba o decir algo como "Busca un cliente".`);
+        }
+/* =========================================
            COMANDOS DE TECLADO (NIVEL 3)
         ========================================= */
         document.addEventListener('keydown', (e) => {
@@ -1856,7 +2263,7 @@ const $ = id => document.getElementById(id);
             const bottomBtn = document.querySelector(`.tab-item[onclick*="${tabId}"]`); 
             if(bottomBtn) bottomBtn.classList.add('active'); 
             
-            const titles = { 'dashboard':'Inicio', 'ventas':'Ventas', 'pedidos':'Kanban Pedidos', 'historial':'Historial', 'recursos':'Finanzas', 'reportes':'Métricas', 'inventario':'Inventario', 'clientes':'Clientes', 'configuracion':'Ajustes' }; 
+            const titles = { 'dashboard':'Inicio', 'ventas':'Ventas', 'pedidos':'Kanban Pedidos', 'historial':'Historial', 'recursos':'Finanzas', 'reportes':'Métricas', 'inventario':'Inventario', 'clientes':'Clientes', 'ai-tab':'SmartControl IA', 'configuracion':'Ajustes' }; 
             const headerTitle = $('header-title');
             if (headerTitle) headerTitle.innerText = titles[tabId] || 'PrintCenterPro'; 
             
@@ -1950,6 +2357,7 @@ const $ = id => document.getElementById(id);
             if($('dash-kpi-meta')) $('dash-kpi-meta').innerText = `${metaPct.toFixed(0)}%`; if($('dash-kpi-top')) { $('dash-kpi-top').innerText = topProdName.substring(0, 15) + (topProdName.length > 15 ? '...' : ''); $('dash-kpi-top').title = topProdName; }
             if (currentRole === 'admin') renderDashboardChart(ventasHoy, ventasAyer); 
             renderDashboardActivity();
+            renderNotas();
         }
 
         function renderDashboardChart(vHoy, vAyer) { 
@@ -2720,7 +3128,7 @@ const $ = id => document.getElementById(id);
                 });
             }
 
-            const tabs = [ {n: 'Ventas (Nueva Venta)', t: 'ventas', i: 'shopping-cart'}, {n: 'Dashboard / Inicio', t: 'dashboard', i: 'layout-dashboard'}, {n: 'Kanban Pedidos', t: 'pedidos', i: 'columns'}, {n: 'Inventario / Stock', t: 'inventario', i: 'package'}, {n: 'Clientes', t: 'clientes', i: 'users'}, {n: 'Métricas / Reportes', t: 'reportes', i: 'bar-chart-3'}, {n: 'Finanzas', t: 'recursos', i: 'landmark'}, {n: 'Ajustes', t: 'configuracion', i: 'settings'}, ]; 
+            const tabs = [ {n: 'Ventas (Nueva Venta)', t: 'ventas', i: 'shopping-cart'}, {n: 'Dashboard / Inicio', t: 'dashboard', i: 'layout-dashboard'}, {n: 'Kanban Pedidos', t: 'pedidos', i: 'columns'}, {n: 'Inventario / Stock', t: 'inventario', i: 'package'}, {n: 'Clientes', t: 'clientes', i: 'users'}, {n: 'Métricas / Reportes', t: 'reportes', i: 'bar-chart-3'}, {n: 'Finanzas', t: 'recursos', i: 'landmark'}, {n: 'SmartControl IA', t: 'ai-tab', i: 'brain'}, {n: 'Ajustes', t: 'configuracion', i: 'settings'}, ]; 
             const matchedTabs = tabs.filter(t => t.n.toLowerCase().includes(q)); 
             if(matchedTabs.length > 0) { html += '<div class="spotlight-category">Atajos y Navegación</div>'; matchedTabs.forEach(t => { html += `<div class="spotlight-item" onclick="closeSpotlight(); switchTab('${t.t}')"><div class="spotlight-item-icon"><i data-lucide="${t.i}"></i></div><div class="spotlight-item-text"><div class="spotlight-item-title">${t.n}</div><div class="spotlight-item-sub">Ir a la pestaña</div></div></div>`; count++; }); } 
             
