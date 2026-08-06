@@ -415,52 +415,6 @@
         .insight-trend-neutral::before { background: var(--warning-color); }
         .insight-trend-star::before { background: linear-gradient(90deg, #ffcc00, var(--warning-color)); }
         
-        /* ESTILOS NUEVOS DE LA IA Y BOTONES DE AUDIO */
-        .ai-modal-box { background: var(--card-bg); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); width: 100%; max-width: 480px; border-radius: var(--radius-xl); padding: 0; box-shadow: 0 30px 60px rgba(175, 82, 222, 0.2); transform: scale(0.9) translateY(20px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid rgba(175, 82, 222, 0.3); display: flex; flex-direction: column; max-height: 85vh; overflow: hidden; }
-        .ai-header { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, var(--purple-color), #d082f0); padding: 25px 30px; color: white; }
-        .ai-header-left { display: flex; align-items: center; gap: 15px; }
-        .ai-icon-pulse { background: white; color: var(--purple-color); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255,255,255,0.4); animation: pulseAlert 2s infinite; }
-        .ai-chat-area { flex: 1; overflow-y: auto; padding: 30px; display: flex; flex-direction: column; gap: 18px; background: var(--bg-color); }
-        .ai-bubble { background: linear-gradient(to bottom right, var(--card-bg), #fafafa); padding: 18px 22px; border-radius: 20px; border-top-left-radius: 4px; max-width: 90%; font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--text-primary); align-self: flex-start; box-shadow: 0 8px 25px rgba(0,0,0,0.06); border: 1px solid rgba(175, 82, 222, 0.2); animation: slideUpSmooth 0.3s ease forwards; position: relative;}
-        .ai-bubble::before { content: ''; position: absolute; left:-1px; top:-1px; bottom:-1px; width: 4px; background: var(--purple-color); border-radius: 4px 0 0 4px; opacity: 0.5;}
-        .user-bubble { background: linear-gradient(135deg, #1d1d1f, #434343); color: white; padding: 16px 22px; border-radius: 20px; border-top-right-radius: 4px; max-width: 85%; font-size: 15px; font-weight: 600; line-height: 1.4; align-self: flex-end; box-shadow: 0 8px 20px rgba(0,0,0,0.15); animation: slideUpSmooth 0.3s ease forwards; border: 1px solid #555; }
-        .ai-suggestions { padding: 15px 30px; background: var(--card-bg); border-top: 1px solid var(--border-color); display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-        .ai-suggestions::-webkit-scrollbar { display: none; }
-        .ai-chip { background: rgba(175, 82, 222, 0.05); border: 1px solid rgba(175, 82, 222, 0.3); color: var(--purple-color); padding: 12px 20px; border-radius: 100px; font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.2s; flex: 0 0 auto; white-space: nowrap; }
-        .ai-chip:hover, .ai-chip:active { background: var(--purple-color); color: white; transform: translateY(-2px); box-shadow: 0 4px 15px var(--purple-glow); }
-        .ai-inline-card { background: linear-gradient(to right, rgba(175, 82, 222, 0.05), var(--card-bg)); border-radius: var(--radius-sm); padding: 18px; margin-top: 12px; border: 1px solid rgba(175, 82, 222, 0.2); border-left: 4px solid var(--purple-color); width: 100%; box-sizing: border-box; transition: transform 0.2s, box-shadow 0.2s; cursor: default; position: relative;}
-        .ai-inline-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-        .ai-kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-top: 10px; }
-        .ai-kpi-box { background: var(--card-bg); padding: 14px; border-radius: 10px; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; justify-content: center;}
-        .ai-kpi-box small { font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-        .ai-kpi-box div { font-size: 20px; font-weight: 900; color: var(--accent-color); margin-top: 6px; letter-spacing: -0.5px;}
-        .ai-chart-container { position: relative; height: 200px; width: 100%; margin-top: 15px; background: var(--card-bg); border-radius: 10px; padding: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
-        .ai-more-info-btn { width: 100%; margin-top: 15px; padding: 12px; font-size: 13px; font-weight: 800; color: var(--purple-color); border-color: rgba(175, 82, 222, 0.3); border-radius: 8px; transition: all 0.3s; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;}
-        .ai-more-info-btn:hover { background: var(--purple-color); color: white; box-shadow: 0 4px 15px var(--purple-glow); border-color: var(--purple-color); }
-        
-        /* Botón de texto a voz */
-        .ai-tts-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 100px; padding: 4px 10px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; cursor: pointer; margin-top: 8px; transition: 0.2s; }
-        .ai-tts-btn:hover { background: var(--input-bg); color: var(--accent-color); }
-
-        .faq-item-row { display: flex; gap: 10px; margin-bottom: 10px; background: var(--card-bg); padding: 15px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); align-items: center;}
-        .faq-item-row input, .faq-item-row textarea { flex: 1; border: none; padding: 12px; border-radius: 8px; font-family: inherit; font-size: 14px; font-weight: 600; background: var(--input-bg); outline: none; }
-        .faq-item-row input:focus, .faq-item-row textarea:focus { box-shadow: inset 0 0 0 2px var(--accent-color); background: white; }
-
-        .ai-typing-indicator { display: flex; gap: 4px; padding: 6px 4px; }
-        .ai-typing-indicator span { width: 8px; height: 8px; background-color: var(--purple-color); border-radius: 50%; display: inline-block; animation: aiTyping 1.4s infinite ease-in-out both; }
-        .ai-typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .ai-typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes aiTyping { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-        .ai-input-wrap { display: flex; gap: 10px; padding: 20px 30px; background: var(--card-bg); border-top: 1px solid var(--border-color); align-items: center; }
-        .ai-input-wrap input { flex: 1; border: none; background: var(--input-bg); padding: 16px 20px; border-radius: 100px; font-size: 15px; font-weight: 600; outline: none; transition: 0.3s; }
-        .ai-input-wrap input:focus { box-shadow: 0 0 0 2px var(--purple-glow); background: #ffffff; }
-        .ai-send-btn { background: var(--purple-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px var(--purple-glow); flex-shrink: 0; }
-        .ai-send-btn:active { transform: scale(0.9); }
-        .ai-action-btn { background: var(--purple-color); color: white; border: none; padding: 10px 18px; border-radius: 100px; font-weight: 800; font-size: 13px; cursor: pointer; margin-top: 12px; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
-        .ai-action-btn:hover { box-shadow: 0 4px 15px var(--purple-glow); transform: translateY(-2px); }
-        .ai-tab-layout { display: flex; flex-direction: column; height: calc(100vh - 150px); max-width: 1200px; margin: 0 auto; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid rgba(175, 82, 222, 0.3); overflow: hidden; box-shadow: 0 20px 50px rgba(175, 82, 222, 0.15); }
-        @media (max-width: 768px) { .ai-tab-layout { height: calc(100vh - 240px); border-radius: var(--radius-md); } }
-
         .morning-summary-header { text-align: center; margin-bottom: 28px; }
         .morning-summary-header i { color: var(--warning-color); filter: drop-shadow(0 0 20px rgba(255, 204, 0, 0.5)); margin-bottom: 18px; transition: transform 0.5s ease; }
         .morning-summary-header:hover i { transform: rotate(15deg) scale(1.1); }
@@ -554,7 +508,7 @@
         /* =========================================
            NIVEL 3: SPOTLIGHT / COMMAND PALETTE (DISEÑO macOS)
         ========================================= */
-        .spotlight-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999998; display: none; justify-content: center; align-items: flex-start; padding-top: 12vh; opacity: 0; transition: opacity 0.3s ease; }
+        .spotlight-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999999; display: none; justify-content: center; align-items: flex-start; padding-top: 12vh; opacity: 0; transition: opacity 0.3s ease; }
         .spotlight-overlay.active { display: flex; opacity: 1; }
         
         .spotlight-box { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); width: 100%; max-width: 650px; margin: 0 20px; border-radius: var(--radius-md); box-shadow: 0 25px 50px rgba(0,0,0,0.25); overflow: hidden; transform: scale(0.95) translateY(-20px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid var(--glass-border); display: flex; flex-direction: column; }
@@ -589,6 +543,63 @@
         .spotlight-item-sub { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
 
         /* =========================================
+           NIVEL 4: IA INTEGRADA Y DISEÑO MEJORADO
+        ========================================= */
+        .ai-modal-box { background: var(--card-bg); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); width: 100%; max-width: 480px; border-radius: var(--radius-xl); padding: 0; box-shadow: 0 30px 60px rgba(175, 82, 222, 0.2); transform: scale(0.9) translateY(20px); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid rgba(175, 82, 222, 0.3); display: flex; flex-direction: column; max-height: 85vh; overflow: hidden; }
+        .modal-overlay.active .ai-modal-box { transform: scale(1) translateY(0); }
+        
+        .ai-header { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, var(--purple-color), #d082f0); padding: 25px 30px; color: white; }
+        .ai-header-left { display: flex; align-items: center; gap: 15px; }
+        .ai-icon-pulse { background: white; color: var(--purple-color); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255,255,255,0.4); animation: pulseAlert 2s infinite; }
+        
+        .ai-chat-area { flex: 1; overflow-y: auto; padding: 30px; display: flex; flex-direction: column; gap: 18px; background: var(--bg-color); }
+        
+        /* DISEÑO DE BURBUJAS MEJORADO CON MÁS DRAMATISMO */
+        .ai-bubble { background: linear-gradient(to bottom right, var(--card-bg), #fafafa); padding: 18px 22px; border-radius: 20px; border-top-left-radius: 4px; max-width: 90%; font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--text-primary); align-self: flex-start; box-shadow: 0 8px 25px rgba(0,0,0,0.06); border: 1px solid rgba(175, 82, 222, 0.2); animation: slideUpSmooth 0.3s ease forwards; position: relative;}
+        .ai-bubble::before { content: ''; position: absolute; left:-1px; top:-1px; bottom:-1px; width: 4px; background: var(--purple-color); border-radius: 4px 0 0 4px; opacity: 0.5;}
+        
+        .user-bubble { background: linear-gradient(135deg, #1d1d1f, #434343); color: white; padding: 16px 22px; border-radius: 20px; border-top-right-radius: 4px; max-width: 85%; font-size: 15px; font-weight: 600; line-height: 1.4; align-self: flex-end; box-shadow: 0 8px 20px rgba(0,0,0,0.15); animation: slideUpSmooth 0.3s ease forwards; border: 1px solid #555; }
+        
+        .ai-suggestions { padding: 15px 30px; background: var(--card-bg); border-top: 1px solid var(--border-color); display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .ai-suggestions::-webkit-scrollbar { display: none; }
+        .ai-chip { background: rgba(175, 82, 222, 0.05); border: 1px solid rgba(175, 82, 222, 0.3); color: var(--purple-color); padding: 12px 20px; border-radius: 100px; font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.2s; flex: 0 0 auto; white-space: nowrap; }
+        .ai-chip:hover, .ai-chip:active { background: var(--purple-color); color: white; transform: translateY(-2px); box-shadow: 0 4px 15px var(--purple-glow); }
+        
+        /* DISEÑO DE TARJETAS INLINE MEJORADO */
+        .ai-inline-card { background: linear-gradient(to right, rgba(175, 82, 222, 0.05), var(--card-bg)); border-radius: var(--radius-sm); padding: 18px; margin-top: 12px; border: 1px solid rgba(175, 82, 222, 0.2); border-left: 4px solid var(--purple-color); width: 100%; box-sizing: border-box; transition: transform 0.2s, box-shadow 0.2s; cursor: default; position: relative;}
+        .ai-inline-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .ai-kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-top: 10px; }
+        .ai-kpi-box { background: var(--card-bg); padding: 14px; border-radius: 10px; text-align: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; justify-content: center;}
+        .ai-kpi-box small { font-size: 11px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .ai-kpi-box div { font-size: 20px; font-weight: 900; color: var(--accent-color); margin-top: 6px; letter-spacing: -0.5px;}
+        .ai-chart-container { position: relative; height: 200px; width: 100%; margin-top: 15px; background: var(--card-bg); border-radius: 10px; padding: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+        
+        /* BOTÓN DE MÁS INFORMACIÓN */
+        .ai-more-info-btn { width: 100%; margin-top: 15px; padding: 12px; font-size: 13px; font-weight: 800; color: var(--purple-color); border-color: rgba(175, 82, 222, 0.3); border-radius: 8px; transition: all 0.3s; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;}
+        .ai-more-info-btn:hover { background: var(--purple-color); color: white; box-shadow: 0 4px 15px var(--purple-glow); border-color: var(--purple-color); }
+
+        /* =========================================
+           NIVEL 6: EXTRAS PARA IA INTELIGENTE (RAG)
+        ========================================= */
+        .ai-typing-indicator { display: flex; gap: 4px; padding: 6px 4px; }
+        .ai-typing-indicator span { width: 8px; height: 8px; background-color: var(--purple-color); border-radius: 50%; display: inline-block; animation: aiTyping 1.4s infinite ease-in-out both; }
+        .ai-typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .ai-typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes aiTyping { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        
+        .ai-input-wrap { display: flex; gap: 10px; padding: 20px 30px; background: var(--card-bg); border-top: 1px solid var(--border-color); align-items: center; }
+        .ai-input-wrap input { flex: 1; border: none; background: var(--input-bg); padding: 16px 20px; border-radius: 100px; font-size: 15px; font-weight: 600; outline: none; transition: 0.3s; }
+        .ai-input-wrap input:focus { box-shadow: 0 0 0 2px var(--purple-glow); background: #ffffff; }
+        .ai-send-btn { background: var(--purple-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px var(--purple-glow); flex-shrink: 0; }
+        .ai-send-btn:active { transform: scale(0.9); }
+        
+        .ai-action-btn { background: var(--purple-color); color: white; border: none; padding: 10px 18px; border-radius: 100px; font-weight: 800; font-size: 13px; cursor: pointer; margin-top: 12px; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .ai-action-btn:hover { box-shadow: 0 4px 15px var(--purple-glow); transform: translateY(-2px); }
+
+        .ai-tab-layout { display: flex; flex-direction: column; height: calc(100vh - 150px); max-width: 1200px; margin: 0 auto; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid rgba(175, 82, 222, 0.3); overflow: hidden; box-shadow: 0 20px 50px rgba(175, 82, 222, 0.15); }
+        @media (max-width: 768px) { .ai-tab-layout { height: calc(100vh - 240px); border-radius: var(--radius-md); } }
+
+        /* =========================================
            NUEVO: POST-ITS Y NOTAS INTERNAS
         ========================================= */
         .notes-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin-top: 15px; }
@@ -605,21 +616,6 @@
         .add-note-card { border: 2px dashed var(--border-color); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-secondary); cursor: pointer; transition: 0.3s; min-height: 150px; border-radius: 4px 4px 20px 4px; }
         .add-note-card:hover { border-color: var(--warning-color); color: var(--warning-color); background: rgba(255, 149, 0, 0.05); transform: translateY(-4px); }
 
-        /* =========================================
-           PRINTCENTER AI - ESTILOS DE LA FASE 1
-        ========================================= */
-        .ai-hero-card { background: linear-gradient(135deg, var(--purple-color), #d082f0); color: white; padding: 25px; border-radius: var(--radius-md); margin-bottom: 20px; box-shadow: 0 15px 35px var(--purple-glow); position: relative; overflow: hidden; }
-        .ai-hero-card::after { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-        .ai-hero-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
-        .ai-hero-kpi-box { background: rgba(0,0,0,0.15); padding: 15px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); }
-        .ai-hero-kpi-box small { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; }
-        .ai-hero-kpi-box div { font-size: 24px; font-weight: 900; margin-top: 4px; }
-        .ai-quick-actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 20px; }
-        .ai-qa-btn { background: var(--card-bg); border: 1px solid var(--border-color); padding: 15px 10px; border-radius: var(--radius-sm); font-weight: 800; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
-        .ai-qa-btn:hover { border-color: var(--purple-color); color: var(--purple-color); transform: translateY(-3px); box-shadow: var(--shadow-md); }
-        .ai-qa-btn i { background: rgba(175, 82, 222, 0.1); padding: 10px; border-radius: 50%; color: var(--purple-color); }
-        .btn-gerente { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 100px; font-weight: 800; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; }
-        .btn-gerente:hover { background: white; color: var(--purple-color); box-shadow: 0 4px 15px rgba(255,255,255,0.4); }
     </style>
 </head>
 <body>
@@ -633,9 +629,7 @@
         <h2 id="lock-text" style="margin-top:25px; font-weight:900; font-size: 28px; color:var(--text-primary); letter-spacing: -1px;">Procesando...</h2>
     </div>
 
-    <!-- ==========================================
-         PANTALLA DE LOGIN Y ROLES
-    =========================================== -->
+    <!-- PANTALLA DE LOGIN Y ROLES -->
     <div id="login-screen" class="login-screen">
         <h2 style="font-weight:300; font-size:42px; margin-bottom:10px; letter-spacing:2px; color:var(--text-primary);">¿Quién está operando?</h2>
         <p style="color:var(--text-secondary); margin-bottom:55px; font-weight:600; font-size:16px;">Selecciona tu perfil</p>
@@ -705,12 +699,12 @@
                 <button class="btn btn-outline" style="width:100%; margin-bottom:20px; padding:14px; font-size:14px;" onclick="logout()">
                     <i data-lucide="log-out" size="18"></i> Cerrar Sesión
                 </button>
-                <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.08.800 AI PRO BETA :) </div>
+                <div style="font-size: 12px; color: var(--text-secondary); text-align:center; font-weight:800; letter-spacing: 0.5px;">v20.26.08.700 AI PRO :) </div>
             </div>
         </div>
 
         <div class="main-content" id="main-scroll-area">
-            <!-- ENCABEZADO SUPERIOR -->
+            <!-- ENCABEZADO SUPERIOR MODIFICADO -->
             <header>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <i data-lucide="menu" size="30" class="mobile-menu-btn" onclick="toggleSidebar()"></i>
@@ -727,125 +721,15 @@
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 14px;">
-                    <div class="btn-rush stagger-item admin-only" style="animation-delay: 0.1s; background: linear-gradient(135deg, var(--purple-color), #d082f0); color: white;" onclick="openAiQuickModal()" title="SmartControl IA Pro"><i data-lucide="sparkles" size="20"></i></div>
+                    <div class="btn-rush stagger-item admin-only" style="animation-delay: 0.1s; background: linear-gradient(135deg, var(--purple-color), #d082f0); color: white;" onclick="switchTab('ai-tab')" title="SmartControl IA Pro"><i data-lucide="sparkles" size="20"></i></div>
                     <div class="btn-rush stagger-item admin-only" style="background:var(--warning-color); position:relative; animation-delay: 0.1s;" onclick="openStockAlerts()" title="Alertas de Stock"><i data-lucide="bell" size="20"></i><div class="bell-dot-header" id="bell-dot"></div></div>
                     <div class="balance-pill stagger-item admin-only" style="animation-delay: 0.3s; background: linear-gradient(135deg, var(--success-color), #32d74b); color: white;" id="pill-caja-efectivo">Caja: $0.00</div>
                     <div class="balance-pill stagger-item admin-only" style="animation-delay: 0.4s; background: linear-gradient(135deg, var(--warning-color), #ffcc00); color: white;" id="pill-caja-cotizacion">Cotizado: $0.00</div>
                 </div>
             </header>
-
+            
             <div class="container">
-                <!-- ==========================================
-                     PESTAÑA: PRINTCENTER AI PRO (FASE 1)
-                =========================================== -->
-                <div id="ai-tab" class="tab-content fade-in admin-only">
-                    <div class="ai-tab-layout stagger-item" style="height: calc(100vh - 120px);">
-                        
-                        <!-- HEADER -->
-                        <div class="ai-header" style="border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 15px 25px;">
-                            <div class="ai-header-left" style="gap: 12px; width: 100%; justify-content: space-between;">
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <div class="ai-icon-pulse" style="width: 38px; height: 38px;"><i data-lucide="bot" size="20"></i></div>
-                                    <div>
-                                        <h2 style="font-weight: 900; font-size: 20px; margin: 0; letter-spacing: -0.5px;">PrintCenter AI</h2>
-                                        <span style="font-size: 11px; font-weight: 700; opacity: 0.85; display:flex; align-items:center; gap:4px;">
-                                            <span style="width:6px; height:6px; background:#34c759; border-radius:50%; display:inline-block; box-shadow: 0 0 8px #34c759;"></span> Tu gerente inteligente
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- BOTÓN MODO GERENTE -->
-                                <button class="btn-gerente" onclick="generateManagerReport()"><i data-lucide="brain" size="16"></i> Análisis del día</button>
-                            </div>
-                        </div>
-                        
-                        <div class="ai-chat-area" id="ai-tab-chat-history" style="padding: 25px; overflow-y: auto;">
-                            
-                           <!-- MODAL FLOTANTE DE ACCIONES RÁPIDAS (DASHBOARD) -->
-    <div class="modal-overlay admin-only" id="ai-quick-modal">
-        <div class="ios-modal" onclick="event.stopPropagation()">
-            <div class="drag-handle"></div>
-            
-            <div class="ai-hero-card fade-in" style="margin-bottom: 20px;">
-                <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 5px;">👋 ¡Hola, <span id="ai-greeting-name">Brayan</span>!</h3>
-                <p style="font-weight: 600; font-size: 14px; opacity: 0.9;">¿Qué hay que hacer hoy? Aquí tienes tu estatus:</p>
-                
-                <div class="ai-hero-kpis">
-                    <div class="ai-hero-kpi-box"><small>Vendido Hoy</small><div id="ai-dash-ventas">$0.00</div></div>
-                    <div class="ai-hero-kpi-box"><small>Pendientes</small><div id="ai-dash-pedidos">0</div></div>
-                    <div class="ai-hero-kpi-box" style="border-color: rgba(255, 149, 0, 0.5);"><small style="color: #ffe066;">Poco Stock</small><div id="ai-dash-stock">0 prods</div></div>
-                </div>
-            </div>
-
-            <h4 style="font-size: 14px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 15px;">Acciones Rápidas</h4>
-            <div class="ai-quick-actions-grid fade-in">
-                <!-- Estos botones ahora ejecutan la acción al instante y cierran la ventana -->
-                <div class="ai-qa-btn" onclick="closeAiQuickModal(); switchTab('ventas')"><i data-lucide="zap"></i> Venta Rápida</div>
-                <div class="ai-qa-btn" onclick="closeAiQuickModal(); switchTab('pedidos')"><i data-lucide="package-plus"></i> Nuevo Pedido</div>
-                <div class="ai-qa-btn" onclick="closeAiQuickModal(); switchTab('clientes'); setTimeout(()=>openClienteModal(), 100);"><i data-lucide="users"></i> Buscar Cliente</div>
-                <div class="ai-qa-btn" onclick="closeAiQuickModal(); switchTab('reportes'); setTimeout(()=> {openDailySummaryModal(); generateDailySummary();}, 200)"><i data-lucide="scissors"></i> Corte Caja</div>
-            </div>
-            
-            <button class="btn btn-outline" style="width:100%; margin-top:15px; padding:16px;" onclick="closeAiQuickModal()">Cancelar</button>
-        </div>
-    </div>
-                            <!-- BURBUJA DE INICIO DEL CHAT -->
-                            <div class="ai-bubble">
-                                Dime qué necesitas o usa los botones de arriba. Estoy listo para procesar cualquier comando.
-                            </div>
-                        </div>
-
-                        <!-- INPUT DE LENGUAJE NATURAL -->
-                        <div class="ai-input-wrap" style="border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 15px 20px; box-shadow: 0 -10px 20px rgba(0,0,0,0.02);">
-                            <input type="text" id="ai-tab-user-input" placeholder="Ej. 'Cobra 15 en efectivo' o 'Abre inventario'..." autocomplete="off" onkeydown="if(event.key==='Enter') submitAITabInput()">
-                            <button class="ai-send-btn" style="background:var(--input-bg); color:var(--text-primary); box-shadow:none; width:42px; height:42px;" id="ai-tab-voice-btn" onclick="toggleTabVoiceInput()" title="Dictar por Voz">
-                                <i data-lucide="mic" size="20"></i>
-                            </button>
-                            <button class="ai-send-btn" style="width:42px; height:42px;" onclick="submitAITabInput()" title="Enviar mensaje">
-                                <i data-lucide="send" size="20"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ==========================================
-                     PESTAÑA: ASISTENTE MOSTRADOR / CAPACITACIÓN
-                =========================================== -->
-                <div id="ai-mostrador" class="tab-content fade-in">
-                    <div class="ai-tab-layout stagger-item" style="border-color: rgba(0, 113, 227, 0.3); box-shadow: 0 20px 50px rgba(0, 113, 227, 0.15);">
-                        <div class="ai-header" style="background: linear-gradient(135deg, var(--accent-color), #00c6ff); border-radius: var(--radius-lg) var(--radius-lg) 0 0; padding: 12px 20px;">
-                            <div class="ai-header-left" style="gap: 12px;">
-                                <div class="ai-icon-pulse" style="color: var(--accent-color); box-shadow: 0 0 20px rgba(255,255,255,0.6); width: 34px; height: 34px;"><i data-lucide="help-circle" size="18"></i></div>
-                                <div>
-                                    <h2 style="font-weight: 900; font-size: 18px; margin: 0; letter-spacing: -0.5px;">Asistente de Mostrador</h2>
-                                    <span style="font-size: 11px; font-weight: 700; opacity: 0.85; display:flex; align-items:center; gap:4px;">
-                                        <span style="width:6px; height:6px; background:#34c759; border-radius:50%; display:inline-block;"></span> Soporte Inteligente Activo
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="ai-chat-area" id="ai-mostrador-chat-history" style="padding: 20px;">
-                            <div class="ai-bubble">
-                                ¡Hola! Soy tu asistente de mostrador. Estoy conectado al almacén para decirte exactamente qué hay en existencia y ayudarte con los procesos de la caja. 
-                            </div>
-                        </div>
-                        
-                        <div class="ai-suggestions" id="ai-mostrador-suggestions-bar" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; justify-content: flex-start; border-top: 1px solid var(--border-color);">
-                            <!-- LOS BOTONES SE GENERARÁN DINÁMICAMENTE DESDE JS -->
-                        </div>
-
-                        <div class="ai-input-wrap" style="border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 15px 20px;">
-                            <input type="text" id="ai-mostrador-user-input" placeholder="Pregunta cómo usar el sistema o buscar material..." autocomplete="off" onkeydown="if(event.key==='Enter') submitAIMostradorInput()">
-                            <button class="ai-send-btn" style="background:var(--accent-color); width:38px; height:38px;" onclick="submitAIMostradorInput()" title="Enviar mensaje">
-                                <i data-lucide="send" size="18"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ==========================================
-                     PESTAÑA: DASHBOARD INTELIGENTE
-                =========================================== -->
+                <!-- PESTAÑA: DASHBOARD INTELIGENTE -->
                 <div id="dashboard" class="tab-content active fade-in">
                     
                     <div class="dashboard-header stagger-item">
@@ -854,7 +738,7 @@
                             <div class="greeting-date" id="dash-date">Cargando fecha...</div>
                         </div>
                         <div class="dashboard-header-actions">
-                           <button class="dash-action-btn admin-only" onclick="openAiQuickModal()" title="Asistente IA SmartControl">
+                            <button class="dash-action-btn admin-only" onclick="switchTab('ai-tab')" title="Asistente IA SmartControl">
                                 <i data-lucide="sparkles" size="22" style="color:var(--purple-color);"></i>
                             </button>
                             <button class="dash-action-btn admin-only" onclick="openStockAlerts()" title="Notificaciones">
@@ -947,6 +831,112 @@
                     <div class="products-grid stagger-item" style="animation-delay: 0.2s;" id="products-list"></div>
                 </div>
 <!-- ==========================================
+                     PESTAÑA: SMARTCONTROL IA PRO (ADMIN)
+                =========================================== -->
+                <div id="ai-tab" class="tab-content fade-in admin-only">
+                    <div class="ai-tab-layout stagger-item">
+                        <div class="ai-header" style="border-radius: var(--radius-lg) var(--radius-lg) 0 0;">
+                            <div class="ai-header-left">
+                                <div class="ai-icon-pulse"><i data-lucide="brain" size="24"></i></div>
+                                <div>
+                                    <h2 style="font-weight: 900; font-size: 24px; margin: 0; letter-spacing: -0.5px;">SmartControl IA Pro</h2>
+                                    <span style="font-size: 13px; font-weight: 700; opacity: 0.85; display:flex; align-items:center; gap:4px;">
+                                        <span style="width:8px; height:8px; background:#34c759; border-radius:50%; display:inline-block; box-shadow: 0 0 8px #34c759;"></span> Sistema Cognitivo En Línea
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-chat-area" id="ai-tab-chat-history">
+                            <div class="ai-bubble">
+                                ¡Hola! Mi núcleo cognitivo ha sido actualizado. Ahora puedo analizar tu <b>inventario y stock en tiempo real</b>, generar tablas de datos comparativas y mostrarte reportes dinámicos. 
+                                <br><br>Prueba consultándome por existencias, movimientos o presiona "Más información" en mis reportes para abrir una vista gráfica detallada.
+                            </div>
+                        </div>
+                        
+                        <!-- 15 MENSAJES PREDETERMINADOS (ADMIN) -->
+                        <div class="ai-suggestions" id="ai-tab-suggestions-bar" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; justify-content: flex-start; border-top: 1px solid var(--border-color);">
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('¿Cuánto vendí hoy?')">📊 Ventas hoy</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Genera el corte de caja')">🖨️ Corte Diario</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Revisar estado de inventario')">📦 Análisis de Stock</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Busca un cliente')">🔍 Buscar Cliente</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('¿Quién es mi mejor cliente histórico?')">👑 Mejor Cliente</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Productos por agotarse')">⚠️ Stock Crítico</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Registrar un gasto')">💸 Registrar Gasto</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Cotizar producto')">💰 Cotizar Producto</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Surtir inventario')">📦 Surtir Inventario</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Predicción de ventas mañana')">✨ Predicción Mañana</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Categoría más rentable')">📈 Top Categoría</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Hora pico de ventas')">⏰ Hora Pico</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Ventas con tarjeta')">💳 Pagos Tarjeta</button>
+                            <button class="ai-chip" style="flex-shrink: 0;" onclick="processAITabQuery('Ventas del mes')">🗓️ Ventas del Mes</button>
+                        </div>
+
+                        <div class="ai-input-wrap" style="border-radius: 0 0 var(--radius-lg) var(--radius-lg);">
+                            <input type="text" id="ai-tab-user-input" placeholder="Pregunta sobre stock, análisis gráfico, caja, inventario..." autocomplete="off" onkeydown="if(event.key==='Enter') submitAITabInput()">
+                            <button class="ai-send-btn" style="background:var(--input-bg); color:var(--text-primary); box-shadow:none;" id="ai-tab-voice-btn" onclick="toggleTabVoiceInput()" title="Dictar por Voz">
+                                <i data-lucide="mic" size="20"></i>
+                            </button>
+                            <button class="ai-send-btn" onclick="submitAITabInput()" title="Enviar mensaje">
+                                <i data-lucide="send" size="20"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
+                     PESTAÑA: ASISTENTE MOSTRADOR / CAPACITACIÓN
+                =========================================== -->
+                <div id="ai-mostrador" class="tab-content fade-in">
+                    <div class="ai-tab-layout stagger-item" style="border-color: rgba(0, 113, 227, 0.3); box-shadow: 0 20px 50px rgba(0, 113, 227, 0.15);">
+                        <div class="ai-header" style="background: linear-gradient(135deg, var(--accent-color), #00c6ff); border-radius: var(--radius-lg) var(--radius-lg) 0 0;">
+                            <div class="ai-header-left">
+                                <div class="ai-icon-pulse" style="color: var(--accent-color); box-shadow: 0 0 20px rgba(255,255,255,0.6);"><i data-lucide="help-circle" size="24"></i></div>
+                                <div>
+                                    <h2 style="font-weight: 900; font-size: 24px; margin: 0; letter-spacing: -0.5px;">Asistente de Mostrador</h2>
+                                    <span style="font-size: 13px; font-weight: 700; opacity: 0.85; display:flex; align-items:center; gap:4px;">
+                                        <span style="width:8px; height:8px; background:#34c759; border-radius:50%; display:inline-block;"></span> Consulta Inteligente Activa
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-chat-area" id="ai-mostrador-chat-history">
+                            <div class="ai-bubble">
+                                ¡Hola! Soy tu asistente de mostrador. Estoy conectado al almacén para decirte exactamente qué hay en existencia y ayudarte con los procesos de la caja.
+                                <br><br>Pregúntame por insumos o dudas del sistema.
+                            </div>
+                        </div>
+                        
+                        <!-- 15 PREGUNTAS ESTÁNDAR PARA EL MOSTRADOR -->
+                        <div class="ai-suggestions" id="ai-mostrador-suggestions-bar" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; justify-content: flex-start; border-top: 1px solid var(--border-color);">
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo cobro con tarjeta?')">💳 Cobrar con Tarjeta</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo checo el stock?')">📦 Consultar Stock</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo fiar o dejar pendiente?')">⏳ Dejar Pendiente / Fiar</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo busco un insumo o producto?')">🔍 Buscar Insumo</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Dónde encuentro el papel couche?')">📄 Buscar Papel Couche</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Dónde están los engargolados?')">📘 Buscar Engargolados</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo agrego un cliente nuevo?')">👥 Nuevo Cliente</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo creo una cotización?')">📝 Crear Cotización</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo elimino algo del carrito?')">🗑️ Borrar del Carrito</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Qué hago si se atasca la impresora?')">🖨️ Error de Impresora</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo paso un pedido a entregado?')">✅ Entregar Pedido</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo registro un abono?')">💰 Registrar Abono</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo dejo un recado interno?')">📌 Crear Nota/Recado</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo aplico un descuento?')">📉 Aplicar Descuento</button>
+                            <button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('¿Cómo reimprimo un ticket?')">🧾 Reimprimir Ticket</button>
+                        </div>
+
+                        <div class="ai-input-wrap" style="border-radius: 0 0 var(--radius-lg) var(--radius-lg);">
+                            <input type="text" id="ai-mostrador-user-input" placeholder="Pregunta cómo usar el sistema o buscar material..." autocomplete="off" onkeydown="if(event.key==='Enter') submitAIMostradorInput()">
+                            <button class="ai-send-btn" style="background:var(--accent-color);" onclick="submitAIMostradorInput()" title="Enviar mensaje">
+                                <i data-lucide="send" size="20"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================
                      PESTAÑA: KANBAN DE PEDIDOS
                 =========================================== -->
                 <div id="pedidos" class="tab-content fade-in">
@@ -969,7 +959,7 @@
                 <div id="historial" class="tab-content fade-in">
                     <div class="search-container">
                         <i data-lucide="search" size="20"></i>
-                        <input type="text" id="search-history" placeholder="Buscar por producto..." oninput="renderHistory(); toggleClear(this, 'clear-historial')">
+                        <input type="text" id="search-history" placeholder="Buscar por producto, cliente o ID..." oninput="renderHistory(); toggleClear(this, 'clear-historial')">
                         <span id="clear-historial" class="clear-icon" onclick="clearSearch('search-history', 'clear-historial', renderHistory)">&times;</span>
                     </div>
                     <div class="categories-chips"><div class="chip active" onclick="filterHistory('todos', this)">Todos</div><div class="chip" onclick="filterHistory('hoy', this)">Hoy</div><div class="chip" onclick="filterHistory('Efectivo', this)">Efectivo</div><div class="chip" onclick="filterHistory('Tarjeta', this)">Tarjeta</div><div class="chip admin-only" onclick="filterHistory('top', this)">Mayor Utilidad</div></div>
@@ -1150,8 +1140,6 @@
                     <div class="settings-layout stagger-item" style="animation-delay:0.1s;">
                         <div class="settings-menu">
                             <button class="active" onclick="switchSettingsPane('cfg-tienda', this)"><i data-lucide="layout-grid" size="20" style="vertical-align:middle; margin-right:10px;"></i> Preferencias</button>
-                            <!-- NUEVO BOTÓN: ASISTENTE IA -->
-                            <button onclick="switchSettingsPane('cfg-ia', this)"><i data-lucide="bot" size="20" style="vertical-align:middle; margin-right:10px; color:var(--purple-color);"></i> Asistente IA</button>
                             <button onclick="switchSettingsPane('cfg-wa', this)"><i data-lucide="message-square" size="20" style="vertical-align:middle; margin-right:10px; color:#25D366;"></i> WhatsApp</button>
                             <button onclick="switchSettingsPane('cfg-dist', this)"><i data-lucide="pie-chart" size="20" style="vertical-align:middle; margin-right:10px; color:var(--warning-color);"></i> Finanzas</button>
                             <button onclick="switchSettingsPane('cfg-datos', this)"><i data-lucide="hard-drive" size="20" style="vertical-align:middle; margin-right:10px; color:var(--danger-color);"></i> Respaldo</button>
@@ -1196,40 +1184,6 @@
                             </div>
                         </div>
 
-                        <!-- NUEVA PESTAÑA: CONFIGURACIÓN IA -->
-                        <div class="settings-pane" id="cfg-ia">
-                            <h3 style="margin-bottom: 15px; font-size:26px; font-weight:900;">Asistente de Voz y FAQ</h3>
-                            
-                            <!-- NUEVO: TOGGLE DE VOZ -->
-                            <div style="background:var(--input-bg); padding:20px; border-radius:var(--radius-md); margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; border: 1px solid var(--border-color);">
-                                <div>
-                                    <h4 style="font-size:16px; font-weight:800; margin-bottom:5px;"><i data-lucide="volume-2" size="18" style="vertical-align:middle; color:var(--purple-color);"></i> Leer respuestas en voz alta</h4>
-                                    <p style="font-size:13px; color:var(--text-secondary); margin:0;">El asistente hablará automáticamente cuando responda a tus dudas.</p>
-                                </div>
-                                <input type="checkbox" id="cfg-tts-toggle" style="width:24px; height:24px; cursor:pointer;" onchange="saveTTSPreference()">
-                            </div>
-
-                            <h3 style="margin-bottom: 15px; font-size:20px; font-weight:900;">Preguntas Frecuentes (Mostrador)</h3>
-                            <p style="font-size:14px; color:var(--text-secondary); margin-bottom:24px; font-weight:600;">Personaliza los botones y respuestas del Asistente para capacitar a tu personal.</p>
-                            
-                            <div id="ia-faq-list" style="margin-bottom: 20px; max-height: 400px; overflow-y: auto; padding-right: 5px; border-radius: var(--radius-sm);">
-                                <!-- Se llena dinámicamente con JS -->
-                            </div>
-                            
-                            <div style="background:var(--input-bg); padding:20px; border-radius:var(--radius-md); border:1px dashed var(--border-color);">
-                                <h4 style="font-size:16px; font-weight:800; margin-bottom:15px;"><i data-lucide="plus-circle" size="18" style="vertical-align:middle; color:var(--accent-color);"></i> Añadir Nueva Pregunta</h4>
-                                <div class="form-group" style="margin-bottom:10px;">
-                                    <input type="text" id="new-faq-q" placeholder="Ej. ¿Cómo saco copias? (Será el título del botón)">
-                                </div>
-                                <div class="form-group" style="margin-bottom:10px;">
-                                    <textarea id="new-faq-a" rows="2" placeholder="Respuesta que dará el asistente..."></textarea>
-                                </div>
-                                <button class="btn btn-secondary" style="width:100%; color:var(--accent-color);" onclick="addIAFaq()"><i data-lucide="plus" size="18"></i> Agregar a la lista</button>
-                            </div>
-                            
-                            <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="saveIAFaqs()"><i data-lucide="save" size="20"></i> Guardar Cambios IA</button>
-                        </div>
-
                         <div class="settings-pane" id="cfg-wa">
                             <h3 style="margin-bottom: 15px; font-size:26px; font-weight:900;">Plantillas WhatsApp</h3>
                             <p style="font-size:15px; color:var(--text-secondary); margin-bottom:24px; font-weight:600;">Personaliza los mensajes rápidos.</p>
@@ -1261,14 +1215,13 @@
                         </div>
                     </div>
                 </div>
+</div> <!-- Cierre de .container -->
+        </div> <!-- Cierre de .main-content -->
+    </div> <!-- Cierre de .app-layout -->
 
-            </div>
-        </div>
-    </div>
-<!-- ==========================================
+    <!-- ==========================================
          MODALES DE LA APLICACIÓN
     =========================================== -->
-<!-- MODAL DEL CARRITO DE COMPRAS PRO -->
     <div class="modal-overlay" id="cart-modal">
         <div class="cart-sidebar" onclick="event.stopPropagation()">
             <!-- Overlay de Éxito al Cobrar -->
@@ -1355,7 +1308,6 @@
             </div>
         </div>
     </div>
-    
     <!-- MODAL PARA POST-ITS / NOTAS -->
     <div class="modal-overlay" id="nota-modal"><div class="ios-modal" onclick="event.stopPropagation()"><div class="drag-handle"></div><h2 style="font-weight:900; font-size:24px; margin-bottom:15px;"><i data-lucide="sticky-note" size="24" style="color:var(--warning-color); vertical-align:middle;"></i> Nueva Tarea / Nota</h2><div class="form-group"><label>Escribe tu recado</label><textarea id="nota-texto" rows="3" placeholder="Ej. Imprimir lonas urgentes, comprar papel bond..."></textarea></div><div class="form-group"><label>Color del Post-it</label><div style="display:flex; gap:10px;"><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #fef08a, #fde047); color:#854d0e; padding:12px; opacity:1; transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);" onclick="selectNotaColor('post-it-yellow', this)">Amarillo</button><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #bae6fd, #7dd3fc); color:#1e3a8a; padding:12px; opacity:0.5;" onclick="selectNotaColor('post-it-blue', this)">Azul</button><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #fbcfe8, #f472b6); color:#831843; padding:12px; opacity:0.5;" onclick="selectNotaColor('post-it-pink', this)">Rosa</button><button class="btn btn-nota-color" style="flex:1; background:linear-gradient(135deg, #bbf7d0, #86efac); color:#14532d; padding:12px; opacity:0.5;" onclick="selectNotaColor('post-it-green', this)">Verde</button></div></div><input type="hidden" id="nota-color-sel" value="post-it-yellow"><button class="btn btn-warning" style="width:100%; margin-bottom:12px; padding:18px; font-size:16px;" onclick="guardarNota()"><i data-lucide="pin" size="20"></i> Fijar Nota</button><button class="btn btn-outline" style="width:100%; padding:16px;" onclick="closeNotaModal()">Cancelar</button></div></div>
     
@@ -1400,6 +1352,7 @@
         <div class="tab-item empleado-only-flex" onclick="switchTab('ai-mostrador', this)"><i data-lucide="help-circle" size="24"></i><span>Ayuda</span></div>
         <div class="tab-item admin-only" onclick="switchTab('configuracion', this)"><i data-lucide="settings" size="24"></i><span>Ajustes</span></div>
     </div>
+
 <script>
         const $ = id => document.getElementById(id);
         const $$ = sel => document.querySelectorAll(sel);
@@ -1415,31 +1368,6 @@
         let adminPin = localStorage.getItem('pos_admin_pin') || '1234';
         let metaMensual = getSafeStorage('pos_meta_mensual', 15000);
         let notasInternas = getSafeStorage('pos_notas_pro', []);
-
-        // Preguntas y respuestas por defecto para la IA
-        const defaultIAFaqs = [
-            { id: 1, q: '¿Cómo cobro con tarjeta?', a: 'Para cobrar con tarjeta:<br>1. Ve a <b>Ventas</b> y arma tu carrito.<br>2. Abre el carrito y selecciona <b>Tarjeta</b> en los botones inferiores.<br>3. Pasa la terminal y cuando se apruebe, dale a <b>Completar</b>.' },
-            { id: 2, q: '¿Cómo checo el stock?', a: 'Ve a la pestaña <b>Inventario / Stock</b>. Ahí puedes buscar cualquier producto y ver cuántas piezas quedan. O puedes preguntarme a mí directamente diciendo "cuántos [producto] quedan".' },
-            { id: 3, q: '¿Cómo hago un corte de turno?', a: 'El <b>Corte de Turno</b> completo lo realiza el Administrador desde la pestaña de Métricas. Si necesitas revisar cuánto hay en caja actualmente, mira la etiqueta verde superior derecha que dice "Caja".' },
-            { id: 4, q: '¿Qué hago si falta cambio?', a: 'Si te quedaste sin monedas o billetes pequeños, pídeles cambio inmediato al administrador o anota en un <b>Post-it (Recado)</b> amarillo que se requiere feria para la caja.' },
-            { id: 5, q: '¿Cómo cancelo una venta?', a: '<b>Solo el Administrador</b> tiene permisos para borrar o editar ventas directamente desde el Historial. Llámalo para que introduzca su NIP y haga la devolución del stock.' },
-            { id: 6, q: '¿Dónde guardo las mermas?', a: 'Las hojas mal impresas o material dañado deben colocarse en la <b>caja de reciclaje / mermas</b> debajo del mostrador. No las tires a la basura normal, se deben contabilizar.' },
-            { id: 7, q: '¿Cómo fiar o dejar pendiente?', a: 'Para fiar o dejar pendiente:<br>1. En el carrito, selecciona <b>Fiar</b>.<br>2. <b>Obligatorio:</b> Escribe el nombre del cliente en opciones extra.<br>3. Dale a <b>Completar</b>. El pedido se irá a la pestaña <b>Kanban Pedidos</b> en "Esperando Cliente".' },
-            { id: 8, q: '¿Cómo busco un insumo o producto?', a: 'Para buscar insumos, puedes decirme: "Cuántas plumas quedan" o "Tenemos hojas de color". También puedes usar el buscador principal pulsando (Ctrl+K) desde el teclado.' },
-            { id: 9, q: '¿Dónde encuentro el papel couche?', a: '📍 <b>Ubicación:</b> El papel Couché está en el <b>Mueble 2, Cajón Inferior</b>. Recuerda revisar que esté bien alineado antes de meterlo a la impresora.' },
-            { id: 10, q: '¿Dónde están los engargolados?', a: '📍 <b>Ubicación:</b> Las pastas y espirales están en el <b>Estante 1, Cajas transparentes</b>. La engargoladora está en la mesa de trabajo derecha.' },
-            { id: 11, q: '¿Cómo agrego un cliente nuevo?', a: 'Para agregar un cliente:<br>1. Ve a la pestaña <b>Clientes</b>.<br>2. Dale clic al botón azul <b>Nuevo Cliente</b>.<br>3. Llena su nombre y WhatsApp y dale a Guardar.' },
-            { id: 12, q: '¿Cómo creo una cotización?', a: 'Para cotizar:<br>1. Agrega productos al carrito en <b>Ventas</b>.<br>2. Abre el carrito y despliega las <b>Opciones extra</b>.<br>3. Llena el nombre y dale al botón amarillo <b>Solo Cotizar</b>.' },
-            { id: 13, q: '¿Cómo elimino algo del carrito?', a: 'Abre el carrito y <b>desliza el producto hacia la izquierda</b> (swipe) sobre el artículo para eliminarlo, o usa los botones de <b>-</b> para bajar la cantidad a cero.' },
-            { id: 14, q: '¿Qué hago si se atasca la impresora?', a: '⚠️ <b>¡No jales el papel fuerte!</b><br>1. Apaga la impresora.<br>2. Abre la tapa frontal y trasera.<br>3. Saca el papel suavemente siguiendo la ruta de los rodillos.<br>4. Si no sale, avísale al Admin inmediatamente.' },
-            { id: 15, q: '¿Cómo paso un pedido a entregado?', a: 'Ve a la pestaña <b>Kanban Pedidos</b>. Busca la tarjeta del cliente en "Imprimiendo" o "Esperando Cliente" y dale clic al botón verde de <b>Entregar</b> o arrástrala a la última columna.' },
-            { id: 16, q: '¿Cómo registro un abono?', a: 'Ve a <b>Kanban Pedidos</b>, busca el pedido en "Esperando Cliente" y dale al botón naranja <b>Abonar</b>. Escribe la cantidad y se restará de su deuda automáticamente.' },
-            { id: 17, q: '¿Cómo dejo un recado interno?', a: 'Usa el atajo (Ctrl+K) o ve a la pestaña <b>Inicio</b> y baja hasta el <b>Tablero de Tareas</b>. Dale clic a <b>Nueva Tarea</b>, escribe el mensaje, elige el color y dale a Fijar Nota.' },
-            { id: 18, q: '¿Cómo aplico un descuento?', a: 'Para aplicar descuento, debes pedir autorización al Administrador. Si la tienes, ajusta manualmente el precio editando el artículo en el carrito (bajando el total).' },
-            { id: 19, q: '¿Cómo reimprimo un ticket?', a: 'Ve a la pestaña <b>Historial</b>, busca la venta por fecha o nombre usando la lupa superior, ábrela dándole clic a la tarjeta y presiona el botón azul de <b>Ticket</b>.' }
-        ];
-
-        let iaFaqs = getSafeStorage('pos_ia_faqs', defaultIAFaqs);
 
         async function requestWakeLock() { try { if ('wakeLock' in navigator) wakeLock = await navigator.wakeLock.request('screen'); } catch (err) {} }
         document.addEventListener('visibilitychange', async () => { if (wakeLock !== null && document.visibilityState === 'visible') requestWakeLock(); });
@@ -1481,23 +1409,6 @@
                     }
                 } catch(e) {}
             }, 0);
-        }
-
-        // ==========================================
-        // TEXT-TO-SPEECH (NUEVO)
-        // ==========================================
-        function speakText(text) {
-            if (!('speechSynthesis' in window)) {
-                showToast('Tu navegador no soporta lectura de voz');
-                return;
-            }
-            window.speechSynthesis.cancel();
-            const cleanText = text.replace(/<[^>]*>?/gm, ''); 
-            const utterance = new SpeechSynthesisUtterance(cleanText);
-            utterance.lang = 'es-MX';
-            utterance.rate = 1.05;
-            window.speechSynthesis.speak(utterance);
-            playSynthSound('click_tab');
         }
 
         let iconSyncTimer; function renderIcons() { clearTimeout(iconSyncTimer); iconSyncTimer = setTimeout(() => { lucide.createIcons(); }, 15); }
@@ -1562,7 +1473,7 @@
                 setTimeout(() => {
                     lockOverlay.style.opacity = '0';
                     finishLogin(role); 
-                    setTimeout(() => { lockOverlay.style.display = 'none'; $('lock-icon-container').style.transform = 'scale(1) translateY(0)'; checkMorningSummary(); }, 400);
+                    setTimeout(() => { lockOverlay.style.display = 'none'; $('lock-icon-container').style.transform = 'scale(1) translateY(0)'; }, 400);
                 }, 1300);
 
             } else {
@@ -1616,8 +1527,9 @@
 
             try {
                 requestWakeLock();
-                currentRole = localStorage.getItem('pos_user_role') || 'empleado';
-                localStorage.setItem('pos_user_role', currentRole);
+                currentRole = 'empleado';
+                localStorage.setItem('pos_user_role', 'empleado');
+                checkLogin();
 
                 const now = new Date();
                 const formatStr = now.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -1655,12 +1567,6 @@
                 $$('.client-name').forEach(el => el.addEventListener('blur', () => { setTimeout(() => { $$('.client-suggestions').forEach(s => s.style.display = 'none'); }, 250); }));
                 initMarginCalculator();
 
-                // Inicializar IA Faqs
-                renderIAFaqs();
-                renderMostradorChips();
-
-                if (currentRole === 'admin') checkMorningSummary();
-
             } catch (error) {
                 console.error("Error interno:", error);
             }
@@ -1686,6 +1592,7 @@
             board.innerHTML += `<div class="add-note-card fade-in" onclick="openNotaModal()"><i data-lucide="plus-circle" size="32" style="margin-bottom: 10px;"></i><span style="font-weight: 800;">Nueva Tarea</span></div>`;
             renderIcons();
 
+            // Lógica de alerta visual movida al Header
             const headerBadge = $('header-notas-badge');
             const notasBadgeAlert = $('notas-badge-alert');
             if(headerBadge) headerBadge.style.display = notasInternas.length > 0 ? 'inline-block' : 'none';
@@ -1748,6 +1655,9 @@
             renderIcons(); 
         }
 
+        /* =========================================
+           TRANSICIONES Y HELPERS
+        ========================================= */
         function switchTab(tabId, btn) { 
             playSynthSound('click_tab'); 
             const currentTab = document.querySelector('.tab-content.active');
@@ -1775,7 +1685,6 @@
             if (sidebar) sidebar.classList.remove('mobile-open'); 
             
             if(tabId === 'dashboard') { renderDashboard(); } 
-            if(tabId === 'ai-tab') { updatePrintCenterAI(); }
         }
 
         function toggleSidebar() { const sidebar = document.querySelector('.sidebar'); if(sidebar) { sidebar.classList.toggle('mobile-open'); playSynthSound('click_tab'); } }
@@ -1790,68 +1699,8 @@
         }
 
         /* =========================================
-           CONFIGURACIÓN Y CEREBRO IA MOSTRADOR
+           NUEVO: LÓGICA REFINADA IA MOSTRADOR 
         ========================================= */
-        function renderIAFaqs() {
-            const list = $('ia-faq-list');
-            if(!list) return;
-            list.innerHTML = '';
-            iaFaqs.forEach(faq => {
-                list.innerHTML += `
-                <div class="faq-item-row">
-                    <div style="flex:1; display:flex; flex-direction:column; gap:5px;">
-                        <input type="text" id="faq-q-${faq.id}" value="${faq.q}">
-                        <textarea id="faq-a-${faq.id}" rows="2">${faq.a.replace(/<br>/g, '\n')}</textarea>
-                    </div>
-                    <button class="btn btn-secondary" style="padding:12px; color:var(--danger-color); height:100%;" onclick="deleteIAFaq(${faq.id})">
-                        <i data-lucide="trash" size="18"></i>
-                    </button>
-                </div>`;
-            });
-            renderIcons();
-        }
-
-        function addIAFaq() {
-            const q = $('new-faq-q').value.trim();
-            const a = $('new-faq-a').value.trim().replace(/\n/g, '<br>');
-            if(!q || !a) { showToast('Llena ambos campos'); return; }
-            iaFaqs.push({ id: Date.now(), q, a });
-            $('new-faq-q').value = '';
-            $('new-faq-a').value = '';
-            renderIAFaqs();
-            playSynthSound('click_tab');
-        }
-
-        function deleteIAFaq(id) {
-            iaFaqs = iaFaqs.filter(f => f.id !== id);
-            renderIAFaqs();
-            playSynthSound('delete');
-        }
-
-        function saveIAFaqs() {
-            iaFaqs.forEach(faq => {
-                const qInput = $(`faq-q-${faq.id}`);
-                const aInput = $(`faq-a-${faq.id}`);
-                if(qInput && aInput) {
-                    faq.q = qInput.value.trim();
-                    faq.a = aInput.value.trim().replace(/\n/g, '<br>');
-                }
-            });
-            localStorage.setItem('pos_ia_faqs', JSON.stringify(iaFaqs));
-            renderMostradorChips();
-            playSynthSound('save');
-            showToast('Preguntas de IA actualizadas');
-        }
-
-        function renderMostradorChips() {
-            const bar = $('ai-mostrador-suggestions-bar');
-            if(!bar) return;
-            bar.innerHTML = '';
-            iaFaqs.forEach(faq => {
-                bar.innerHTML += `<button class="ai-chip" style="color:var(--accent-color); border-color:rgba(0,113,227,0.3); background:rgba(0,113,227,0.05);" onclick="processAIMostradorQuery('${faq.q}')">${faq.q}</button>`;
-            });
-        }
-
         function submitAIMostradorInput() {
             const inputEl = $('ai-mostrador-user-input');
             const val = inputEl.value.trim();
@@ -1860,20 +1709,18 @@
             processAIMostradorQuery(val);
         }
 
-        function typeAIMostradorResponse(html, textToSpeak) {
+        function typeAIMostradorResponse(html) {
             const chat = $('ai-mostrador-chat-history');
             const typingId = 'typing-mostrador-' + Date.now();
             
+            // Animación de "pensando" para mayor realismo
             chat.insertAdjacentHTML('beforeend', `<div class="ai-bubble" id="${typingId}"><div class="ai-typing-indicator"><span></span><span></span><span></span></div></div>`);
             chat.scrollTop = chat.scrollHeight;
 
+            // Tiempo artificial de análisis
             setTimeout(() => {
                 const target = $(typingId);
-                if(target) { 
-                    const escapedSpeech = textToSpeak ? textToSpeak.replace(/'/g, "\\'").replace(/"/g, '&quot;') : html.replace(/<[^>]*>?/gm, '').replace(/'/g, "\\'");
-                    const finalHtml = html + `<br><button class="ai-tts-btn" onclick="speakText('${escapedSpeech}')"><i data-lucide="volume-2" size="14"></i> Escuchar</button>`;
-                    target.innerHTML = finalHtml; 
-                }
+                if(target) { target.innerHTML = html; }
                 chat.scrollTop = chat.scrollHeight;
                 playSynthSound('modal'); renderIcons();
             }, 1200 + Math.random() * 800); 
@@ -1887,52 +1734,63 @@
 
             const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
             let response = '';
-            let rawTextForSpeech = '';
 
-            // Stock predictivo dinámico
+            // Lógica profunda de inventario/stock para mostrador
             if(q.includes('cuanto') || q.includes('cuantas') || q.includes('hay') || q.includes('quedan') || q.includes('tenemos')) {
                 const prodName = q.replace(/cuanto|cuantas|hay|quedan|tenemos|de|el|la|los|las|stock|inventario|\?/g, '').trim();
                 if(prodName.length > 2) {
                     const prod = productos.find(p => p.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(prodName));
                     if(prod) {
                         response = `He revisado el almacén. Actualmente tenemos <b style="font-size:18px; color:var(--accent-color);">${prod.stock} unidades</b> de <b>${prod.nombre}</b>.`;
-                        rawTextForSpeech = `He revisado el almacén. Actualmente tenemos ${prod.stock} unidades de ${prod.nombre}.`;
-                        if(prod.stock <= 5) {
-                            response += `<br><br><span style="color:var(--danger-color); font-weight:800;">⚠️ Quedan muy pocos, por favor repórtalo para resurtir.</span>`;
-                            rawTextForSpeech += ` Quedan muy pocos, por favor repórtalo para resurtir.`;
-                        }
+                        if(prod.stock <= 5) response += `<br><br><span style="color:var(--danger-color); font-weight:800;">⚠️ Quedan muy pocos, por favor repórtalo para resurtir.</span>`;
                     } else {
                         response = `No logro encontrar "${prodName}" en nuestro inventario. Por favor, revisa en el Mueble físico o pregunta directamente a Brayan.`;
-                        rawTextForSpeech = response;
                     }
-                    typeAIMostradorResponse(response, rawTextForSpeech);
+                    typeAIMostradorResponse(response);
                     return;
                 }
             }
 
-            // Preguntas personalizadas desde Ajustes
-            let matchedFaq = iaFaqs.find(f => f.q.toLowerCase() === query.toLowerCase());
-            
-            if (!matchedFaq) {
-                matchedFaq = iaFaqs.find(f => {
-                    const keywords = f.q.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f\?¿]/g, "").split(' ').filter(w => w.length > 3);
-                    return keywords.some(k => q.includes(k));
-                });
-            }
-
-            if (matchedFaq) {
-                response = matchedFaq.a;
-                rawTextForSpeech = response;
+            // Preguntas predeterminadas del Mostrador
+            if(q.includes('cobro con tarjeta') || q.includes('cobrar con tarjeta')) {
+                response = 'Para cobrar con tarjeta:<br>1. Ve a <b>Ventas</b> y arma tu carrito.<br>2. Abre el carrito y selecciona <b>Tarjeta</b> en los botones inferiores.<br>3. Pasa la terminal y cuando se apruebe, dale a <b>Completar</b>.';
+            } else if(q.includes('fiar') || q.includes('dejar pendiente')) {
+                response = 'Para fiar o dejar pendiente:<br>1. En el carrito, selecciona <b>Fiar</b>.<br>2. <b>Obligatorio:</b> Escribe el nombre del cliente en opciones extra.<br>3. Dale a <b>Completar</b>. El pedido se irá a la pestaña <b>Kanban Pedidos</b> en "Esperando Cliente".';
+            } else if(q.includes('descuento')) {
+                response = 'Para aplicar descuento, debes pedir autorización al Administrador. Si la tienes, ajusta manualmente el precio editando el artículo en el carrito.';
+            } else if(q.includes('buscar papel') || q.includes('papel couche')) {
+                response = '📍 <b>Ubicación:</b> El papel Couché está en el <b>Mueble 2, Cajón Inferior</b>. Recuerda revisar que esté bien alineado antes de meterlo a la impresora.';
+            } else if(q.includes('engargolado') || q.includes('engargolados') || q.includes('espirales')) {
+                response = '📍 <b>Ubicación:</b> Las pastas y espirales están en el <b>Estante 1, Cajas transparentes</b>. La engargoladora está en la mesa de trabajo derecha.';
+            } else if(q.includes('insumo') || q.includes('buscar')) {
+                response = 'Para buscar insumos, puedes decirme: "Cuántas plumas quedan" o "Tenemos hojas de color". También puedes usar el buscador principal (Ctrl+K).';
+            } else if(q.includes('cliente nuevo') || q.includes('nuevo cliente') || q.includes('agrego un cliente')) {
+                response = 'Para agregar un cliente:<br>1. Ve a la pestaña <b>Clientes</b>.<br>2. Dale clic al botón azul <b>Nuevo Cliente</b>.<br>3. Llena su nombre y WhatsApp y dale a Guardar.';
+            } else if(q.includes('crear cotizacion') || q.includes('crear una cotizacion')) {
+                response = 'Para cotizar:<br>1. Agrega productos al carrito en <b>Ventas</b>.<br>2. Abre el carrito y despliega las <b>Opciones extra</b>.<br>3. Llena el nombre y dale al botón amarillo <b>Solo Cotizar</b>.';
+            } else if(q.includes('elimino algo del carrito') || q.includes('borrar del carrito')) {
+                response = 'Abre el carrito y <b>desliza el producto hacia la izquierda</b> (swipe) sobre el artículo para eliminarlo, o usa los botones de <b>-</b> para bajar la cantidad a cero.';
+            } else if(q.includes('atasca la impresora') || q.includes('error de impresora')) {
+                response = '⚠️ <b>¡No jales el papel fuerte!</b><br>1. Apaga la impresora.<br>2. Abre la tapa frontal y trasera.<br>3. Saca el papel suavemente siguiendo la ruta de los rodillos.<br>4. Si no sale, avísale a Brayan inmediatamente.';
+            } else if(q.includes('entregado') || q.includes('entregar pedido')) {
+                response = 'Ve a la pestaña <b>Kanban Pedidos</b>. Busca la tarjeta del cliente en "Imprimiendo" o "Esperando Cliente" y dale clic al botón verde de <b>Entregar</b> o arrástrala a la última columna.';
+            } else if(q.includes('registrar un abono') || q.includes('registrar abono')) {
+                response = 'Ve a <b>Kanban Pedidos</b>, busca el pedido en "Esperando Cliente" y dale al botón naranja <b>Abonar</b>. Escribe la cantidad y se restará de su deuda.';
+            } else if(q.includes('recado interno') || q.includes('nota')) {
+                response = 'Ve a la pestaña <b>Inicio</b> y baja hasta el <b>Tablero de Tareas</b>. Dale clic a <b>Nueva Tarea</b>, escribe el mensaje, elige el color y dale a Fijar Nota.';
+            } else if(q.includes('checo el stock') || q.includes('consultar stock')) {
+                response = 'Ve a la pestaña <b>Inventario / Stock</b>. Ahí puedes buscar cualquier producto y ver cuántas piezas quedan. O puedes preguntarme a mí directamente.';
+            } else if(q.includes('reimprimir un ticket') || q.includes('reimprimir ticket')) {
+                response = 'Ve a la pestaña <b>Historial</b>, busca la venta por fecha o nombre, ábrela dándole clic a la tarjeta y dale al botón azul de <b>Ticket</b>.';
             } else {
-                response = 'No encontré una respuesta configurada para esa consulta. Intenta usar los botones de abajo o pregúntale directamente al Administrador.';
-                rawTextForSpeech = response;
+                response = 'No entendí muy bien la consulta. Estoy entrenado para revisar inventario (ej. "¿Cuánto papel queda?") o explicarte procesos operativos. ¿Intentas otra vez?';
             }
 
-            typeAIMostradorResponse(response, rawTextForSpeech);
+            typeAIMostradorResponse(response);
         }
 
         /* =========================================
-           CEREBRO REFINADO IA PRO ADMIN 
+           LÓGICA REFINADA IA PRO (CEREBRO ADMINISTRADOR)
         ========================================= */
         let aiTabState = null; 
         let isTabRecording = false;
@@ -1965,6 +1823,7 @@
             chat.insertAdjacentHTML('beforeend', `<div class="ai-bubble" id="${typingId}"><div class="ai-typing-indicator"><span></span><span></span><span></span></div></div>`);
             chat.scrollTop = chat.scrollHeight;
 
+            // Tiempo artificial "pensando/analizando datos"
             setTimeout(() => {
                 const target = $(typingId);
                 if(target) { target.innerHTML = html; if(appendChart) appendChart(target); }
@@ -1982,20 +1841,9 @@
             const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
             const todayStr = getLocalISO().slice(0, 10);
 
-            // --- AÑADE ESTE BLOQUE NUEVO PARA LOS BOTONES DE ACCIÓN RÁPIDA ---
-            if (q.includes('venta rapida') || q.includes('registrar una venta') || q === 'vender') {
-                typeAITabResponse('¡Enseguida! Abriendo el Punto de Venta...');
-                setTimeout(() => switchTab('ventas'), 1200);
-                return;
-            }
-
-            if (q.includes('registrar un pedido') || q.includes('nuevo pedido')) {
-                typeAITabResponse('Preparando el sistema para capturar un pedido...');
-                setTimeout(() => switchTab('pedidos'), 1200);
-                return;
-            }
-            // ------------------------------------------------------------------
-
+            // ==========================================
+            // FASE 1: PROCESAR ESTADOS EN ESPERA 
+            // ==========================================
             if (aiTabState === 'esperando_cliente') {
                 aiTabState = null; 
                 let clienteEncontrado = null;
@@ -2071,6 +1919,9 @@
                 return;
             }
 
+            // ==========================================
+            // FASE 2: DETECTAR PREGUNTAS PROFUNDAS DE INVENTARIO
+            // ==========================================
             if(q.includes('estado de inventario') || q.includes('estado del inventario') || q.includes('revisar inventario')) {
                 const totalItems = productos.length;
                 const itemsAgotados = productos.filter(p => p.stock <= 0).length;
@@ -2082,7 +1933,7 @@
                     <div class="ai-kpi-grid">
                         <div class="ai-kpi-box"><small>Prod. Activos</small><div style="color:var(--text-primary);">${totalItems - itemsAgotados}</div></div>
                         <div class="ai-kpi-box"><small>Agotados</small><div style="color:var(--danger-color);">${itemsAgotados}</div></div>
-                        <div class="ai-kpi-box" style="grid-column: span 2;"><small>Capital Invertido</small><div style="color:var(--warning-color);">$${capitalInvertido.toFixed(2)}</div></div>
+                        <div class="ai-kpi-box" style="grid-column: span 2;"><small>Capital en Stock (Costo)</small><div style="color:var(--warning-color);">$${capitalInvertido.toFixed(2)}</div></div>
                     </div>
                     <button class="ai-more-info-btn" onclick="switchTab('inventario');"><i data-lucide="external-link" size="14"></i> Más información del Stock</button>
                 </div>`;
@@ -2090,19 +1941,24 @@
                 return;
             }
 
+            // ==========================================
+            // FASE 3: DETECTAR COMANDOS E INICIAR ESTADOS
+            // ==========================================
             if (q === 'busca un cliente' || q === 'buscar cliente' || q.includes('busca al cliente')) {
-                aiTabState = 'esperando_cliente'; typeAITabResponse('Claro, mi motor de búsqueda está listo. Dime únicamente el <b>nombre del cliente</b> que deseas localizar.'); return;
-            }
-            if (q === 'cotizar producto' || q === 'cotizar') { 
-                aiTabState = 'esperando_cotizacion'; typeAITabResponse('Por supuesto. ¿Cuál es el nombre exacto o aproximado del producto que te gustaría consultar?'); return; 
-            }
-            if (q === 'registrar un gasto' || q === 'registrar gasto') { 
-                aiTabState = 'esperando_gasto'; typeAITabResponse('Habilito el registro rápido. ¿De cuánto es el monto del egreso? Escribe solo el número.'); return; 
-            }
-            if (q === 'surtir inventario' || q.includes('surtir')) { 
-                aiTabState = 'esperando_surtir'; typeAITabResponse('Entendido. Escribe la cantidad seguida de una palabra clave del producto. Por ejemplo: "100 engargolado".'); return; 
+                const namePart = q.replace(/busca un cliente|busca al cliente|buscar cliente/g, '').trim();
+                if (namePart.length > 2) { aiTabState = 'esperando_cliente'; processAITabQuery(namePart); } 
+                else { aiTabState = 'esperando_cliente'; typeAITabResponse('Claro, mi motor de búsqueda está listo. Dime únicamente el <b>nombre del cliente</b> que deseas localizar.'); return; }
             }
 
+            if (q === 'cotizar producto') { aiTabState = 'esperando_cotizacion'; typeAITabResponse('Por supuesto. ¿Cuál es el nombre exacto o aproximado del producto que te gustaría consultar?'); return; }
+            if (q === 'registrar un gasto' || q === 'registrar gasto') { aiTabState = 'esperando_gasto'; typeAITabResponse('Habilito el registro rápido. ¿De cuánto es el monto del egreso? Escribe solo el número.'); return; }
+            if (q === 'surtir inventario') { aiTabState = 'esperando_surtir'; typeAITabResponse('Entendido. Escribe la cantidad seguida de una palabra clave del producto. Por ejemplo: "100 engargolado".'); return; }
+
+            // ==========================================
+            // FASE 4: CONSULTAS ANALÍTICAS CON DISEÑO INLINE
+            // ==========================================
+            
+            // Corte Diario INLINE
             if(q.includes('corte de caja') || q.includes('corte diario')) {
                 const vHoy = ventas.filter(v => v.fecha.startsWith(todayStr));
                 let tBruto=0, tUtil=0, pEfe=0, pTar=0;
@@ -2124,6 +1980,7 @@
                 return;
             }
 
+            // Ventas del Mes INLINE
             if(q.includes('ventas del mes')) {
                 const currentMonthStr = todayStr.slice(0, 7);
                 const vMes = ventas.filter(v => v.fecha.startsWith(currentMonthStr));
@@ -2147,60 +2004,7 @@
                 return;
             }
 
-            if(q.includes('ticket promedio')) {
-                const total = ventas.reduce((s,v)=>s+v.total,0);
-                const prom = ventas.length > 0 ? total/ventas.length : 0;
-                typeAITabResponse(`A lo largo de todo tu historial, tu <b>Ticket Promedio</b> es de <b style="color:var(--success-color); font-size: 20px;">$${prom.toFixed(2)}</b> por cliente. Intenta hacer "ventas cruzadas" (ofrecer extras) para subir este número.`);
-                return;
-            }
-
-            if(q.includes('tarjeta') && (q.includes('ventas') || q.includes('pagos'))) {
-                const vTarj = ventas.filter(v => v.fecha.startsWith(todayStr) && (v.pago === 'Tarjeta' || v.pago === 'Transferencia'));
-                const sum = vTarj.reduce((s,v)=>s+v.total,0);
-                typeAITabResponse(`Hoy se han cerrado <b>${vTarj.length} transacciones</b> digitales (Tarjeta/Transf), sumando un total captado de <b style="color:var(--accent-color); font-size:20px;">$${sum.toFixed(2)}</b>.`);
-                return;
-            }
-
-            if(q.includes('prediccion') || q.includes('mañana')) {
-                const last30Days = new Date(); last30Days.setDate(last30Days.getDate() - 30);
-                const vRecientes = ventas.filter(v => new Date(v.fecha) >= last30Days);
-                const avgDaily = vRecientes.length > 0 ? vRecientes.reduce((s,v)=>s+v.total,0) / 30 : 0;
-                const pred = avgDaily * 1.05; 
-                typeAITabResponse(`Según la tendencia algorítmica de tus últimos 30 días, se proyecta que mañana logres una venta bruta aproximada de <b style="color:var(--purple-color); font-size:20px;">$${pred.toFixed(2)}</b>.`);
-                return;
-            }
-
-            if(q.includes('hora pico')) {
-                const hoursCount = new Array(24).fill(0); 
-                ventas.forEach(v => { const h = new Date(v.fecha).getHours(); hoursCount[h]++; }); 
-                let peakHour = 12, maxSales = 0; 
-                hoursCount.forEach((count, h) => { if(count > maxSales) { maxSales = count; peakHour = h; } }); 
-                const ampm = peakHour >= 12 ? 'PM' : 'AM'; 
-                const h12 = peakHour > 12 ? peakHour - 12 : (peakHour === 0 ? 12 : peakHour);
-                typeAITabResponse(`He analizado tus registros de calor. Históricamente, tu mayor flujo de ventas ocurre alrededor de las <b style="color:var(--warning-color); font-size:22px;">${h12}:00 ${ampm}</b>. Prepárate para tener material y cambio suficiente a esa hora.`);
-                return;
-            }
-
-            if(q.includes('desglose') || q.includes('gastos')) {
-                const mesStr = todayStr.slice(0, 7);
-                const gMes = gastos.filter(g => g.fecha.startsWith(mesStr));
-                const totalG = gMes.reduce((s,g)=>s+g.monto,0);
-                typeAITabResponse(`Durante este mes has registrado <b>${gMes.length} egresos/gastos</b>, sumando una salida de capital de <b style="color:var(--danger-color); font-size:20px;">-$${totalG.toFixed(2)}</b>. <br><br><button class="ai-more-info-btn" onclick="switchTab('recursos')"><i data-lucide="external-link" size="14"></i> Ver historial de Finanzas</button>`);
-                return;
-            }
-
-            if(q.includes('sin vender')) {
-                const vendidas = new Set();
-                ventas.forEach(v => v.productos.forEach(p => vendidas.add(p.id)));
-                const sinVender = productos.filter(p => !vendidas.has(p.id) && p.stock > 0);
-                if(sinVender.length > 0) {
-                    typeAITabResponse(`Tienes <b>${sinVender.length} productos</b> en inventario que no han tenido ni una sola salida en el historial. <br><br>Por ejemplo: <b style="color:var(--danger-color);">${sinVender.slice(0,2).map(p=>p.nombre).join(', ')}</b>. Podrías crearles una promoción para liberar capital.`);
-                } else {
-                    typeAITabResponse(`¡Excelente! Todos los productos de tu inventario actual han registrado al menos una venta histórica.`);
-                }
-                return;
-            }
-
+            // Categoría Rentable (Gráfica Inline)
             if(q.includes('categoria') || q.includes('rentable')) {
                 const chartId = 'ai-chart-' + Date.now();
                 const catTotals = { 'Papelería': 0, 'Impresiones': 0, 'Servicios': 0, 'Juguetes': 0 };
@@ -2224,6 +2028,7 @@
                 return;
             }
 
+            // Alertas de Stock INLINE
             if(q.includes('alertas') || q.includes('stock') || q.includes('por agotarse')) {
                 const alertas = getPredictiveAlerts();
                 if (alertas.length === 0) { typeAITabResponse('Todo el inventario está en niveles óptimos. No hay artículos en riesgo de agotarse pronto.'); return; }
@@ -2238,6 +2043,7 @@
                 return;
             }
 
+            // Mejor Cliente
             if (q.includes('mejor cliente') || q.includes('top clientes')) {
                 const clientTotals = {};
                 ventas.forEach(v => { if(v.cliente && v.cliente.toLowerCase() !== 'sin nombre') clientTotals[v.cliente] = (clientTotals[v.cliente]||0) + v.total; });
@@ -2252,6 +2058,7 @@
                 } else { typeAITabResponse('Aún no hay clientes con nombre registrado en tus ventas para hacer el cálculo.'); return; }
             }
 
+            // Ventas Hoy (Simple)
             if(q.includes('cuanto vendi') || q.includes('ventas de hoy') || q.includes('ventas hoy')) {
                 const vHoy = ventas.filter(v => v.fecha.startsWith(todayStr));
                 const total = vHoy.reduce((s, v) => s + v.total, 0);
@@ -2259,7 +2066,29 @@
                 return;
             }
 
-            typeAITabResponse('No tengo datos exactos para esa petición en este instante. Intenta interactuar con mis botones preprogramados para extraer los reportes disponibles.');
+            // Acciones Rápidas Carrito/Link
+            if (q.includes('descuento') && (q.includes('carrito') || q.includes('compra'))) {
+                const match = q.match(/(\d+)%/);
+                if (match) {
+                    if (carrito.length === 0) { typeAITabResponse('El carrito está vacío. Agrega productos en la pestaña Ventas primero para aplicar fórmulas matemáticas sobre ellos.'); return; }
+                    const pct = parseInt(match[1]);
+                    carrito.forEach(item => { item.precioVenta = item.precioVenta * (1 - (pct/100)); });
+                    updateCartUI();
+                    typeAITabResponse(`Hecho. Apliqué un recálculo y modifiqué tu carrito con un <b>${pct}% de descuento</b> en todos los artículos. <br><br> <button class="ai-action-btn" onclick="openCart()"><i data-lucide="shopping-cart"></i> Abrir Carrito</button>`);
+                    return;
+                }
+            }
+
+            if (q.includes('link') && (q.includes('cobro') || q.includes('whatsapp'))) {
+                const total = carrito.reduce((sum, i) => sum + (i.precioVenta * i.qty), 0);
+                if (total === 0) { typeAITabResponse('El carrito está vacío para generar una estructura de cobro. Revisa tus ventas activas.'); return; }
+                const msg = encodeURIComponent(`Hola! Tu total a pagar es de $${total.toFixed(2)}. Puedes pagar aquí: [Pega tu link de pago]`);
+                typeAITabResponse(`He generado un mensaje pre-estructurado para tu carrito actual que suma <b style="color:var(--success-color);">$${total.toFixed(2)}</b>.<br><br><a href="https://wa.me/?text=${msg}" target="_blank" class="ai-action-btn" style="text-decoration:none;"><i data-lucide="external-link"></i> Abrir en WhatsApp</a>`);
+                return;
+            }
+
+            // Delegar a la inteligencia original si no coincide
+            typeAITabResponse('Ese parámetro aún no está en mi modelo de Machine Learning local. Prueba escribiendo comandos enfocados en inventario o finanzas, como "Revisar estado de inventario" o "Busca un cliente".');
         }
 
         // ==========================================
@@ -3080,7 +2909,7 @@
 
         function saveProduct() { const id = $('prod-id').value, nombre = $('prod-nombre').value, cat = $('prod-categoria').value, costo = parseFloat($('prod-costo').value) || 0, venta = parseFloat($('prod-venta').value) || 0, stock = parseInt($('prod-stock').value) || 0; if(!nombre) { triggerError('product-modal'); showToast('El nombre es obligatorio'); return; } if(id) { const idx = productos.findIndex(x => x.id === parseInt(id)); if(idx > -1) { productos[idx] = { ...productos[idx], nombre, categoria: cat, precioCosto: costo, precioVenta: venta, stock }; } } else { productos.push({ id: Date.now(), nombre, categoria: cat, precioCosto: costo, precioVenta: venta, stock }); } saveToStorage(); renderAll(); closeProductModal(); playSynthSound('save'); showToast('Producto guardado'); } function deleteProduct() { const id = parseInt($('prod-id').value); if(confirm('¿Estás seguro de eliminar este producto?')) { const idx = productos.findIndex(p => p.id === id); if (idx > -1) { lastDeletedProduct = productos[idx]; lastDeletedIndex = idx; productos.splice(idx, 1); saveToStorage(); renderAll(); closeProductModal(); playSynthSound('delete'); showUndoToast('Producto eliminado', undoDelete); } } }
         async function downloadTableAsPNG(elId, name) { if(typeof html2canvas === 'undefined') { showToast('Herramienta de exportación no cargada'); return; } const targetEl = document.getElementById(elId); if(!targetEl) { showToast('No se encontró el área'); return; } showToast('Generando imagen...'); try { const canvas = await html2canvas(targetEl, { backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg-color') }); const link = document.createElement('a'); link.download = `${name}_PrintCenterPro_${new Date().getTime()}.png`; link.href = canvas.toDataURL(); link.click(); } catch(e) { showToast('Error al exportar'); } }
-        function exportData() { const data = { productos, ventas, pedidos, gastos, clientesDirectorio, ajustesSaldo, distribuciones, distribucionesJuguetes, waTemplates, iaFaqs }; const blob = new Blob([JSON.stringify(data)], { type: 'application/json' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `PrintCenterPro_Backup_${new Date().getTime()}.json`; link.click(); showToast('Respaldo descargado'); } function importData(e) { const file = e.target.files[0]; if(!file) return; const reader = new FileReader(); reader.onload = (evt) => { try { const data = JSON.parse(evt.target.result); if(data.productos) productos = data.productos; if(data.ventas) ventas = data.ventas; if(data.pedidos) pedidos = data.pedidos; if(data.gastos) gastos = data.gastos; if(data.clientesDirectorio) clientesDirectorio = data.clientesDirectorio; if(data.ajustesSaldo) ajustesSaldo = data.ajustesSaldo; if(data.distribuciones) distribuciones = data.distribuciones; if(data.distribucionesJuguetes) distribucionesJuguetes = data.distribucionesJuguetes; if(data.waTemplates) waTemplates = data.waTemplates; if(data.iaFaqs) iaFaqs = data.iaFaqs; saveToStorage(); localStorage.setItem('pos_ia_faqs', JSON.stringify(iaFaqs)); renderAll(); showToast('Datos importados...'); setTimeout(() => location.reload(), 1500); } catch(err) { showToast('Archivo JSON inválido'); } }; reader.readAsText(file); } function resetSystem() { if(prompt('Escribe "BORRAR" en mayúsculas para formatear la base de datos') === 'BORRAR') { localStorage.clear(); showToast('Sistema borrado. Reiniciando...'); setTimeout(() => location.reload(), 1500); } else { showToast('Cancelado'); } }
+        function exportData() { const data = { productos, ventas, pedidos, gastos, clientesDirectorio, ajustesSaldo, distribuciones, distribucionesJuguetes, waTemplates }; const blob = new Blob([JSON.stringify(data)], { type: 'application/json' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `PrintCenterPro_Backup_${new Date().getTime()}.json`; link.click(); showToast('Respaldo descargado'); } function importData(e) { const file = e.target.files[0]; if(!file) return; const reader = new FileReader(); reader.onload = (evt) => { try { const data = JSON.parse(evt.target.result); if(data.productos) productos = data.productos; if(data.ventas) ventas = data.ventas; if(data.pedidos) pedidos = data.pedidos; if(data.gastos) gastos = data.gastos; if(data.clientesDirectorio) clientesDirectorio = data.clientesDirectorio; if(data.ajustesSaldo) ajustesSaldo = data.ajustesSaldo; if(data.distribuciones) distribuciones = data.distribuciones; if(data.distribucionesJuguetes) distribucionesJuguetes = data.distribucionesJuguetes; if(data.waTemplates) waTemplates = data.waTemplates; saveToStorage(); renderAll(); showToast('Datos importados...'); setTimeout(() => location.reload(), 1500); } catch(err) { showToast('Archivo JSON inválido'); } }; reader.readAsText(file); } function resetSystem() { if(prompt('Escribe "BORRAR" en mayúsculas para formatear la base de datos') === 'BORRAR') { localStorage.clear(); showToast('Sistema borrado. Reiniciando...'); setTimeout(() => location.reload(), 1500); } else { showToast('Cancelado'); } }
 
         function openSpotlight() { playSynthSound('modal'); $('spotlight-overlay').classList.add('active'); $('spotlight-input').value = ''; $('spotlight-results').innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-secondary); font-weight:700;">Escribe para buscar...</div>'; setTimeout(() => $('spotlight-input').focus(), 100); }
         function closeSpotlight(e) { if (e && e.target !== $('spotlight-overlay')) return; $('spotlight-overlay').classList.remove('active'); }
@@ -3128,174 +2957,92 @@
             if (count === 0) { html = '<div style="padding:30px; text-align:center; color:var(--text-secondary);"><i data-lucide="search-x" size="48" style="opacity:0.2; margin-bottom:15px;"></i><br><strong style="font-size:16px;">No se encontraron resultados</strong><br><span style="font-size:13px; font-weight:600;">Intenta con otro término</span></div>'; } 
             res.innerHTML = html; renderIcons(); 
         }
+// ==========================================
+// REPORTE MATUTINO AUTOMÁTICO DE IA
+// ==========================================
+function checkMorningSummary() {
+    // Solo mostrar el reporte financiero al Administrador
+    if (currentRole !== 'admin') return; 
+    
+    const todayStr = getLocalISO().slice(0, 10);
+    const lastSummary = localStorage.getItem('pos_last_morning_summary');
+    
+    // Si la fecha guardada no es la de hoy, significa que es la primera vez que entra en el día
+    if (lastSummary !== todayStr) {
+        // Guardamos la fecha de hoy para que no vuelva a salir hasta mañana
+        localStorage.setItem('pos_last_morning_summary', todayStr);
+        
+        // 1. Calcular la fecha exacta de ayer
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayStr = getLocalISO(yesterday).slice(0, 10);
+        
+        // 2. Filtrar las ventas de ayer y calcular totales
+        const vAyer = ventas.filter(v => v.fecha.startsWith(yesterdayStr));
+        const totalAyer = vAyer.reduce((sum, v) => sum + v.total, 0);
+        const utilAyer = vAyer.reduce((sum, v) => sum + v.ganancia, 0);
+        
+        // 3. Calcular el producto estrella (el más vendido)
+        let topProd = 'Sin ventas registradas';
+        let maxQty = 0;
+        const conteo = {};
+        vAyer.forEach(v => v.productos.forEach(p => {
+            conteo[p.nombre] = (conteo[p.nombre] || 0) + p.qty;
+            if(conteo[p.nombre] > maxQty) { 
+                maxQty = conteo[p.nombre]; 
+                topProd = p.nombre; 
+            }
+        }));
 
-        // ==========================================
-        // REPORTE MATUTINO AUTOMÁTICO DE IA
-        // ==========================================
-        function checkMorningSummary() {
-            if (currentRole !== 'admin') return; 
-            
-            const todayStr = getLocalISO().slice(0, 10);
-            const lastSummary = localStorage.getItem('pos_last_morning_summary');
-            
-            if (lastSummary !== todayStr) {
-                localStorage.setItem('pos_last_morning_summary', todayStr);
-                
-                const yesterday = new Date();
-                yesterday.setDate(yesterday.getDate() - 1);
-                const yesterdayStr = getLocalISO(yesterday).slice(0, 10);
-                
-                const vAyer = ventas.filter(v => v.fecha.startsWith(yesterdayStr));
-                const totalAyer = vAyer.reduce((sum, v) => sum + v.total, 0);
-                const utilAyer = vAyer.reduce((sum, v) => sum + v.ganancia, 0);
-                
-                let topProd = 'Sin ventas registradas';
-                let maxQty = 0;
-                const conteo = {};
-                vAyer.forEach(v => v.productos.forEach(p => {
-                    conteo[p.nombre] = (conteo[p.nombre] || 0) + p.qty;
-                    if(conteo[p.nombre] > maxQty) { 
-                        maxQty = conteo[p.nombre]; 
-                        topProd = p.nombre; 
-                    }
-                }));
-
-                const overlay = document.createElement('div');
-                overlay.className = 'modal-overlay active';
-                overlay.style.zIndex = '9999999'; 
-                overlay.innerHTML = `
-                    <div class="ai-modal-box ios-modal fade-in" style="transform: scale(1) translateY(0); opacity: 1; border: 1px solid rgba(175, 82, 222, 0.4); box-shadow: 0 30px 60px rgba(175, 82, 222, 0.3);">
-                        <div class="ai-header" style="background: linear-gradient(135deg, var(--purple-color), #d082f0); padding: 25px 30px;">
-                            <div class="ai-header-left">
-                                <div class="ai-icon-pulse"><i data-lucide="sunrise" size="24"></i></div>
-                                <div>
-                                    <h2 style="font-weight: 900; font-size: 22px; margin: 0; letter-spacing: -0.5px;">Reporte Matutino IA</h2>
-                                    <span style="font-size: 13px; font-weight: 700; opacity: 0.9;">SmartControl</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="padding: 30px; background: var(--bg-color); flex: 1; text-align: center;">
-                            <h3 style="font-size: 24px; font-weight: 900; margin-bottom: 10px; color: var(--text-primary);">¡Buenos días, ${userName}! ☕</h3>
-                            <p style="color: var(--text-secondary); font-size: 15px; font-weight: 600; margin-bottom: 25px;">He procesado el cierre del sistema de ayer. Aquí tienes los números clave para arrancar este nuevo día:</p>
-                            
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                                <div style="background: var(--card-bg); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
-                                    <small style="font-size: 12px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Venta Bruta</small>
-                                    <div style="font-size: 26px; font-weight: 900; color: var(--text-primary); margin-top: 5px;">$${totalAyer.toFixed(2)}</div>
-                                </div>
-                                <div style="background: rgba(52, 199, 89, 0.05); padding: 20px; border-radius: var(--radius-md); border: 1px solid rgba(52,199,89,0.2); box-shadow: var(--shadow-sm);">
-                                    <small style="font-size: 12px; font-weight: 800; color: var(--success-color); text-transform: uppercase;">Utilidad Libre</small>
-                                    <div style="font-size: 26px; font-weight: 900; color: var(--success-color); margin-top: 5px;">$${utilAyer.toFixed(2)}</div>
-                                </div>
-                            </div>
-                            
-                            <div style="background: var(--card-bg); padding: 18px 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; box-shadow: var(--shadow-sm);">
-                                <div style="text-align: left;">
-                                    <small style="font-size: 11px; font-weight: 800; color: var(--warning-color); text-transform: uppercase;">Producto Estrella de Ayer</small>
-                                    <div style="font-size: 17px; font-weight: 900; color: var(--text-primary); margin-top: 4px;">${topProd}</div>
-                                </div>
-                                <i data-lucide="award" size="36" style="color: var(--warning-color); opacity: 0.8;"></i>
-                            </div>
-
-                            <button class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 16px; background: var(--purple-color); box-shadow: 0 8px 25px var(--purple-glow);" onclick="this.closest('.modal-overlay').remove(); playSynthSound('save');"><i data-lucide="zap" size="20"></i> Excelente, ¡a trabajar!</button>
+        // 4. Construir y renderizar el Modal de la IA
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay active';
+        overlay.style.zIndex = '9999999'; // Se asegura de estar por encima del Navbar
+        overlay.innerHTML = `
+            <div class="ai-modal-box ios-modal fade-in" style="transform: scale(1) translateY(0); opacity: 1; border: 1px solid rgba(175, 82, 222, 0.4); box-shadow: 0 30px 60px rgba(175, 82, 222, 0.3);">
+                <div class="ai-header" style="background: linear-gradient(135deg, var(--purple-color), #d082f0); padding: 25px 30px;">
+                    <div class="ai-header-left">
+                        <div class="ai-icon-pulse"><i data-lucide="sunrise" size="24"></i></div>
+                        <div>
+                            <h2 style="font-weight: 900; font-size: 22px; margin: 0; letter-spacing: -0.5px;">Reporte Matutino IA</h2>
+                            <span style="font-size: 13px; font-weight: 700; opacity: 0.9;">SmartControl</span>
                         </div>
                     </div>
-                `;
-                document.body.appendChild(overlay);
-                renderIcons(); 
-                
-                setTimeout(() => { playSynthSound('cash'); }, 300);
-            }
-        }
-
-        // =========================================
-        // LÓGICA PRINTCENTER AI - FASE 1
-        // =========================================
-        function updatePrintCenterAI() {
-            if (!$('ai-tab')) return;
-            if($('ai-greeting-name')) $('ai-greeting-name').innerText = userName;
-            const todayStr = getLocalISO().slice(0, 10);
-            const ventasHoy = ventas.filter(v => v.fecha.startsWith(todayStr));
-            const sumVentasHoy = ventasHoy.reduce((sum, v) => sum + v.total, 0);
-            if($('ai-dash-ventas')) $('ai-dash-ventas').innerText = `$${sumVentasHoy.toFixed(2)}`;
-            const pendientes = pedidos.filter(p => p.estado !== 'Entregado').length;
-            if($('ai-dash-pedidos')) $('ai-dash-pedidos').innerText = pendientes;
-            const pocoStock = productos.filter(p => p.stock > 0 && p.stock <= 5).length;
-            if($('ai-dash-stock')) $('ai-dash-stock').innerText = `${pocoStock} prods`;
-        }
-
-        function generateManagerReport() {
-            playSynthSound('click_tab');
-            const chat = $('ai-tab-chat-history');
-            chat.insertAdjacentHTML('beforeend', `<div class="user-bubble">🧠 Ejecuta el Análisis del Día</div>`);
-            chat.scrollTop = chat.scrollHeight;
-
-            const todayStr = getLocalISO().slice(0, 10);
-            const ventasHoy = ventas.filter(v => v.fecha.startsWith(todayStr));
-            const totalHoy = ventasHoy.reduce((sum, v) => sum + v.total, 0);
-            const numVentas = ventasHoy.length;
-
-            const catData = {};
-            const prodData = {};
-            const horasData = new Array(24).fill(0);
-
-            ventasHoy.forEach(v => {
-                const h = new Date(v.fecha).getHours();
-                horasData[h]++;
-                v.productos.forEach(p => {
-                    const cat = p.categoria || 'Otros';
-                    catData[cat] = (catData[cat] || 0) + (p.precioVenta * p.qty);
-                    prodData[p.nombre] = (prodData[p.nombre] || 0) + (p.precioVenta - p.precioCosto) * p.qty;
-                });
-            });
-
-            let mejorCat = '', maxCat = 0;
-            for(let c in catData) { if(catData[c] > maxCat) { maxCat = catData[c]; mejorCat = c; } }
-            const pctCat = totalHoy > 0 ? ((maxCat / totalHoy) * 100).toFixed(0) : 0;
-
-            let mejorProd = '', maxProd = 0;
-            for(let p in prodData) { if(prodData[p] > maxProd) { maxProd = prodData[p]; mejorProd = p; } }
-
-            let picoHora = 12, maxVentasHora = 0;
-            horasData.forEach((count, h) => { if(count > maxVentasHora) { maxVentasHora = count; picoHora = h; } });
-            const ampm = picoHora >= 12 ? 'PM' : 'AM';
-            const h12 = picoHora > 12 ? picoHora - 12 : (picoHora === 0 ? 12 : picoHora);
-
-            const alertas = getPredictiveAlerts();
-            let sugerenciaStock = "Tu inventario está sano hoy.";
-            if (alertas.length > 0) {
-                sugerenciaStock = `Te recomiendo surtir <b>${alertas[0].p.nombre}</b> ${alertas.length > 1 ? `y <b>${alertas[1].p.nombre}</b>` : ''} antes de que termine la semana.`;
-            }
-
-            let reporte = `He analizado tus movimientos de hoy. Aquí tienes el reporte ejecutivo:`;
-            let htmlInsights = `
-            <div class="ai-inline-card" style="border-left: 4px solid var(--purple-color);">
-                <p style="font-size: 15px; margin-bottom: 10px;">Hoy vendiste <b>$${totalHoy.toFixed(2)}</b> en <b>${numVentas} ventas</b>.</p>
-                <ul style="padding-left: 20px; font-size: 14px; margin-bottom: 15px; color: var(--text-primary); line-height: 1.6;">
-                    <li>La categoría <b>${mejorCat || 'General'}</b> representó el ${pctCat}% de tus ingresos.</li>
-                    <li><b>${mejorProd || 'Ninguno aún'}</b> fue el producto más rentable.</li>
-                    <li>Tu mejor horario de atención fue a las <b>${h12}:00 ${ampm}</b>.</li>
-                </ul>
-                <div style="background: rgba(255, 149, 0, 0.1); padding: 12px; border-radius: 8px; font-size: 13px; color: var(--warning-color); font-weight: 700; border: 1px solid rgba(255, 149, 0, 0.3);">
-                    <i data-lucide="lightbulb" size="16" style="vertical-align: middle;"></i> ${sugerenciaStock}
                 </div>
-            </div>`;
+                <div style="padding: 30px; background: var(--bg-color); flex: 1; text-align: center;">
+                    <h3 style="font-size: 24px; font-weight: 900; margin-bottom: 10px; color: var(--text-primary);">¡Buenos días, ${userName}! ☕</h3>
+                    <p style="color: var(--text-secondary); font-size: 15px; font-weight: 600; margin-bottom: 25px;">He procesado el cierre del sistema de ayer. Aquí tienes los números clave para arrancar este nuevo día:</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div style="background: var(--card-bg); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                            <small style="font-size: 12px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Venta Bruta</small>
+                            <div style="font-size: 26px; font-weight: 900; color: var(--text-primary); margin-top: 5px;">$${totalAyer.toFixed(2)}</div>
+                        </div>
+                        <div style="background: rgba(52, 199, 89, 0.05); padding: 20px; border-radius: var(--radius-md); border: 1px solid rgba(52,199,89,0.2); box-shadow: var(--shadow-sm);">
+                            <small style="font-size: 12px; font-weight: 800; color: var(--success-color); text-transform: uppercase;">Utilidad Libre</small>
+                            <div style="font-size: 26px; font-weight: 900; color: var(--success-color); margin-top: 5px;">$${utilAyer.toFixed(2)}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--card-bg); padding: 18px 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; box-shadow: var(--shadow-sm);">
+                        <div style="text-align: left;">
+                            <small style="font-size: 11px; font-weight: 800; color: var(--warning-color); text-transform: uppercase;">Producto Estrella de Ayer</small>
+                            <div style="font-size: 17px; font-weight: 900; color: var(--text-primary); margin-top: 4px;">${topProd}</div>
+                        </div>
+                        <i data-lucide="award" size="36" style="color: var(--warning-color); opacity: 0.8;"></i>
+                    </div>
 
-            if (numVentas === 0) {
-                htmlInsights = `<div class="ai-inline-card">Aún no tienes ventas registradas hoy. Cuando comiences a cobrar, generaré tus estadísticas aquí.</div>`;
-            }
-
-            typeAITabResponse(reporte + htmlInsights);
-        }
-function openAiQuickModal() {
-            playSynthSound('modal');
-            updatePrintCenterAI(); // Actualiza los números antes de abrir
-            $('ai-quick-modal').classList.add('active');
-        }
-
-        function closeAiQuickModal() {
-            $('ai-quick-modal').classList.remove('active');
-        }
+                    <button class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 16px; background: var(--purple-color); box-shadow: 0 8px 25px var(--purple-glow);" onclick="this.closest('.modal-overlay').remove(); playSynthSound('save');"><i data-lucide="zap" size="20"></i> Excelente, ¡a trabajar!</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        renderIcons(); // Renderizar iconos de Lucide
+        
+        // Sonido de bienvenida especial
+        setTimeout(() => { playSynthSound('cash'); }, 300);
+    }
+}
     </script>
 </body>
 </html>
